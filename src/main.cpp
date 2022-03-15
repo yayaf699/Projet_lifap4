@@ -1,9 +1,10 @@
-#include "Liste.h"
 #include <iostream>
+#include "Joueur.h"
 
-int main(void)
+using namespace std;
+
+int main()
 {
-    Liste l;
-    cout<<l.last<<endl;
+
     return 0;
 }
