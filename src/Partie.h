@@ -1,10 +1,9 @@
-
-
+#include <iostream>
 
 struct Partie
 {
     public:
-    bool fini
+    bool fini;
 
     private:
     void prochaine_action();
