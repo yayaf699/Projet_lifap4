@@ -11,6 +11,7 @@ struct Partie
         {
             j1.
         };
+        
 
 };
 
