@@ -7,14 +7,14 @@ struct Partie
         bool fini;
         bool prochain_joueur;
     private:
-        void prochaine_action();
+        void prochaine_action()
+        {
+            j1.
+        };
 
 };
 
-void prochaine_action()
-{
 
-}
 
 int main(void)
 {
