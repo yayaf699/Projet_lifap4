@@ -6,10 +6,11 @@
 class Partie{
 
     public:
+    
     bool fini;
     void prochaine_action();
 
-    
+
     private:
     
 
