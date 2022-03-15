@@ -1,9 +1,12 @@
-#include "Liste.h"
+#include "Partie.h"
 #include <iostream>
 
 int main(void)
 {
-    Liste l;
-    cout<<l.last<<endl;
+    Partie p;
+    while (p.fini == false)
+    {
+        p.prochaine_action();
+    }
     return 0;
 }
