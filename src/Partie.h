@@ -1,11 +1,18 @@
+#ifndef _PARTIE_H_
+#define _PARTIE_H_
+
 #include <iostream>
 
-struct Partie
-{
+class Partie{
+
     public:
     bool fini;
-
-    private:
     void prochaine_action();
 
+    
+    private:
+    
+
 };
+
+#endif
