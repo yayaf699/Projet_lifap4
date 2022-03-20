@@ -1,109 +1,119 @@
 #include <iostream>
 #include "Joueur.h"
-#include "Inventaire.h"
-#include <string.h>
 
 using namespace std;
 
-    /** CONSTRUCTEURS ET DESTRUCTEUR **/
+// LES CONSTRUCTEURS ET DESTRUCTEUR
 
-        // CONSTRUCTEUR
-            Joueur::Joueur()
-            {
-                nom = "Ocelot"; // nom par défaut si le joueur ne choisi
-                tab = new int[4];
-                tab[0] = 20; // la vie à 20/20
-                
-                for(int i = 1; i < 5; i++) tab[i] = 10; // 10/20 par défaut
+    // CONSTRUCTEUR PAR DEFAUT
+    Joueur::Joueur()
+    {
+        nom = "Perso1";
+        vie = 20; // 20/20
+        vitesse = force = endurance = 10; // 10/20
 
-                // on initialise l'inventaire
-                // rajouter le constructeur de l'arme
-            }
+        inv = new Inventaire;
+    }
 
-        // CONSTRUCTEUR PERSONNALISÉ
-            Joueur::Joueur(const string &n, const int &vi, const int &f, const int &v, const int &e)
-            {
-                nom = n;
+    // CONSTRUCTEUR PERSONNALISÉ
+    Joueur::Joueur(const string &n, const unsigned char &vi, const unsigned char &f, const unsigned char &v, const unsigned char &e, const Inventaire &in)
+    {
+        nom = n;
+        vie = vi;
+        vitesse = v;
+        force = f;
+        endurance = e;
 
-                // le joueur possède 40 points à utiliser dans ses stats
-                tab = new int[4];
-                tab[0] = vi;
-                tab[1] = f;
-                tab[2] = v;
-                tab[3] = e;
+        // récuperer inventaire
+    }
 
-               // on initialise l'inventaire
-                // rajouter le constructeur de l'arme
-            }
+    // DESTRUCTEUR
+    Joueur::~Joueur()
+    {
+        nom = " ";
+        vie = vitesse = force = endurance = 0;
 
-        // DESTRUCTEUR
-            Joueur::~Joueur()
-            {
-                nom = " ";
-                delete [] tab;
+        delete inv;
+    }
 
-                // rajouter le destructeur d'inventaire
-                // rajouter le destructeur de l'arme
-            }
+// LES ACCESSEURS ET MUTATEURS 
 
-    /** ACCESSEURS ET MUTATEURS **/
+    // ACCESSEUR NOM
+    const string &Joueur::getNom() const { return nom; }
 
-        // ACCESSEUR NOM
-            string Joueur::getNom()
-            {
-                return nom;
-            }
+    // ACCESSEUR VIE
+    const unsigned char &Joueur::getVie() const { return vie; }
 
-        // ACCESSEUR VIE
-            int Joueur::getVie()
-            {
-                return tab[0];
-            }
+    // ACCESSEUR FORCE
+    const unsigned char &Joueur::getForce() const { return force; }
 
-        // ACCESSEUR FORCE
-            int Joueur::getForce()
-            {
-                return tab[1];
-            }
+    // ACCESSEUR VITESSE
+    const unsigned char &Joueur::getVitesse() const { return vitesse; }
 
-        // ACCESSEUR VITESSE
-            int Joueur::getVitesse()
-            {
-                return tab[2];
-            }
+    // ACCESSEUR ENDURANCE
+    const unsigned char &Joueur::getEndurance() const { return endurance; }
 
-        // ACCESSEUR ENDURANCE
-            int Joueur::getEndurance()
-            {
-                return tab[3];
-            }
+    // MUTATEUR NOM
+    void Joueur::setNom(const string& n) { nom = n; }
 
-        // MUTATEUR NOM
-            void Joueur::setNom(const string& n)
-            {
-                nom = n;
-            }
+    // MUTATEUR VIE
+    void Joueur::setVie(const unsigned char &vi) { vie = vi; }
 
-        // MUTATEUR VIE
-            void Joueur::setVie(const int &vi)
-            {
-                tab[0] = vi;
-            }
+    // MUTATEUR FORCE
+    void Joueur::setForce(const unsigned char &f) { force = f; }
 
-        // MUTATEUR FORCE
-            void Joueur::setForce(const int &f)
-            {
-                tab[1] = f;
-            }
+    // MUTATEUR VITESSE
+    void Joueur::setVitesse(const unsigned char &v) { vitesse = v; }
 
-        // MUTATEUR VITESSE
-            void Joueur::setVitesse(const int &v)
-            {
-                tab[2] = v;
-            }
+    // MUTATEUR ENDURANCE
+    void Joueur::setEndurance(const unsigned char &e) { endurance = e; }
 
-        // MUTATEUR ENDURANCE
-            void Joueur::setEndurance(const int &e)
-            {
-                tab[3] = e;
-            }
+// GESTION DU JOUEUR 
+
+    // REGARDER L'INVENTAIRE
+    void Joueur::regarderInventaire() const
+    {
+
+    }
+
+    // REGARDER UN OBJET ET SES STATS
+    void Joueur::regarderObjet(const unsigned char &i) const
+    {
+
+    }
+
+    // UTLISER UN OBJET
+    void Joueur::utiliserObjet(const unsigned char &i)
+    {
+
+    }
+
+    // REGARDER LES ATTAQUES
+    void Joueur::regarderLesAttaques() const
+    {
+
+    }
+
+    // REGARDER UNE ATTAQUE ET SES STATS
+    void Joueur::regarderUneAttaque(const unsigned char &i) const
+    {
+
+    }
+
+    // ATTAQUER
+    void Joueur::utiliserAttaque(const unsigned char &i)
+    {
+
+    }
+
+    // REGARDER SON ARME ET SES STAtS
+    void Joueur::regarderArme() const
+    {
+
+    }
+
+    // REGARDER SON ARMURE ET SES STATS
+    void Joueur::regarderArmure() const
+    {
+        
+    }
