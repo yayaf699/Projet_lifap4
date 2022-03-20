@@ -8,48 +8,33 @@ using namespace std;
 
 class Inventaire
 {
-    private:
 
-        int taille_inventaire;
-        Objet *inv;
+public:
 
-    public:
+// CONSTRUCTEURS
 
-    /** CONSTRUCTEURS ET DESTRUCTEUR **/
+    // CONSTRUCTEUR
+    Inventaire();
 
-        // CONSTRUCTEUR
-            Inventaire();
+    // CONSTRUCTEUR PAR COPIE
+    Inventaire(const Inventaire &in);
 
-        // CONSTRUCTEUR PAR COPIE
-            Inventaire(const Inventaire &i);
+// GESTION DE L'INVENTAIRE 
 
-        // DESTRUCTEUR
-            ~Inventaire();
+    // AFFICHER I-EME OBJET
+    void afficherObjetInventaire(const unsigned char &i) const;
 
-    /** GESTION DE L'INVENTAIRE **/
+    // AFFICHER INVENTAIRE
+    void afficherInventaire() const;
 
-        // AFFICHER INVENTAIRE
-            void afficherInventaire();
+    // JETER UN OBJET
+    void jeterObjetInventaire(const unsigned char &i);
 
-        // VIDER INVENTAIRE
-            void viderInventaire();
+private:
 
-        // AJOUTER UN OBJET
-            void ajouterObjetInventaire(const Objet &o);
-
-        // JETER UN OBJET
-            void jeterObjetInventaire(const unsigned int &i);
-
-        // AFFICHER I-EME OBJET
-            void afficherObjetInventaire(const unsigned int &i);
-
-        // RECHERCHER UN OBJET
-            void rechercherObjetInventaire(const string &nomObjet);
-
-        // UTILISER UN OBJET
-            void utiliserObjetInventaire(const unsigned int &i);
-
-
+    const char &taille_inventaire = 4;
+    Objet *inv;
+    
 };
 
 #endif // INVENTAIRE_H_INCLUDED
