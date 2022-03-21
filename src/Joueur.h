@@ -1,7 +1,8 @@
 #ifndef JOUEUR_H_INCLUDED
 #define JOUEUR_H_INCLUDED
-#include <string.h>
 #include "Inventaire.h"
+#include "Arme.h"
+#include "Armure.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ public:
     Joueur();
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Joueur(const string &n, const unsigned char &vi, const unsigned char &f, const unsigned char &v, const unsigned char &e, const Inventaire &in);
+    Joueur(const string &n, const unsigned char &vi, const unsigned char &f, const unsigned char &v, const unsigned char &e, const Inventaire &in, const Arme &ar);
 
     // DESTRUCTEUR
     ~Joueur();
@@ -85,6 +86,7 @@ private:
     unsigned char vie, force, vitesse, endurance;
     
     Inventaire *inv; // l'inventaire d'objets du joueur 
+    Arme *arm; // l'arme du joueur
 
 };
 
