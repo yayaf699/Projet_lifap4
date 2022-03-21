@@ -1,10 +1,10 @@
 #ifndef ARME_H_INCLUDED
 #define ARME_H_INCLUDED
-#include <string.h>
+#include <string>
 
 using namespace std;
 
-class Joueur
+class Arme
 {
 
 public:
@@ -15,10 +15,8 @@ public:
     Arme();
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Arme(const string &n, const unsigned char &deg);
+    Arme(const string &n, const unsigned char &deg, const unsigned char &vit, const unsigned char &res);
 
-    // DESTRUCTEUR
-    ~Arme();
 
 // LES ACCESSEURS ET MUTATEURS 
 
@@ -27,6 +25,9 @@ public:
 
     // ACCESSEUR DEGATS
     const unsigned char &getDegats() const;
+
+    // ACCESSEUR VITESSE
+    const unsigned char &getVitesse() const;
 
     // ACCESSEUR RESISTANCE
     const unsigned char &getResistance() const;
@@ -37,14 +38,11 @@ public:
     // MUTATEUR DEGATS
     void setDegat(const unsigned char &deg);
 
+    // MUTATEUR VITESSE
+    void setVitesse(const unsigned char &vit);
+
     // MUTATEUR RESISTANCE
-    void setDegat(const unsigned char &deg);
-
-
-// GESTION DE L'ARME
-
-    // CHANGEMENT D'ETAT DE L'ARME
-    void changementEtat();
+    void setResistance(const unsigned char &deg);
 
 private:
 
