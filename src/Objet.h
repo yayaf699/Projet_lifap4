@@ -54,6 +54,7 @@ public:
     void setEnduranceObjet(const unsigned char &e);
 
 private:
+
     string nom; // nom de l'objet
     unsigned char bonusVie, bonusForce, bonusVitesse, bonusEndurance;
 
