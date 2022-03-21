@@ -13,10 +13,11 @@ using namespace std;
         vitesse = force = endurance = 10; // 10/20
 
         inv = new Inventaire;
+        arm = new Arme;
     }
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Joueur::Joueur(const string &n, const unsigned char &vi, const unsigned char &f, const unsigned char &v, const unsigned char &e, const Inventaire &in)
+    Joueur::Joueur(const string &n, const unsigned char &vi, const unsigned char &f, const unsigned char &v, const unsigned char &e, const Inventaire &in, const Arme &ar)
     {
         nom = n;
         vie = vi;
@@ -25,6 +26,7 @@ using namespace std;
         endurance = e;
 
         // récuperer inventaire
+        // récuperer arme
     }
 
     // DESTRUCTEUR
@@ -34,6 +36,7 @@ using namespace std;
         vie = vitesse = force = endurance = 0;
 
         delete inv;
+        delete arm;
     }
 
 // LES ACCESSEURS ET MUTATEURS 
