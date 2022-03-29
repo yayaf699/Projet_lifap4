@@ -60,15 +60,13 @@ void Attaque::setTypeAttaque(nomTypeAtt)
     typeAttaque = nomTypeAtt;
 }
 
-int UtiliserAttaque(typeAttaque)
+int UtiliserAttaque()
 {
-     if (typeAttaque=="Strategique")
+     /*if (typeAttaque=="Strategique")
      {
          return TabStatsAttMagique;
      }
+    */
 
-     else
-     {
-         return degats;
-     }
+    return degats;
 }
