@@ -7,23 +7,23 @@ using namespace std;
 // LES CONSTRUCTEURS ET DESTRUCTEUR
 
     // CONSTRUCTEUR PAR DEFAUT
-    Joueur()
+    Joueur::Joueur()
     {
         nomJoueur = "Monkey D. Nordin";
 
-        stat = new Statistique;
+        stat = new Statistiques;
         inv = new Inventaire;
         arm = new Arme;
     }
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Joueur(const string &n, const unsigned int &vi, const unsigned int &f, const unsigned int &v, const unsigned int &e, const Inventaire &in, const Arme &ar)
+    Joueur::Joueur(const string &n, const unsigned int &vi, const unsigned int &f, const unsigned int &v, const unsigned int &e, const Inventaire &in, const Arme &ar)
     {
             // à finir
     }
 
     // DESTRUCTEUR
-    ~Joueur()
+    Joueur::~Joueur()
     {
         nomJoueur = "";
 
@@ -35,15 +35,15 @@ using namespace std;
 // LES ACCESSEURS ET MUTATEURS 
 
     // ACCESSEUR NOM
-    const string &getNom() const { return nomJoueur; }
+    const string &Joueur::getNom() const { return nomJoueur; }
 
     // MUTATEUR NOM
-    void setNom(const string& n) { nomJoueur = n; }
+    void Joueur::setNom(const string& n) { nomJoueur = n; }
 
 // GESTION DU JOUEUR 
 
     // CHOIX DE L'ACTION
-    int choixAction()
+    int Joueur::choixAction()
     {
         int i;
 
@@ -55,14 +55,14 @@ using namespace std;
     }
 
     // OPERATEUR << POUR AFFICHER TOUTES LES STATS
-    void operator<<()
+    void Joueur::afficherJoueur()
     {
-        cout<<"******* STAT DU JOUEUR ******* "<<endl;
-        stat.afficherStats();
+        // cout<<"******* STAT DU JOUEUR ******* "<<endl;
+        // stat.afficherStats();
 
         cout<<"******* INVENTAIRE ******* "<<endl;
-        inv.afficherInventaire();
+        inv->afficherInventaire();
 
         cout<<"******* ARME ******* "<<endl;
-        arm.afficher();
+        arm->afficher();
     } 

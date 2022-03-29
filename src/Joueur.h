@@ -36,13 +36,13 @@ public:
     int choixAction();
 
     // OPERATEUR << POUR AFFICHER TOUTES LES STATS
-    void operator<<(); 
+    void afficherJoueur(); 
 
 private:
 
     string nomJoueur;
 
-    Statistique *stat; // les stats du joueur
+    Statistiques *stat; // les stats du joueur
     Inventaire *inv; // l'inventaire d'objets du joueur 
     Arme *arm; // l'arme du joueur
 };
