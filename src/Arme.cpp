@@ -1,48 +1,90 @@
-#include <iostream>
 #include "Arme.h"
+#include <iostream>
 
 using namespace std;
 
-// LES CONSTRUCTEURS ET DESTRUCTEUR
 
-    // CONSTRUCTEUR PAR DEFAUT
+// LES CONSTRUCTEURS ET DESTRUCTEURS
+
+    // CONSTRUCTEUR
     Arme::Arme()
     {
-        nom = "Épée basique";
-        degats = vitesse = resistance = 1; // 1/20
+        nomArme = "mains";
+        nbAttaque = 4;
+        tabAttaque = new Attaque[nbAttaque];
     }
 
-    // CONSTRUCTEUR PERSONNALISÉ
-    Arme::Arme(const string &n, const unsigned char &deg, const unsigned char &vit, const unsigned char &res)
+    // CONSTRUCTEUR PAR COPIE
+    Arme::Arme(const string &n, const int &nb, const Attaque &tab)
     {
-        nom = n;
-        degats = deg;
-        vitesse = vit;
-        resistance = res;
+        nomArme = n;
+        nbAttaque = nb;
+
+        for(int i = 0; i < nbAttaque; i++)
+        {
+            tabAttaque[i] = tab[i];
+        }
     }
 
-// LES ACCESSEURS ET MUTATEURS 
+    // DESTRUCTEUR
+    Arme::~Arme()
+    {
+        nonArme = "";
+        nbAttaque = 0;
+
+        for(int i = 0; i < nbAttaque; i++)
+        {
+            tabAttaque[i] = 0;
+        }
+
+        delete tabAttaque;
+        tabAttaque = ptrnull; 
+    }
+
+// ACCESSEURS ET MUTATEURS
 
     // ACCESSEUR NOM
-    const string &Arme::getNom() const { return nom; }
-
-    // ACCESSEUR DEGATS
-    const unsigned char &Arme::getDegats() const { return degats; }
-
-    // ACCESSEUR VITESSE
-    const unsigned char &Arme::getVitesse() const { return vitesse; }
-
-    // ACCESSEUR RESISTANCE
-    const unsigned char &Arme::getResistance() const { return resistance; }
+    const string &Arme::getNomArme() const
+    {
+        return nomArme;
+    }
 
     // MUTATEUR NOM
-    void Arme::setNom(const string& n) { nom = n; }
+    void Arme::setNomArme(const string &n)
+    {
+        nomArme = n;
+    }
 
-    // MUTATEUR DEGATS
-    void Arme::setDegat(const unsigned char &deg) { degats = deg; }
+// GESTION ARME
 
-    // MUTATEUR VITESSE
-    void Arme::setVitesse(const unsigned char &vit) { vitesse = vit; }
+    // AFFICHER LES ATTAQUES
+    void Arme::afficher() const
+    {
+        cout<<"NOM: "<<nomArme<<endl;
+        for(int i = 0; i < nbAttaque; i++)
+        {  
+            cout<<i+1<<". ";
+            cout<<"DEGATS :"<<tabAttaque[i].getDegats()<<", ";
+            cout<<"TYPE D'ATTAQUE :"<<tabAttaque[i].getTypeAttaque()<<", ";
+            cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation())<<", "; 
 
-    // MUTATEUR RESISTANCE
-    void Arme::setResistance(const unsigned char &res) { resistance = res; }
+            if(typeAttaque == "Attaque strategique")
+            {
+                // affiche les stats supplementaires des attaques strategiques
+                
+            } 
+            cout<<endl;
+        }
+    }
+
+    // CHOIX DE L'ATTAQUE
+    const unsigned int &Arme::choixAttaque()
+    {
+        int i;
+        afficherAttaques();
+        cout<<"Quelle attaque voulez vous choisir ?"<<endl; 
+        cin>>i;
+
+        return i-1;
+    }
+
