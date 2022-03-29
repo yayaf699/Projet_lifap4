@@ -1,13 +1,13 @@
 #ifndef OBJET_H_INCLUDED
-#define OBJET_H_INCLUDED
+#define OBJET_H_INCLUDEDs
 #include <string>
+//#include "data/Objet.txt"
 
 using namespace std;
 
 
 class Objet
 {
-    
 public:
 
 // LES CONSTRUCTEURS 
@@ -27,37 +27,44 @@ public:
     const string &getNomObjet() const;
 
     // ACCESSEUR BONUS DE VIE SUR L'OBJET
-    const unsigned char &getVieObjet() const;
+    const unsigned int &getVieObjet() const;
 
     // ACCESSEUR BONUS DE FORCE SUR L'OBJET
-    const unsigned char &getForceObjet() const;
+    const unsigned int &getForceObjet() const;
 
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
-    const unsigned char &getVitesseObjet() const;
+    const unsigned int &getVitesseObjet() const;
 
     // ACCESSEUR BONUS DE ENDURANCE SUR L'OBJET
-    const unsigned char &getEnduranceObjet() const;
+    const unsigned int &getEnduranceObjet() const;
 
     // MUTATEUR NOM OBJET
     void setNomObjet(const string &n);
 
     // MUTATEUR BONUS DE VIE SUR L'OBJET
-    void setVieObjet(const unsigned char &v);
+    void setVieObjet(const unsigned int &v);
 
     // MUTATEUR BONUS DE FORCE SUR L'OBJET
-    void setForceObjet(const unsigned char &f);
+    void setForceObjet(const unsigned int &f);
 
     // MUTATEUR BONUS DE VITESSE SUR L'OBJET
-    void setVitesseObjet(const unsigned char &vi);
+    void setVitesseObjet(const unsigned int &vi);
 
     // MUTATEUR BONUS DE ENDURANCE SUR L'OBJET
-    void setEnduranceObjet(const unsigned char &e);
+    void setEnduranceObjet(const unsigned int &e);
+
+// GESTION DE L'OBJET
+
+    // L'AFFICHER L'OBJET
+    void afficherObjet();
+
+    // UTILISER L'OBJET
+    void utiliserObjet();
 
 private:
 
     string nom; // nom de l'objet
-    unsigned char bonusVie, bonusForce, bonusVitesse, bonusEndurance;
-
+    unsigned int bonusVie, bonusForce, bonusVitesse;
 };
 
 
