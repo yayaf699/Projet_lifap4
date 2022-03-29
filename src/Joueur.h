@@ -2,12 +2,12 @@
 #define JOUEUR_H_INCLUDED
 #include "Inventaire.h"
 #include "Arme.h"
+#include "Statistique.h"
 
 using namespace std;
 
 class Joueur
 {
-
 public:
 
 // LES CONSTRUCTEURS ET DESTRUCTEUR
@@ -16,7 +16,7 @@ public:
     Joueur();
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Joueur(const string &n, const unsigned char &vi, const unsigned char &f, const unsigned char &v, const unsigned char &e, const Inventaire &in, const Arme &ar);
+    Joueur(const string &n, const unsigned int &vi, const unsigned int &f, const unsigned int &v, const unsigned int &e, const Inventaire &in, const Arme &ar);
 
     // DESTRUCTEUR
     ~Joueur();
@@ -26,67 +26,25 @@ public:
     // ACCESSEUR NOM
     const string &getNom() const;
 
-    // ACCESSEUR VIE
-    const unsigned char &getVie() const;
-
-    // ACCESSEUR FORCE
-    const unsigned char &getForce() const;
-
-    // ACCESSEUR VITESSE
-    const unsigned char &getVitesse() const;
-
-    // ACCESSEUR ENDURANCE
-    const unsigned char &getEndurance() const;
-
     // MUTATEUR NOM
     void setNom(const string& n);
 
-    // MUTATEUR VIE
-    void setVie(const unsigned char &vi);
-
-    // MUTATEUR FORCE
-    void setForce(const unsigned char &f);
-
-    // MUTATEUR VITESSE
-    void setVitesse(const unsigned char &v);
-
-    // MUTATEUR ENDURANCE
-    void setEndurance(const unsigned char &e);
 
 // GESTION DU JOUEUR 
 
-    // REGARDER L'INVENTAIRE
-    void regarderInventaire() const;
+    // CHOIX DE L'ACTION
+    int choixAction();
 
-    // REGARDER UN OBJET ET SES STATS
-    void regarderObjet(const unsigned char &i) const;
-
-    // UTLISER UN OBJET
-    void utiliserObjet(const unsigned char &i);
-
-    // REGARDER LES ATTAQUES
-    void regarderLesAttaques() const;
-
-    // REGARDER UNE ATTAQUE ET SES STATS
-    void regarderUneAttaque(const unsigned char &i) const;
-
-    // ATTAQUER
-    void utiliserAttaque(const unsigned char &i);
-
-    // REGARDER SON ARME ET SES STAtS
-    void regarderArme() const;
-
-    // REGARDER SON ARMURE ET SES STATS
-    void regarderArmure() const;
+    // OPERATEUR << POUR AFFICHER TOUTES LES STATS
+    void operator<<(); 
 
 private:
 
-    string nom;
-    unsigned char vie, force, vitesse, endurance;
-    
+    string nomJoueur;
+
+    Statistique *stat; // les stats du joueur
     Inventaire *inv; // l'inventaire d'objets du joueur 
     Arme *arm; // l'arme du joueur
-
 };
 
 #endif // JOUEUR_H_INCLUDED
