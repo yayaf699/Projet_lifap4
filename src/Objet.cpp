@@ -34,28 +34,46 @@ using namespace std;
     const string &Objet::getNomObjet() const { return nom; }
 
     // ACCESSEUR BONUS DE VIE SUR L'OBJET
-    const unsigned char &Objet::getVieObjet() const { return bonusVie; }
+    const unsigned int &Objet::getVieObjet() const { return bonusVie; }
 
     // ACCESSEUR BONUS DE FORCE SUR L'OBJET
-    const unsigned char &Objet::getForceObjet() const { return bonusForce; }
+    const unsigned int &Objet::getForceObjet() const { return bonusForce; }
 
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
-    const unsigned char &Objet::getVitesseObjet() const { return bonusVitesse; }
+    const unsigned int &Objet::getVitesseObjet() const { return bonusVitesse; }
 
     // ACCESSEUR BONUS DE ENDURANCE SUR L'OBJET
-    const unsigned char &Objet::getEnduranceObjet() const { return bonusEndurance; }
+    const unsigned int &Objet::getEnduranceObjet() const { return bonusEndurance; }
 
     // MUTATEUR NOM OBJET
     void Objet::setNomObjet(const string &n) { nom = n; }
 
     // MUTATEUR BONUS DE VIE SUR L'OBJET
-    void Objet::setVieObjet(const unsigned char &v) { bonusVie = v; }
+    void Objet::setVieObjet(const unsigned int &v) { bonusVie = v; }
 
     // MUTATEUR BONUS DE FORCE SUR L'OBJET
-    void Objet::setForceObjet(const unsigned char &f) { bonusForce = f; }
+    void Objet::setForceObjet(const unsigned int &f) { bonusForce = f; }
 
     // MUTATEUR BONUS DE VITESSE SUR L'OBJET
-    void Objet::setVitesseObjet(const unsigned char &vi) { bonusVitesse = vi; }
+    void Objet::setVitesseObjet(const unsigned int &vi) { bonusVitesse = vi; }
 
     // MUTATEUR BONUS DE ENDURANCE SUR L'OBJET
-    void Objet::setEnduranceObjet(const unsigned char &e) { bonusEndurance = e; }
+    void Objet::setEnduranceObjet(const unsigned int &e) { bonusEndurance = e; }
+
+// GESTION DE L'OBJET
+
+    // L'AFFICHER L'OBJET
+    void Objet::afficherObjet()
+    {
+        cout<<nom<<", ";
+        cout<<"Bonus vie: +"<<bonusVie<<", ";
+        cout<<"Bonus vitesse: +"<<bonusVitesse<<", ";
+        cout<<"Bonus force: +"<<bonusForce<<", ";
+        cout<<"Bonus endurance: +"<<bonusEndurance<<", "<<endl; 
+    }
+
+    // UTILISER L'OBJET
+    void Objet::utiliserObjet()
+    {
+        // remonter la chaine
+    }
