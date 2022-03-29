@@ -1,6 +1,5 @@
 #ifndef INVENTAIRE_H_INCLUDED
 #define INVENTAIRE_H_INCLUDED
-#include <string>
 #include "Objet.h"
 
 using namespace std;
@@ -8,33 +7,35 @@ using namespace std;
 
 class Inventaire
 {
-
 public:
 
-// CONSTRUCTEURS
+// CONSTRUCTEUR ET DESTRUCTEUR
 
     // CONSTRUCTEUR
     Inventaire();
 
-    // CONSTRUCTEUR PAR COPIE
-    Inventaire(const Inventaire &in);
+    // DESTRUCTEUR
+    ~Inventaire();
+
 
 // GESTION DE L'INVENTAIRE 
 
-    // AFFICHER I-EME OBJET
-    void afficherObjetInventaire(const unsigned char &i) const;
+    // RETOURNE I-EME OBJET
+    const Objet &retourneObjetInventaire(const unsigned int &i) const;
 
     // AFFICHER INVENTAIRE
     void afficherInventaire() const;
 
     // JETER UN OBJET
-    void jeterObjetInventaire(const unsigned char &i);
+    void retirerObjetInventaire(const unsigned int &i);
+
+    // RECHERCHER OBJET
+    const Objet &rechercherObjetInventaire(const string &nomObjet) const; 
 
 private:
 
-    const char &taille_inventaire = 4;
-    Objet *inv;
-    
+    int taille_inventaire;
+    Objet *inventaire; 
 };
 
 #endif // INVENTAIRE_H_INCLUDED
