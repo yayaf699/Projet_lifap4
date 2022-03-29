@@ -9,7 +9,7 @@ using namespace std;
     Objet::Objet()
     {
         nom = "emplacement vide";
-        bonusVie = bonusVitesse = bonusForce = bonusEndurance = 0;
+        bonusVie = bonusVitesse = bonusForce = 0;
     }
 
     // CONSTRUCTEUR STRING
@@ -25,7 +25,6 @@ using namespace std;
         bonusVie = o.bonusVie;
         bonusVitesse = o.bonusVitesse;
         bonusForce = o.bonusForce;
-        bonusEndurance = o.bonusEndurance;
     }
 
 // LES ACCESEURS ET MUTATEURS
@@ -42,9 +41,6 @@ using namespace std;
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
     const unsigned int &Objet::getVitesseObjet() const { return bonusVitesse; }
 
-    // ACCESSEUR BONUS DE ENDURANCE SUR L'OBJET
-    const unsigned int &Objet::getEnduranceObjet() const { return bonusEndurance; }
-
     // MUTATEUR NOM OBJET
     void Objet::setNomObjet(const string &n) { nom = n; }
 
@@ -57,8 +53,6 @@ using namespace std;
     // MUTATEUR BONUS DE VITESSE SUR L'OBJET
     void Objet::setVitesseObjet(const unsigned int &vi) { bonusVitesse = vi; }
 
-    // MUTATEUR BONUS DE ENDURANCE SUR L'OBJET
-    void Objet::setEnduranceObjet(const unsigned int &e) { bonusEndurance = e; }
 
 // GESTION DE L'OBJET
 
@@ -69,7 +63,6 @@ using namespace std;
         cout<<"Bonus vie: +"<<bonusVie<<", ";
         cout<<"Bonus vitesse: +"<<bonusVitesse<<", ";
         cout<<"Bonus force: +"<<bonusForce<<", ";
-        cout<<"Bonus endurance: +"<<bonusEndurance<<", "<<endl; 
     }
 
     // UTILISER L'OBJET
