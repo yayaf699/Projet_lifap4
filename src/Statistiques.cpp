@@ -1,46 +1,52 @@
 #include <iostream>
 #include "Statistiques.h"
 
-Statistiques::Statistiques()
-{
-    vitalite = 100;
-    vitesse = 20;
-    force = 1.1;
-}
+using namespace std;
 
-Statistiques::Statistiques(int vie, int vit, float forc)
-{
-    vitalite = vie;
-    vitesse = vit;
-    force = forc;
-}
+// COSNTRUCTEURS ET DESTRUCTEURS
 
-int Statistiques::getVie()
-{
-    return vitalite;
-}
+    // CONSTRUCTEUR
+    Statistiques::Statistiques()
+    {
+        vie = 100;
+        vitesse = 20;  
+        force = 1.1;
+    }
 
-int Statistiques::getVitesse()
-{
-    return vitesse;
-}
+    // CONSTRUCTEUR PAR COPIE
+    Statistiques::Statistiques(const int &v, const int &vi, const float &f)
+    {
+        vie = v;
+        vitesse = vi;  
+        force = f;
+    }
 
-float Statistiques::getForce()
-{
-    return force;
-}
+// ACCESSEURS ET MUTATEURS
 
-void Statistiques::getVie(int vie)
-{
-    vitalite = vie;
-}
+    // ACCESSEUR VIE
+    const int &Statistiques::getVie() const { return vie; }
 
-void Statistiques::getVie(int vit)
-{
-    vitesse = vit;
-}
 
-void Statistiques::getVie(float force)
-{
-    force = forc;
-}
+    // ACCESSEUR VITESSE
+    const int &Statistiques::getVitesse() const { return vitesse }
+
+    // ACCESSEUR FORCE
+    const float &Statistiques::getForce() const { return force; }
+
+    // MUTATEUR VIE
+    void Statistiques::setVie(const int &v) { vie = v;  }
+
+    // MUTATEUR VITESSE
+    void Statistiques::setVitesse(const int &vi) { vitesse = vi; }
+
+    // MUTATEUR FORCE
+    void Statistiques::setForce(const float &f) { force = f; }
+
+// GESTION STATS
+
+    void Statistiques::afficherStat()
+    {
+        cout<<"VIE: "<<vie<<endl;
+        cout<<"VITESSE: "<<vitesse<<endl;
+        cout<<"FORCE: "<<force<<endl;
+    }
