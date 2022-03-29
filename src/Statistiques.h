@@ -1,7 +1,7 @@
 #ifndef STATISTIQUES_H_INCLUDED
 #define STATISTIQUES_H_INCLUDED
 
-class {
+class Statistiques{
 
 private :
     int vitalite;
