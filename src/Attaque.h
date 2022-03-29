@@ -14,9 +14,13 @@ public :
     Attaque();
     Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int TabStatsAttMag[2]);
     ~Attaque();
+    // ACCESSEUR NOM ATTAQUE
     string getNomAttaque();
+    // ACCESSEUR DEGATS ATTAQUE
     int getDegats();
+    // ACCESSEUR TYPE ATTAQUE
     string getTypeAttaque();
+    // ACCESSEUR NOMBR UTILISATION ATTAQUE
     int getNombreMaxUtilisation();
     void setNomAttaque(string nomAtt);
     void setDegats(int deg);

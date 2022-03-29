@@ -3,7 +3,7 @@
 
 Attaque::Attaque()
 {
-    nomAttaque = "Coup d'épée";
+    nomAttaque = "Coup d'ï¿½pï¿½e";
     degats = 10;
     typeAttaque = "Legere";
     nombreMaxUtilisation = 50;
@@ -16,7 +16,7 @@ Attaque::Attaque(nomAtt, deg, nombreAttMax, nomTypeAtt, TabStatsAttMag)
     degats = deg;
     typeAttaque = nombreAttMax;
     nombreMaxUtilisation = nomTypeAtt;
-    TabStatsAttMagique = TabStatsAttMag; // c'est un tableau qui contient des statistiques que l'attaque changera à l'adversaire
+    TabStatsAttMagique = TabStatsAttMag; // c'est un tableau qui contient des statistiques que l'attaque changera ï¿½ l'adversaire
 
 }
 
@@ -60,15 +60,13 @@ void Attaque::setTypeAttaque(nomTypeAtt)
     typeAttaque = nomTypeAtt;
 }
 
-int UtiliserAttaque(typeAttaque)
+int UtiliserAttaque()
 {
-     if (typeAttaque=="Strategique")
+     /*if (typeAttaque=="Strategique")
      {
          return TabStatsAttMagique;
      }
+    */
 
-     else
-     {
-         return degats;
-     }
+    return -degats;
 }
