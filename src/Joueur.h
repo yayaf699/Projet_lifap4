@@ -29,6 +29,8 @@ public:
     // MUTATEUR NOM
     void setNom(const string& n);
 
+    //MUTATEUR STATS
+    void setStat(const string &s, int valeur);
 
 // GESTION DU JOUEUR 
 

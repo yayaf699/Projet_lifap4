@@ -2,6 +2,7 @@
 #include <string>
 #include <cassert>
 #include "Inventaire.h"
+#include "Objet.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ using namespace std;
     // DESTRUCTEUR
     Inventaire::~Inventaire()
     {
-        taille_inventaire = NULL;
+        taille_inventaire = 0;
         delete inventaire;
     }
 

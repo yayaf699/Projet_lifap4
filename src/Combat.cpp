@@ -24,7 +24,7 @@ void Combat::TraiterActionAttaque(int degats){
 
     if (tour == false)
     {
-        Perso->stat->vie += degats; // retire vie joueur qui se fait attaqu�
+        Perso->stat->setVie(degats); // retire vie joueur qui se fait attaqu�
     }
     else
     {

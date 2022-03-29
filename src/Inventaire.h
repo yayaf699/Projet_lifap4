@@ -1,8 +1,7 @@
 #ifndef INVENTAIRE_H_INCLUDED
 #define INVENTAIRE_H_INCLUDED
-#include "Objet.h"
-
 using namespace std;
+#include "Objet.h"
 
 
 class Inventaire

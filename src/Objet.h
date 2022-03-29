@@ -1,5 +1,5 @@
 #ifndef OBJET_H_INCLUDED
-#define OBJET_H_INCLUDEDs
+#define OBJET_H_INCLUDED
 #include <string>
 //#include "data/Objet.txt"
 
