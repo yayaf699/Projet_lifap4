@@ -2,7 +2,6 @@
 #define JOUEUR_H_INCLUDED
 #include "Inventaire.h"
 #include "Arme.h"
-#include "Armure.h"
 
 using namespace std;
 
