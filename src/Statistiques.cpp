@@ -8,11 +8,11 @@ Statistiques::Statistiques()
     force = 1.1;
 }
 
-Statistiques::Statistiques(int vie, int vit, float force)
+Statistiques::Statistiques(int vie, int vit, float forc)
 {
     vitalite = vie;
     vitesse = vit;
-    force = force;
+    force = forc;
 }
 
 int Statistiques::getVie()
@@ -42,5 +42,5 @@ void Statistiques::getVie(int vit)
 
 void Statistiques::getVie(float force)
 {
-    force = force;
+    force = forc;
 }
