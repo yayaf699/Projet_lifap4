@@ -144,16 +144,16 @@ void Combat::tourIA(){ // POUR L INSTANT COPIE DU TOUR JOUEUR
           switch (choix)
     {
             case 1:
-                TraiterActionAttaque("Attaque",Perso.arm[choix].UtiliserAttaque);
+                TraiterActionAttaque(Perso.arm[choix].UtiliserAttaque);
                 break;
             case 2:
-                TraiterActionAttaque("Attaque",Perso.arm[choix].UtiliserAttaque);
+                TraiterActionAttaque(Perso.arm[choix].UtiliserAttaque);
                 break
             case 3:
-                TraiterActionAttaque("Attaque",Perso.arm[choix].UtiliserAttaque);
+                TraiterActionAttaque(Perso.arm[choix].UtiliserAttaque);
                 break
             case 4:
-                TraiterActionAttaque("Attaque",Perso.arm[choix].UtiliserAttaque);
+                TraiterActionAttaque(Perso.arm[choix].UtiliserAttaque);
                 break
 
             default:
@@ -170,16 +170,16 @@ void Combat::tourIA(){ // POUR L INSTANT COPIE DU TOUR JOUEUR
           switch (choix)
     {
             case 1:
-                TraiterActionObjet("Objet",Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
+                TraiterActionObjet(Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
                 break;
             case 2:
-                TraiterActionObjet("Objet",Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
+                TraiterActionObjet(Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
                 break
             case 3:
-                TraiterActionObjet("Objet",Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
+                TraiterActionObjet(Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
                 break
             case 4:
-                TraiterActionObjet("Objet",Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
+                TraiterActionObjet(Perso.inv.retourneObjetInventaire(choix).UtiliserObjet());
                 break
 
             default:
