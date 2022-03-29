@@ -20,15 +20,15 @@ Combat::Combat(Joueur *Perso_, Joueur *IA_){
     tempsLimiteParTour = 30;
 }
 
-void Combat::TraiterActionAttaque(degats){
+void Combat::TraiterActionAttaque(int degats){
 
-    if tour == false
+    if (tour == false)
     {
-        Perso.vie += degats; // retire vie joueur qui se fait attaqué
+        Perso->stat->vie += degats; // retire vie joueur qui se fait attaquï¿½
     }
     else
     {
-        IA.vie += degats;
+        IA->vie += degats;
     }
 
 }
@@ -202,14 +202,14 @@ void Combat::combatDeroulement()
     {
         tourDuPerso(); // donne le controle au joueur
 
-        if(Perso.getVie() == 0) // verif santé
+        if(Perso.getVie() == 0) // verif santï¿½
         {
             fini = true;
         }
 
         tourIA(); // donne le controle a l'IA
 
-        if(IA.getVie() == 0)  // verif santé
+        if(IA.getVie() == 0)  // verif santï¿½
         {
             fini = true;
         }

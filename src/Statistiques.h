@@ -4,7 +4,7 @@
 class Statistiques{
 
 private :
-    int vitalite;
+    int vie;
     int vitesse;
     float force;
 public :
