@@ -1,55 +1,51 @@
 #ifndef ARME_H_INCLUDED
 #define ARME_H_INCLUDED
 #include <string>
+#include "Attaque.h"
+
 
 using namespace std;
 
+
 class Arme
 {
-
 public:
 
-// LES CONSTRUCTEURS ET DESTRUCTEUR
+// LES CONSTRUCTEURS ET DESTRUCTEURS
 
-    // CONSTRUCTEUR PAR DEFAUT
+    // CONSTRUCTEUR
     Arme();
 
-    // CONSTRUCTEUR PERSONNALISÉ
-    Arme(const string &n, const unsigned char &deg, const unsigned char &vit, const unsigned char &res);
+    // CONSTRUCTEUR PAR COPIE
+    Arme(const string &n, const int &nb, const Attaque &tab);
 
+    // DESTRUCTEUR
+    ~Arme();
 
-// LES ACCESSEURS ET MUTATEURS 
+// ACCESSEURS ET MUTATEURS
 
     // ACCESSEUR NOM
-    const string &getNom() const;
-
-    // ACCESSEUR DEGATS
-    const unsigned char &getDegats() const;
-
-    // ACCESSEUR VITESSE
-    const unsigned char &getVitesse() const;
-
-    // ACCESSEUR RESISTANCE
-    const unsigned char &getResistance() const;
+    const string &getNomArme() const;
 
     // MUTATEUR NOM
-    void setNom(const string& n);
+    void setNomArme(const string &n);
 
-    // MUTATEUR DEGATS
-    void setDegat(const unsigned char &deg);
+// GESTION ARME
 
-    // MUTATEUR VITESSE
-    void setVitesse(const unsigned char &vit);
+    // CHOIX DE L'ATTAQUE
+    const unsigned int &choixAttaque();
 
-    // MUTATEUR RESISTANCE
-    void setResistance(const unsigned char &deg);
+    // AFFICHER LES STATS DE L'ARME
+    void afficher() const;
+
 
 private:
 
-    string nom;
-    unsigned char degats, vitesse, resistance; 
-    
-
+    string nomArme;
+    int nbAttaque;
+    Attaque *tabAttaque; 
 };
+
+
 
 #endif // ARME_H_INCLUDED
