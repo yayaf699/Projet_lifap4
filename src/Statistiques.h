@@ -9,13 +9,13 @@ private :
     float force;
 public :
     Statistiques();
-    Statistiques(int vit, int vie, float force);
+    Statistiques(int vit, int vie, float forc);
     ~Statistiques();
     int getVie();
     float getForce();
     int getVitesse();
     void setVie(int vie);
-    void setForce(float force);
+    void setForce(float forc);
     void setVitesse(int vit);
 
 };
