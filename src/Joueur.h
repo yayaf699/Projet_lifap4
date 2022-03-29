@@ -2,7 +2,7 @@
 #define JOUEUR_H_INCLUDED
 #include "Inventaire.h"
 #include "Arme.h"
-#include "Statistique.h"
+#include "Statistiques.h"
 
 using namespace std;
 
