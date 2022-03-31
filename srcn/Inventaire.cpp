@@ -17,7 +17,7 @@ using namespace std;
     Inventaire::~Inventaire()
     {
         taille_inventaire = 0;
-        if (inventaire != nullptr) delete inventaire;
+        if (inventaire != NULL) delete inventaire;
     }
 
 
@@ -41,6 +41,7 @@ using namespace std;
         {
                 cout<<i+1<<". ";
                 inventaire[i].afficherObjet();
+                cout<<endl;
         }
     }
 
@@ -52,7 +53,7 @@ using namespace std;
             return i;
         }
     }
-    
+
 
     // JETER UN OBJET
     void Inventaire::retirerObjetInventaire(Objet &o)
@@ -64,5 +65,5 @@ using namespace std;
 
     }
 
-    
-    
+
+
