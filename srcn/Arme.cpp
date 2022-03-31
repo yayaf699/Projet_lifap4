@@ -46,8 +46,8 @@ using namespace std;
         nomArme = "";
         nbAttaque = 0;
 
-    if (tabAttaque != NULL) delete [] tabAttaque;
         tabAttaque = NULL;
+        delete [] tabAttaque;
     }
 
 // ACCESSEURS ET MUTATEURS
@@ -98,7 +98,7 @@ using namespace std;
         }
     }
 
-    const unsigned int &Arme::utiliserAttaque(const unsigned int &i){
-        return -tabAttaque[i].getDegats();
+    int Arme::utiliserAttaque(int i){
+        return -1 * (tabAttaque[i].getDegats());
     }
 
