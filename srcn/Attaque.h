@@ -28,7 +28,6 @@ public :
     void setDegats(int deg);
     void setNombreMaxUtilisation(int nombreAttMax);
     void setTypeAttaque(string nomTypeAtt);
-    int UtiliserAttaque();
 };
 
 #endif // ATTAQUE_H_INCLUDED

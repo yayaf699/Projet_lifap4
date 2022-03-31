@@ -24,6 +24,10 @@ using namespace std;
 
 // GESTION DE L'INVENTAIRE
 
+    const unsigned int &Inventaire::getTailleInventaire(){ return taille_inventaire; }
+
+    const string &Inventaire::getObjet(const unsigned int &n){ return inventaire[n].getNomObjet(); }
+
     // RETOURNE I-EME OBJET
     const Objet &Inventaire::retourneObjetInventaire(const unsigned int &i) const
     {

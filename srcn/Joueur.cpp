@@ -1,16 +1,13 @@
 #include "Joueur.h"
 #include <iostream>
 #include <string.h>
+
+
 using namespace std;
 
 
 // LES CONSTRUCTEURS ET DESTRUCTEUR
 
-void Joueur::operator=(Joueur j){
-        stat = j.stat;
-        inv = j.inv;
-        arm = j.arm;
-    }
 
     // CONSTRUCTEUR PAR DEFAUT
     Joueur::Joueur()
@@ -92,6 +89,14 @@ void Joueur::operator=(Joueur j){
         arm.afficher();
     }
 
+    Joueur &Joueur::operator=(const Joueur &j){
+        stat = j.stat;
+        inv = j.inv;
+        arm = j.arm;
+
+        return *this;
+    }
+
     int  Joueur::getVie()
     {
         return stat.getVie();
@@ -111,9 +116,9 @@ void Joueur::operator=(Joueur j){
         return arm;
     }
 
-    int Joueur::UtiliserAttaque(int i)
+    int Joueur::Attaquer(int i)
     {
-        return arm.UtiliserAttaque(i);
+        return arm.utiliserAttaque(i);
     }
 
     void Joueur::afficherInventaire() const

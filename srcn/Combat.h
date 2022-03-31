@@ -13,13 +13,13 @@ class Combat{
 
 	public:
 		Combat();
-		Combat(Joueur Perso_, Joueur IA_);
+		Combat(const Joueur &Perso_, const Joueur &IA_);
 		//~Combat();
 		void tourDuPerso();
 		void tourIA();
 		void combatDeroulement();
 		void TraiterActionAttaque(int degats);
-		void TraiterActionObjet(int tabStats[3]);
+		
 
 };
 

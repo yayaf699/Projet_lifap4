@@ -60,11 +60,12 @@ using namespace std;
     void Objet::afficherObjet()
     {
         if(nom != "emplacement vide"){
-            cout<<nom<<", ";
+            cout<<nom<<" => ";
             cout<<"Bonus vie: +"<<bonusVie<<", ";
             cout<<"Bonus vitesse: +"<<bonusVitesse<<", ";
-            cout<<"Bonus force: +"<<bonusForce<<", ";
+            cout<<"Bonus force: +"<<bonusForce<<"\n";
         }
+        else cout << "Emplacement vide ";
     }
 
     

@@ -22,6 +22,11 @@ public:
 
 // GESTION DE L'INVENTAIRE
 
+    // ACCESSEUR TAILLE INVENTAIRE
+    const unsigned int &getTailleInventaire();
+
+    const string &getObjet(const unsigned int &n);
+
     // RETOURNE I-EME OBJET
     const Objet &retourneObjetInventaire(const unsigned int &i) const;
 

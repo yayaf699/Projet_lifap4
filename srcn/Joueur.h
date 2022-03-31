@@ -5,7 +5,7 @@
 #include "Statistiques.h"
 #include "Inventaire.h"
 #include "Objet.h"
-
+#include "Attaque.h"
 
 using namespace std;
 
@@ -48,13 +48,13 @@ public:
 
     Arme getArme();
 
-    int UtiliserAttaque(int i);
+    int Attaquer(int i);
 
     void afficherInventaire() const;
 
     void utiliserObjet(Objet o);
 
-    void operator=(Joueur j);
+    Joueur &operator=(const Joueur &j);
 
 private:
 

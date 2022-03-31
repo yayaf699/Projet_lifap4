@@ -50,7 +50,7 @@ using namespace std;
         nomArme = n;
     }
 
-    void Arme::GetAttaques()
+    void Arme::affAttaques()
     {
         for (int i=0; i<4; i++)
         {
@@ -59,10 +59,6 @@ using namespace std;
 
     }
 
-    int Arme::UtiliserAttaque(int i)
-    {
-        tabAttaque[i].UtiliserAttaque();
-    }
 
 // GESTION ARME
 
@@ -85,5 +81,9 @@ using namespace std;
             cout<<endl;
             */
         }
+    }
+
+    const unsigned int &Arme::utiliserAttaque(const unsigned int &i){
+        return -tabAttaque[i].getDegats();
     }
 

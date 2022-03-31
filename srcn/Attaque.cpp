@@ -81,7 +81,3 @@ void Attaque::setTypeAttaque(string nomTypeAtt)
     typeAttaque = nomTypeAtt;
 }
 
-int Attaque::UtiliserAttaque()
-{
-      return -degats;
-}

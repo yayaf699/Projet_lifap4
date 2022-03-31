@@ -27,10 +27,14 @@ public:
     // ACCESSEUR NOM
     const string &getNomArme() const;
 
+    // ACCESSEUR ATTAQUE
+    const unsigned int &utiliserAttaque(const unsigned int &i);
+
     // MUTATEUR NOM
     void setNomArme(const string &n);
 
-    void GetAttaques();
+    void affAttaques();
+
 
 // GESTION ARME
 
@@ -40,7 +44,6 @@ public:
     // AFFICHER LES STATS DE L'ARME
     void afficher() const;
 
-    int UtiliserAttaque(int i);
 
 private:
 
