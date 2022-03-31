@@ -12,6 +12,20 @@ using namespace std;
         nomArme = "mains";
         nbAttaque = 4;
         tabAttaque = new Attaque[nbAttaque];
+        tabAttaque[0].setDegats(15);
+        tabAttaque[0].setNomAttaque("Pistolet");
+        tabAttaque[1].setDegats(40);
+        tabAttaque[1].setNomAttaque("Uppercut");
+        tabAttaque[1].setNombreMaxUtilisation(10);
+        tabAttaque[1].setTypeAttaque("Puissante");
+        tabAttaque[2].setDegats(0);
+        tabAttaque[2].setNomAttaque("Fumigene");
+        tabAttaque[2].setTypeAttaque("Strategique");
+        tabAttaque[2].setNombreMaxUtilisation(3);
+        tabAttaque[3].setDegats(0);
+        tabAttaque[3].setNomAttaque("Invincibilite");
+        tabAttaque[3].setTypeAttaque("Strategique");
+        tabAttaque[3].setNombreMaxUtilisation(1);
     }
 
     // CONSTRUCTEUR PAR COPIE
@@ -32,8 +46,8 @@ using namespace std;
         nomArme = "";
         nbAttaque = 0;
 
-    if (tabAttaque != nullptr) delete [] tabAttaque;
-        tabAttaque = nullptr;
+    if (tabAttaque != NULL) delete [] tabAttaque;
+        tabAttaque = NULL;
     }
 
 // ACCESSEURS ET MUTATEURS
@@ -65,13 +79,14 @@ using namespace std;
     // AFFICHER LES ATTAQUES
     void Arme::afficher() const
     {
-        cout<<"NOM: "<<nomArme<<endl;
+        cout<<"NOM DE L'ARME: "<<nomArme<<"\n"<<endl;
         for(int i = 0; i < nbAttaque; i++)
         {
-            cout<<i+1<<". ";
-            cout<<"DEGATS :"<<tabAttaque[i].getDegats()<<", ";
-            cout<<"TYPE D'ATTAQUE :"<<tabAttaque[i].getTypeAttaque()<<", ";
-            cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation()<<", ";
+            cout<<i+1<<". "<<endl;
+            cout<<"NOM D'ATTAQUE : "<<tabAttaque[i].getNomAttaque()<<endl;
+            cout<<"DEGATS :"<<tabAttaque[i].getDegats()<<endl;
+            cout<<"TYPE D'ATTAQUE :"<<tabAttaque[i].getTypeAttaque()<<endl;
+            cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation()<<"\n "<<endl;
 
             /*if(tabAttaque.getTypeAttaque() == "strategique")
             {
