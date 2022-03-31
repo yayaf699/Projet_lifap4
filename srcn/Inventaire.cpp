@@ -17,7 +17,8 @@ using namespace std;
     Inventaire::~Inventaire()
     {
         taille_inventaire = 0;
-        if (inventaire != NULL) delete inventaire;
+        inventaire = NULL;
+        delete inventaire;
     }
 
 
