@@ -1,9 +1,14 @@
 #include "Combat.h"
 #include <cstdlib>
 #include<iostream>
+#include<stdio.h>
+#include<stdlib.h> //as system function is in the standard library
+
+
 
 
 using namespace std;
+
 
 Combat::Combat(){
     tour = true;
@@ -41,10 +46,11 @@ void Combat::tourDuPerso()
 {
     unsigned int choix;
     do{
+            system("color 30");
             cout<< "TOUR DU JOUEUR \n "<<endl;
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
-            system("CLS");
+            system("CLS"); // clean tout le texte de l'invite de commande
     }
     while (choix != 1 && choix != 2 );
 
@@ -54,7 +60,7 @@ void Combat::tourDuPerso()
             Perso.getArme().afficher();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
-            system("CLS");
+            system("CLS"); // clean tout le texte de l'invite de commande
             TraiterActionAttaque(Perso.Attaquer(choix-1)); //choix -1 car tableau
 
             cout << "SANTE DE L'ADVERSAIRE APRES VOTRE ATTAQUE : "<< IA.getStats().getVie()<< "\n"<<endl;
@@ -64,7 +70,7 @@ void Combat::tourDuPerso()
             Perso.getInv().afficherInventaire();
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
-            system("CLS");
+            system("CLS"); // clean tout le texte de l'invite de commande
             Perso.utiliserObjet(Perso.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
             Perso.getStats().afficherStat();
             break;
@@ -85,7 +91,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             cout<< "TOUR DE L'IA \n" <<endl;
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
-            system("CLS");
+            system("CLS"); // clean tout le texte de l'invite de commande
     }
     while (choix != 1 && choix != 2 );
 
@@ -95,7 +101,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             IA.getArme().afficher();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
-            system("CLS");
+            system("CLS"); // clean tout le texte de l'invite de commande
             TraiterActionAttaque(IA.Attaquer(choix-1)); //choix -1 car tableau
             cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
             break;
@@ -104,7 +110,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             IA.getInv().afficherInventaire();
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
-            system("CLS");
+            system("CLS"); // clean tout le texte de l'invite de commande
             IA.utiliserObjet(IA.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
             IA.getStats().afficherStat();
             break;
