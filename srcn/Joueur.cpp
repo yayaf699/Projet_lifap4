@@ -6,6 +6,12 @@ using namespace std;
 
 // LES CONSTRUCTEURS ET DESTRUCTEUR
 
+void Joueur::operator=(Joueur j){
+        stat = j.stat;
+        inv = j.inv;
+        arm = j.arm;
+    }
+
     // CONSTRUCTEUR PAR DEFAUT
     Joueur::Joueur()
     {
@@ -25,13 +31,6 @@ using namespace std;
             // à finir
     }
 
-    // DESTRUCTEUR
-    //Joueur::~Joueur()
-    //{
-        //if (stat != nullptr) delete stat;
-        //if (inv != nullptr) delete inv;
-        //if (arm != nullptr) delete arm;
-    //}
 
 // LES ACCESSEURS ET MUTATEURS
 

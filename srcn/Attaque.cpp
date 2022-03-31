@@ -83,11 +83,5 @@ void Attaque::setTypeAttaque(string nomTypeAtt)
 
 int Attaque::UtiliserAttaque()
 {
-     /*if (typeAttaque=="Strategique")
-     {
-         return TabStatsAttMagique;
-     }
-    */
-
-    return -degats;
+      return -degats;
 }

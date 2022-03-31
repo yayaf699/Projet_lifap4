@@ -13,18 +13,11 @@ Combat::Combat(){
 Combat::Combat(Joueur Perso_, Joueur IA_){
     Perso = Perso_;
     IA = IA_;
-    tour = 0;
+    tour = true;
     fini = false;
     tempsLimiteParTour = 30;
 }
 
-// Combat::~Combat()
-// {
-    
-//     bool tour = false;
-//     bool fini = false;
-// 	tempsLimiteParTour = 0;
-// }
 
 void Combat::TraiterActionAttaque(int degats){
 

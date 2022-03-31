@@ -1,7 +1,6 @@
 #ifndef OBJET_H_INCLUDED
 #define OBJET_H_INCLUDED
 #include <string>
-#include "Joueur.h"
 //#include "data/Objet.txt"
 
 using namespace std;

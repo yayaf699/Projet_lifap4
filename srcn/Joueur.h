@@ -9,8 +9,7 @@
 
 using namespace std;
 
-class Joueur
-{
+class Joueur{
 public:
 
 // LES CONSTRUCTEURS ET DESTRUCTEUR
@@ -21,8 +20,6 @@ public:
     // CONSTRUCTEUR PERSONNALISÉ
     Joueur(const string &n, const unsigned int &vi, const unsigned int &f, const unsigned int &v, const unsigned int &e, Inventaire in, const Arme &ar);
 
-    // DESTRUCTEUR
-    //~Joueur();
 
 // LES ACCESSEURS ET MUTATEURS
 
@@ -56,6 +53,8 @@ public:
     void afficherInventaire() const;
 
     void utiliserObjet(Objet o);
+
+    void operator=(Joueur j);
 
 private:
 

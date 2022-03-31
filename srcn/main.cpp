@@ -6,8 +6,8 @@
 using namespace std;
 
 int main(){
-    Joueur j, ia;
-    Combat c(j,ia);
+    Joueur a, b;
+    Combat c(a, b);
     cout << "oui" << endl;
     c.combatDeroulement();
     return 0;

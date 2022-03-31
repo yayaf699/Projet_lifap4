@@ -32,9 +32,8 @@ using namespace std;
         nomArme = "";
         nbAttaque = 0;
 
-
-        if (tabAttaque != nullptr) delete tabAttaque;
-        tabAttaque = NULL;
+    if (tabAttaque != nullptr) delete [] tabAttaque;
+        tabAttaque = nullptr;
     }
 
 // ACCESSEURS ET MUTATEURS
