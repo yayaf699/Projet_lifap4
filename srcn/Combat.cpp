@@ -20,6 +20,8 @@ Combat::Combat(const Joueur &Perso_, const Joueur &IA_){
 }
 
 
+
+
 void Combat::TraiterActionAttaque(int degats){
 
     if (tour == false)
@@ -42,7 +44,7 @@ void Combat::tourDuPerso()
             cout<< "TOUR DU JOUEUR \n "<<endl;
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
-        system("CLS");
+            system("CLS");
     }
     while (choix != 1 && choix != 2 );
 
@@ -52,15 +54,18 @@ void Combat::tourDuPerso()
             Perso.getArme().afficher();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
-            TraiterActionAttaque(Perso.Attaquer(choix));
-            cout << IA.getStats().getVie() << endl;
+            system("CLS");
+            TraiterActionAttaque(Perso.Attaquer(choix-1)); //choix -1 car tableau
+
+            cout << "SANTE DE L'ADVERSAIRE APRES VOTRE ATTAQUE : "<< IA.getStats().getVie()<< "\n"<<endl;
             break;
 
     case 2:
             Perso.getInv().afficherInventaire();
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
-            Perso.utiliserObjet(Perso.getInv().retourneObjetInventaire(choix));
+            system("CLS");
+            Perso.utiliserObjet(Perso.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
             Perso.getStats().afficherStat();
             break;
 
@@ -80,7 +85,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             cout<< "TOUR DE L'IA \n" <<endl;
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
-        system("CLS");
+            system("CLS");
     }
     while (choix != 1 && choix != 2 );
 
@@ -90,15 +95,17 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             IA.getArme().afficher();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
-            TraiterActionAttaque(IA.Attaquer(choix));
-            cout << Perso.getStats().getVie() << endl;
+            system("CLS");
+            TraiterActionAttaque(IA.Attaquer(choix-1)); //choix -1 car tableau
+            cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
             break;
 
     case 2:
             IA.getInv().afficherInventaire();
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
-            IA.utiliserObjet(IA.getInv().retourneObjetInventaire(choix));
+            system("CLS");
+            IA.utiliserObjet(IA.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
             IA.getStats().afficherStat();
             break;
 
@@ -114,11 +121,11 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
 
 void Combat::combatDeroulement()
 {
-    while (1)
+    while (1==1)
     {
         tourDuPerso(); // donne le controle au joueur
 
-        if(IA.getVie() <= 0) // verif sant�
+        if(IA.getVie() <= 0) // verif sante
         {
             cout<<"L'IA est morte"<<endl;
 
@@ -131,7 +138,7 @@ void Combat::combatDeroulement()
 
         tourIA(); // donne le controle a l'IA
 
-        if(Perso.getVie() <= 0)  // verif sant�
+        if(Perso.getVie() <= 0)  // verif sante
         {
             cout<<"Le joueur est mort"<<endl;
             exit(1);
