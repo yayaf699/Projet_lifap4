@@ -14,7 +14,6 @@ using namespace std;
 int main(){
     Joueur a, b;
     Combat c(a, b);
-    cout << "oui" << endl;
     c.combatDeroulement();
     return 0;
 }
