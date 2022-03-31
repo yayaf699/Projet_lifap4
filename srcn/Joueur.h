@@ -48,6 +48,8 @@ public:
 
     Arme getArme();
 
+    Statistiques getStats();
+
     int Attaquer(int i);
 
     void afficherInventaire() const;
