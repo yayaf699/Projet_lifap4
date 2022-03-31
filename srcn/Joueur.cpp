@@ -79,13 +79,13 @@ using namespace std;
     // OPERATEUR << POUR AFFICHER TOUTES LES STATS
     void Joueur::afficherJoueur()
     {
-        // cout<<"******* STAT DU JOUEUR ******* "<<endl;
-        // stat.afficherStats();
+         cout<<"\n ******* STAT DU JOUEUR ******* \n"<<endl;
+         stat.afficherStat();
 
-        cout<<"******* INVENTAIRE ******* "<<endl;
+        cout<<" \n ******* INVENTAIRE ******* \n"<<endl;
         inv.afficherInventaire();
 
-        cout<<"******* ARME ******* "<<endl;
+        cout<<" \n \n******* ARME ******* \n"<<endl;
         arm.afficher();
     }
 
@@ -115,6 +115,12 @@ using namespace std;
     {
         return arm;
     }
+
+    Statistiques Joueur::getStats()
+    {
+        return stat;
+    }
+
 
     int Joueur::Attaquer(int i)
     {
