@@ -36,7 +36,7 @@ using namespace std;
     const unsigned int &Objet::getVieObjet() const { return bonusVie; }
 
     // ACCESSEUR BONUS DE FORCE SUR L'OBJET
-    const unsigned int &Objet::getForceObjet() const { return bonusForce; }
+    const float &Objet::getForceObjet() const { return bonusForce; }
 
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
     const unsigned int &Objet::getVitesseObjet() const { return bonusVitesse; }
@@ -48,7 +48,7 @@ using namespace std;
     void Objet::setVieObjet(const unsigned int &v) { bonusVie = v; }
 
     // MUTATEUR BONUS DE FORCE SUR L'OBJET
-    void Objet::setForceObjet(const unsigned int &f) { bonusForce = f; }
+    void Objet::setForceObjet(const  float &f) { bonusForce = f; }
 
     // MUTATEUR BONUS DE VITESSE SUR L'OBJET
     void Objet::setVitesseObjet(const unsigned int &vi) { bonusVitesse = vi; }
@@ -61,11 +61,11 @@ using namespace std;
     {
         if(nom != "emplacement vide"){
             cout<<nom<<" => ";
-            cout<<"Bonus vie: +"<<bonusVie<<", ";
-            cout<<"Bonus vitesse: +"<<bonusVitesse<<", ";
-            cout<<"Bonus force: +"<<bonusForce<<"\n";
+            cout<<"Bonus vie: +"<<getVieObjet()<<", ";
+            cout<<"Bonus vitesse: +"<<getVitesseObjet()<<", ";
+            cout<<"Bonus force: +"<<getForceObjet()<<"\n";
         }
-        else cout << "Emplacement vide ";
+        else cout << "emplacement vide";
     }
 
-    
+
