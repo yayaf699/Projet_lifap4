@@ -9,23 +9,27 @@ using namespace std;
     // CONSTRUCTEUR
     Arme::Arme()
     {
-        nomArme = "mains";
+        nomArme = "Nordin equipement";
         nbAttaque = 4;
         tabAttaque = new Attaque[nbAttaque];
         tabAttaque[0].setDegats(15);
         tabAttaque[0].setNomAttaque("Pistolet");
+        tabAttaque[0].setDescAttaque("Tir de pistolet peut infliger saignement");
         tabAttaque[1].setDegats(40);
         tabAttaque[1].setNomAttaque("Uppercut");
         tabAttaque[1].setNombreMaxUtilisation(10);
         tabAttaque[1].setTypeAttaque("Puissante");
+        tabAttaque[1].setDescAttaque("Coup de poings dans le menton");
         tabAttaque[2].setDegats(0);
         tabAttaque[2].setNomAttaque("Fumigene");
         tabAttaque[2].setTypeAttaque("Strategique");
         tabAttaque[2].setNombreMaxUtilisation(3);
+        tabAttaque[2].setDescAttaque("Jete une fumigene, forte chance d'esquiver la prochaine attaque");
         tabAttaque[3].setDegats(0);
         tabAttaque[3].setNomAttaque("Invincibilite");
         tabAttaque[3].setTypeAttaque("Strategique");
         tabAttaque[3].setNombreMaxUtilisation(1);
+        tabAttaque[3].setDescAttaque("Active son bouclier pour ne subir aucun degats pendant 2 tours");
     }
 
     // CONSTRUCTEUR PAR COPIE
@@ -85,7 +89,7 @@ using namespace std;
             cout<<i+1<<". "<<endl;
             cout<<"NOM D'ATTAQUE : "<<tabAttaque[i].getNomAttaque()<<endl;
             cout<<"DEGATS :"<<tabAttaque[i].getDegats()<<endl;
-            cout<<"TYPE D'ATTAQUE :"<<tabAttaque[i].getTypeAttaque()<<endl;
+            cout<<"TYPE DE L'ATTAQUE :"<<tabAttaque[i].getDescAttaque()<<endl;
             cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation()<<"\n "<<endl;
 
             /*if(tabAttaque.getTypeAttaque() == "strategique")
@@ -99,6 +103,7 @@ using namespace std;
     }
 
     int Arme::utiliserAttaque(int i){
+        tabAttaque[i].setNombreMaxUtilisation(tabAttaque[i].getNombreMaxUtilisation()-1);
         return -1 * (tabAttaque[i].getDegats());
     }
 
