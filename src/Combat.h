@@ -19,6 +19,7 @@ class Combat{
 		void tourIA();
 		void combatDeroulement();
 		void TraiterActionAttaque(int degats);
+		void DecisionIa();
 
 
 };
