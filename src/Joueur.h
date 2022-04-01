@@ -30,7 +30,7 @@ public:
     void setNom(const string& n);
 
     //MUTATEUR STATS
-    void setStat(const string &s, int valeur);
+    void setStat(const string &s, float valeur);
 
 // GESTION DU JOUEUR
 
