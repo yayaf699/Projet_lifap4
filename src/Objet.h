@@ -30,7 +30,7 @@ public:
     const unsigned int &getVieObjet() const;
 
     // ACCESSEUR BONUS DE FORCE SUR L'OBJET
-    const unsigned int &getForceObjet() const;
+    const float &getForceObjet() const;
 
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
     const unsigned int &getVitesseObjet() const;
@@ -43,7 +43,7 @@ public:
     void setVieObjet(const unsigned int &v);
 
     // MUTATEUR BONUS DE FORCE SUR L'OBJET
-    void setForceObjet(const unsigned int &f);
+    void setForceObjet(const  float &f);
 
     // MUTATEUR BONUS DE VITESSE SUR L'OBJET
     void setVitesseObjet(const unsigned int &vi);
@@ -58,7 +58,8 @@ public:
 private:
 
     string nom; // nom de l'objet
-    unsigned int bonusVie, bonusForce, bonusVitesse;
+    unsigned int bonusVie, bonusVitesse;
+    float bonusForce;
 };
 
 
