@@ -27,17 +27,30 @@ Combat::Combat(const Joueur &Perso_, const Joueur &IA_){
 
 
 
-void Combat::TraiterActionAttaque(int degats){
-
+void Combat::TraiterActionAttaque(int degats)
+{
     if (tour == false)
-    {
-        Perso.SetVie(Perso.getVie() + degats); // retire vie joueur qui se fait attaquer
+    {   
+        if((Perso.getVie() + degats) < 0)
+        {
+            Perso.SetVie(0); // retire vie joueur à 0
+        }
+        else 
+        {
+            Perso.SetVie(Perso.getVie() + degats); // retire vie joueur qui se fait attaquer
+        }
     }
     else
     {
-        IA.SetVie(IA.getVie() +degats);
+        if((IA.getVie() + degats) < 0)
+        {
+            IA.SetVie(0); // retire vie joueur à 0
+        }
+        else 
+        {
+            IA.SetVie(IA.getVie() + degats); // retire vie joueur qui se fait attaquer
+        }
     }
-
 }
 
 
@@ -208,7 +221,7 @@ void Combat::DecisionIa()
 
     }
 
-    if(importanceAtt >= importanceObjet) // l'action la plus importante est effecut�
+    if(importanceAtt >= importanceObjet) // l'action la plus importante est effecut�
     {
         TraiterActionAttaque(IA.UtiliserAttaque(numAttaque));
     }
