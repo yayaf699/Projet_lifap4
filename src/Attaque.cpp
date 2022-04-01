@@ -8,6 +8,7 @@ Attaque::Attaque()
     nomAttaque = "Coup d'epee";
     degats = 100;
     typeAttaque = "Legere";
+    descAttaque = "Un simple coup d'epee";
     nombreMaxUtilisation = 50;
     int TabStatsAttMagique[3];
     for (int i = 0 ; i< 3 ; i=i+1)
@@ -16,11 +17,12 @@ Attaque::Attaque()
     }
 }
 
-Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int TabStatsAttMag[3])
+Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int TabStatsAttMag[3],string descriptionAtt)
 {
     nomAttaque = nomAtt;
     degats = deg;
     typeAttaque = nomTypeAtt;
+    descAttaque = descriptionAtt;
     nombreMaxUtilisation = nombreAttMax;
     for (int i = 0 ; i< 3 ; i=i+1)
     {
@@ -59,6 +61,16 @@ string Attaque::getTypeAttaque()
 int Attaque::getNombreMaxUtilisation()
 {
     return nombreMaxUtilisation;
+}
+
+string Attaque::getDescAttaque()
+{
+    return descAttaque;
+}
+
+void Attaque::setDescAttaque(string descAttaque_)
+{
+    descAttaque = descAttaque_;
 }
 
 void Attaque::setNomAttaque(string nomAtt)
