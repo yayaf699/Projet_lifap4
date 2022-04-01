@@ -67,12 +67,14 @@ void Combat::tourDuPerso()
             break;
 
     case 2:
+            cout << "VOICI LES STATS DE VOTRE PERSONNAGE : \n "<<endl;
+            Perso.getStats().afficherStat();
+            cout << "\n";
             Perso.getInv().afficherInventaire();
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
             Perso.utiliserObjet(Perso.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
-            Perso.getStats().afficherStat();
             break;
 
 
@@ -107,12 +109,14 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             break;
 
     case 2:
+            cout << "VOICI LES STATS DE VOTRE PERSONNAGE : \n "<<endl;
+            IA.getStats().afficherStat();
+            cout << "\n";
             IA.getInv().afficherInventaire();
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
             IA.utiliserObjet(IA.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
-            IA.getStats().afficherStat();
             break;
 
 
@@ -155,3 +159,64 @@ void Combat::combatDeroulement()
 
     }
 }
+
+/*
+void Combat::DecisionIa()
+{
+    int importanceAtt =0, importanceObjet=0,TMPimportanceAtt =0, TMPimportanceObjet=0, numAttaque, numObjet;
+    for(int i=0; i<4; i=i+1)
+    {
+        if(IA.getArme().tabAttaque[i].getNombreMaxUtilisation > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
+        {
+            TMPimportanceAtt = IA.getArme().tabAttaque[i].getDegats()/;
+            numAttaque = i;
+            if(TMPimportanceAtt>importanceAtt)
+            {
+                importanceAtt = TMPimportanceAtt;
+            }
+        }
+        if (Perso.getVie()-IA.getArme().tabAttaque[i].getDegats() <= 0 && IA.getArme().tabAttaque[i].getNombreMaxUtilisation > 0 ) // l'ia peut tuer le joueur en 1 attaque
+        {
+            TMPimportanceAtt = 100000;// action les plus importante
+            numAttaque = i;
+            if(TMPimportanceAtt>importanceAtt)
+            {
+                importanceAtt = TMPimportanceAtt;
+            }
+        }
+    }
+    for(int j=0; j<4; j=j+1)
+    {
+        if (IA.getInventaire().getTailleInventaire > 0 ) // l'ia veut augmenter sa vitesse pour limiter les prochains degats recu
+        {
+            TMPimportanceObjet = IA.getInventaire().inventaire[j].getVitesseObjet();// action les plus importante
+            numObjet = j;
+            if(TMPimportanceObjet>importanceObjet)
+            {
+                importanceObjet = TMPimportanceObjet;
+            }
+        }
+        if(IA.getVie()-Perso.getArme().tabAttaque[j].getDegats() <= 0 && Perso.getArme().tabAttaque[j].getNombreMaxUtilisation > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
+        {
+            TMPimportanceObjet = 100000; // action les plus importante
+            numObjet = j;
+            if(TMPimportanceObjet>importanceObjet)
+            {
+                importanceObjet = TMPimportanceObjet;
+            }
+        }
+
+    }
+
+    if(importanceAtt >= importanceObjet) // l'action la plus importante est effecuté
+    {
+        TraiterActionAttaque(IA.UtiliserAttaque(numAttaque));
+    }
+    else
+    {
+        TraiterActionObjet(IA.utiliserObjet(numObjet));
+    }
+
+}
+
+*/
