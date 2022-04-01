@@ -23,7 +23,7 @@ public:
 // GESTION DE L'INVENTAIRE
 
     // ACCESSEUR TAILLE INVENTAIRE
-    const unsigned int &getTailleInventaire();
+    const unsigned int getTailleInventaire();
 
     const string &getObjet(const unsigned int &n);
 
@@ -37,7 +37,7 @@ public:
     void retirerObjetInventaire(Objet &o);
 
     // RECHERCHER OBJET
-    const int &rechercherObjetInventaire(Objet o) const; 
+     unsigned int rechercherObjetInventaire(Objet o) ;
 
 
 private:
