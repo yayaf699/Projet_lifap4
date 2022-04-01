@@ -11,6 +11,12 @@ using namespace std;
     {
         taille_inventaire = 4;
         inventaire = new Objet[taille_inventaire];
+        inventaire[0].setNomObjet("Pillule de sante");
+        inventaire[0].setVieObjet(50);
+        inventaire[1].setNomObjet("Pillule de vitesse");
+        inventaire[1].setVitesseObjet(50);
+        inventaire[2].setNomObjet("Pillule de force");
+        inventaire[2].setForceObjet(0.2);
     }
 
     // DESTRUCTEUR
@@ -25,7 +31,7 @@ using namespace std;
 
 // GESTION DE L'INVENTAIRE
 
-    const unsigned int &Inventaire::getTailleInventaire(){ return taille_inventaire; }
+    const unsigned int Inventaire::getTailleInventaire(){ return taille_inventaire; }
 
     const string &Inventaire::getObjet(const unsigned int &n){ return inventaire[n].getNomObjet(); }
 
@@ -47,11 +53,14 @@ using namespace std;
     }
 
     // RECHERCHER OBJET
-    const int &Inventaire::rechercherObjetInventaire(Objet o) const
+     unsigned int Inventaire::rechercherObjetInventaire(Objet o)
     {
-        for(unsigned int i = 0; i < taille_inventaire; i++){
+        for( unsigned int i = 0; i < taille_inventaire; i++){
             if(inventaire[i].getNomObjet() == o.getNomObjet())
-            return i;
+            {
+                return i;
+            }
+
         }
     }
 
@@ -59,10 +68,10 @@ using namespace std;
     // JETER UN OBJET
     void Inventaire::retirerObjetInventaire(Objet &o)
     {
-        inventaire[rechercherObjetInventaire(o)].setNomObjet("emplacement vide");
         inventaire[rechercherObjetInventaire(o)].setVieObjet(0);
         inventaire[rechercherObjetInventaire(o)].setVitesseObjet(0);
-        inventaire[rechercherObjetInventaire(o)].setForceObjet(0);
+        inventaire[rechercherObjetInventaire(o)].setForceObjet(0.0);
+        inventaire[rechercherObjetInventaire(o)].setNomObjet("emplacement vide");
 
     }
 
