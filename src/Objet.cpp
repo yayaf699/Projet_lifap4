@@ -15,7 +15,9 @@ using namespace std;
     // CONSTRUCTEUR STRING
     Objet::Objet(const string &objet)
     {
-        // recuperer les données d'un txt
+       // ouvrir le fichier objet.txt
+       // faire la recherche du mot en parametre avec le premier mot de chaque ligne
+       // creer l'objet à partir de la ligne
     }
 
     // CONSTRUCTEUR PAR COPIE
