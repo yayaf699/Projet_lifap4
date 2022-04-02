@@ -75,7 +75,7 @@ void Combat::tourDuPerso()
             cin >> choix;
             while(Perso.getArme().getAtk(choix-1).getNombreMaxUtilisation() == 0)
             {
-                cout<<"Cette attaque n'est plus utilisable \n"<<endl;
+                cout<<"\n Cette attaque n'est plus utilisable \n"<<endl;
                 cout << "\n Quel attaque utiliser ?" << endl;
                 cin >> choix;
             }
@@ -211,27 +211,26 @@ void Combat::DecisionIa() //IA OFFENSIF
                  numAttaque = i;
             }
         }
-        if(IA.getVie()-Perso.getArme().getAtk(i).getDegats() <= 0 && Perso.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
+
+        if(IA.getInv().rechercherObjetInventaire("Pillule de sante")  != -1 && IA.getVie()-Perso.getArme().getAtk(i).getDegats() <= 0 && Perso.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
         {
             TMPimportanceObjet = 100000; // action les plus importante
-            if(TMPimportanceObjet>importanceObjet)
-            {
-                importanceObjet = TMPimportanceObjet;
-                numObjet = i;
-            }
+            importanceObjet = 100000; // action les plus importante
+            numObjet = IA.getInv().rechercherObjetInventaire("Pillule de sante");
         }
 
     }
 
     if(importanceAtt >= importanceObjet) // l'action la plus importante est effecutee
     {
+        cout<<"L'ADVERSAIRE A UTILISER "<<IA.getArme().getAtk(numAttaque).getNomAttaque()<<"\n"<<endl;
         TraiterActionAttaque(IA.Attaquer(numAttaque));
     }
     else
     {
+        cout<<"L'ADVERSAIRE A UTILISER "<<IA.getInv().retourneObjetInventaire(numObjet).getNomObjet() <<"\n"<<endl;
         IA.utiliserObjet(IA.getInv().retourneObjetInventaire(numObjet));
     }
-    cout<<"L'ADVERSAIRE A UTILISER "<<IA.getArme().getAtk(numAttaque).getNomAttaque()<<"\n"<<endl;
     cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
 
 }
