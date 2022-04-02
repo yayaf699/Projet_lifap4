@@ -43,6 +43,7 @@ using namespace std;
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
     const unsigned int &Objet::getVitesseObjet() const { return bonusVitesse; }
 
+
     // MUTATEUR NOM OBJET
     void Objet::setNomObjet(const string &n) { nom = n; }
 
