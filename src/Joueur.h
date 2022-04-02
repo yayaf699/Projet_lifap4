@@ -18,7 +18,7 @@ public:
     Joueur();
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Joueur(const string &n, const unsigned int &vi, const unsigned int &f, const unsigned int &v, const unsigned int &e, Inventaire in, const Arme &ar);
+    Joueur(const string &n, const unsigned int &vit, const unsigned int &f, const unsigned int &vie,  Inventaire in, const Arme &ar);
 
 
 // LES ACCESSEURS ET MUTATEURS
@@ -65,6 +65,7 @@ private:
     Statistiques stat; // les stats du joueur
     Inventaire inv; // l'inventaire d'objets du joueur
     Arme arm; // l'arme du joueur
+    string etat; // sert pour gerer les etats temporaires (saignement...)
 };
 
 #endif // JOUEUR_H_INCLUDED
