@@ -27,11 +27,15 @@ public:
     // ACCESSEUR NOM
     const string &getNomArme() const;
 
+
+
     // ACCESSEUR ATTAQUE
     int utiliserAttaque( int i);
 
     // MUTATEUR NOM
     void setNomArme(const string &n);
+
+    Attaque getAtk(int i);
 
     void affAttaques();
 
