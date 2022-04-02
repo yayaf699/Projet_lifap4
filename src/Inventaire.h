@@ -37,7 +37,7 @@ public:
     void retirerObjetInventaire(Objet &o);
 
     // RECHERCHER OBJET
-     unsigned int rechercherObjetInventaire(Objet o) ;
+    int rechercherObjetInventaire(string nomObjet) ;
 
 
 private:
