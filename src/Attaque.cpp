@@ -63,6 +63,7 @@ int Attaque::getNombreMaxUtilisation()
     return nombreMaxUtilisation;
 }
 
+
 string Attaque::getDescAttaque()
 {
     return descAttaque;
@@ -72,6 +73,7 @@ void Attaque::setDescAttaque(string descAttaque_)
 {
     descAttaque = descAttaque_;
 }
+
 
 void Attaque::setNomAttaque(string nomAtt)
 {
