@@ -23,9 +23,14 @@ using namespace std;
     }
 
     // CONSTRUCTEUR PERSONNALISÉ
-    Joueur::Joueur(const string &n, const unsigned int &vi, const unsigned int &f, const unsigned int &v, const unsigned int &e, Inventaire in, const Arme &ar)
+    Joueur::Joueur(const string &n, const unsigned int &vit, const unsigned int &f, const unsigned int &vie,  Inventaire in, const Arme &ar)
     {
-            // à finir
+            setNom(n);
+            stat.setVie(vie);
+            stat.setForce(f);
+            stat.setVitesse(vit);
+            arm = ar;
+            inv = in;
     }
 
 
