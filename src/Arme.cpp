@@ -17,7 +17,7 @@ using namespace std;
         tabAttaque[0].setDescAttaque("Tir de pistolet peut infliger saignement");
         tabAttaque[1].setDegats(40);
         tabAttaque[1].setNomAttaque("Uppercut");
-        tabAttaque[1].setNombreMaxUtilisation(10);
+        tabAttaque[1].setNombreMaxUtilisation(3);
         tabAttaque[1].setTypeAttaque("Puissante");
         tabAttaque[1].setDescAttaque("Coup de poings dans le menton");
         tabAttaque[2].setDegats(0);
@@ -62,6 +62,8 @@ using namespace std;
         return nomArme;
     }
 
+
+
     // MUTATEUR NOM
     void Arme::setNomArme(const string &n)
     {
@@ -78,6 +80,11 @@ using namespace std;
     }
 
 
+    Attaque Arme::getAtk(int i)
+    {
+        return tabAttaque[i];
+    }
+
 // GESTION ARME
 
     // AFFICHER LES ATTAQUES
@@ -90,7 +97,7 @@ using namespace std;
             cout<<"NOM D'ATTAQUE : "<<tabAttaque[i].getNomAttaque()<<endl;
             cout<<"DEGATS :"<<tabAttaque[i].getDegats()<<endl;
             cout<<"TYPE DE L'ATTAQUE :"<<tabAttaque[i].getDescAttaque()<<endl;
-            cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation()<<"\n "<<endl;
+            cout<<"NOMBRE MAX D'UTILISATION :"<<max(0,tabAttaque[i].getNombreMaxUtilisation())<<"\n "<<endl;
 
             /*if(tabAttaque.getTypeAttaque() == "strategique")
             {
