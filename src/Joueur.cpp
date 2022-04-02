@@ -127,6 +127,7 @@ using namespace std;
     }
 
 
+
     int Joueur::Attaquer(int i)
     {
         return arm.utiliserAttaque(i);
