@@ -30,12 +30,12 @@ Combat::Combat(const Joueur &Perso_, const Joueur &IA_){
 void Combat::TraiterActionAttaque(int degats)
 {
     if (tour == false)
-    {   
+    {
         if((Perso.getVie() + degats) < 0)
         {
-            Perso.SetVie(0); // retire vie joueur à 0
+            Perso.SetVie(0); // retire vie joueur à 0 // pas mal mais un peu couteux si on veut optimiser on peut mettre  max(0,getVie) quand on cout la santé
         }
-        else 
+        else
         {
             Perso.SetVie(Perso.getVie() + degats); // retire vie joueur qui se fait attaquer
         }
@@ -46,7 +46,7 @@ void Combat::TraiterActionAttaque(int degats)
         {
             IA.SetVie(0); // retire vie joueur à 0
         }
-        else 
+        else
         {
             IA.SetVie(IA.getVie() + degats); // retire vie joueur qui se fait attaquer
         }
@@ -73,9 +73,15 @@ void Combat::tourDuPerso()
             Perso.getArme().afficher();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
+            while(Perso.getArme().getAtk(choix-1).getNombreMaxUtilisation() == 0)
+            {
+                cout<<"Cette attaque n'est plus utilisable \n"<<endl;
+                cout << "\n Quel attaque utiliser ?" << endl;
+                cin >> choix;
+            }
             system("CLS"); // clean tout le texte de l'invite de commande
-            TraiterActionAttaque(Perso.Attaquer(choix-1)); //choix -1 car tableau
-
+            TraiterActionAttaque(Perso.Attaquer(choix-1));
+            cout<<"VOUS AVEZ UTILISEZ "<<Perso.getArme().getAtk(choix-1).getNomAttaque()<<"\n"<<endl;
             cout << "SANTE DE L'ADVERSAIRE APRES VOTRE ATTAQUE : "<< IA.getStats().getVie()<< "\n"<<endl;
             break;
 
@@ -113,9 +119,15 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
     switch (choix)
     {
     case 1:
-            IA.getArme().afficher();
+             IA.getArme().afficher();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
+            while(IA.getArme().getAtk(choix-1).getDegats() == 0)
+            {
+                cout<<"Cette attaque n'est plus utilisable \n"<<endl;
+                cout << "\n Quel attaque utiliser ?" << endl;
+                cin >> choix;
+            }
             system("CLS"); // clean tout le texte de l'invite de commande
             TraiterActionAttaque(IA.Attaquer(choix-1)); //choix -1 car tableau
             cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
@@ -144,7 +156,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
 
 void Combat::combatDeroulement()
 {
-    while (1==1)
+    while (((((1==1)==(3/3))==(5-4))==true))
     {
         tourDuPerso(); // donne le controle au joueur
 
@@ -159,7 +171,7 @@ void Combat::combatDeroulement()
 
         //IA.afficherJoueur();
 
-        tourIA(); // donne le controle a l'IA
+        DecisionIa(); // donne le controle a l'IA
 
         if(Perso.getVie() <= 0)  // verif sante
         {
@@ -173,63 +185,55 @@ void Combat::combatDeroulement()
     }
 }
 
-/*
-void Combat::DecisionIa()
+
+void Combat::DecisionIa() //IA OFFENSIF
 {
+    system("CLS"); // clean tout le texte de l'invite de commande
     int importanceAtt =0, importanceObjet=0,TMPimportanceAtt =0, TMPimportanceObjet=0, numAttaque, numObjet;
     for(int i=0; i<4; i=i+1)
     {
-        if(IA.getArme().tabAttaque[i].getNombreMaxUtilisation > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
+        if(IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
         {
-            TMPimportanceAtt = IA.getArme().tabAttaque[i].getDegats()/;
-            numAttaque = i;
+            TMPimportanceAtt = IA.getArme().getAtk(i).getDegats();
             if(TMPimportanceAtt>importanceAtt)
             {
                 importanceAtt = TMPimportanceAtt;
+                numAttaque = i;
             }
+
         }
-        if (Perso.getVie()-IA.getArme().tabAttaque[i].getDegats() <= 0 && IA.getArme().tabAttaque[i].getNombreMaxUtilisation > 0 ) // l'ia peut tuer le joueur en 1 attaque
+        if (Perso.getVie()-IA.getArme().getAtk(i).getDegats()<= 0 && IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut tuer le joueur en 1 attaque
         {
             TMPimportanceAtt = 100000;// action les plus importante
-            numAttaque = i;
             if(TMPimportanceAtt>importanceAtt)
             {
                 importanceAtt = TMPimportanceAtt;
+                 numAttaque = i;
             }
         }
-    }
-    for(int j=0; j<4; j=j+1)
-    {
-        if (IA.getInventaire().getTailleInventaire > 0 ) // l'ia veut augmenter sa vitesse pour limiter les prochains degats recu
-        {
-            TMPimportanceObjet = IA.getInventaire().inventaire[j].getVitesseObjet();// action les plus importante
-            numObjet = j;
-            if(TMPimportanceObjet>importanceObjet)
-            {
-                importanceObjet = TMPimportanceObjet;
-            }
-        }
-        if(IA.getVie()-Perso.getArme().tabAttaque[j].getDegats() <= 0 && Perso.getArme().tabAttaque[j].getNombreMaxUtilisation > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
+        if(IA.getVie()-Perso.getArme().getAtk(i).getDegats() <= 0 && Perso.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
         {
             TMPimportanceObjet = 100000; // action les plus importante
-            numObjet = j;
             if(TMPimportanceObjet>importanceObjet)
             {
                 importanceObjet = TMPimportanceObjet;
+                numObjet = i;
             }
         }
 
     }
 
-    if(importanceAtt >= importanceObjet) // l'action la plus importante est effecut�
+    if(importanceAtt >= importanceObjet) // l'action la plus importante est effecutee
     {
-        TraiterActionAttaque(IA.UtiliserAttaque(numAttaque));
+        TraiterActionAttaque(IA.Attaquer(numAttaque));
     }
     else
     {
-        TraiterActionObjet(IA.utiliserObjet(numObjet));
+        IA.utiliserObjet(IA.getInv().retourneObjetInventaire(numObjet));
     }
+    cout<<"L'ADVERSAIRE A UTILISER "<<IA.getArme().getAtk(numAttaque).getNomAttaque()<<"\n"<<endl;
+    cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
 
 }
 
-*/
+
