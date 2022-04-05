@@ -44,6 +44,11 @@ public:
     // AFFICHER LES STATS DE L'ARME
     void afficher() const;
 
+     Attaque getAtk(int i);
+
+
+
+
 
 private:
 
