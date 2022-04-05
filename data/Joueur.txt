@@ -1,0 +1,10 @@
+SolidSnake
+Mario
+Goku
+DonkeyKong
+CaptainFalcon
+Ryu
+MegaMan
+Cloud
+Mewtwo
+

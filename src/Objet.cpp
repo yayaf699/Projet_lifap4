@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include "Objet.h"
 
 using namespace std;
@@ -13,11 +14,20 @@ using namespace std;
     }
 
     // CONSTRUCTEUR STRING
-    Objet::Objet(const string &objet)
+    Objet::Objet(const string &nomObjet)
     {
-       // ouvrir le fichier objet.txt
-       // faire la recherche du mot en parametre avec le premier mot de chaque ligne
-       // creer l'objet à partir de la ligne
+        ifstream reader("data/Objet.txt");
+
+        if(reader.is_open())
+        {
+            do
+            {
+                reader >> nom >> bonusVie >> bonusVitesse >> bonusForce;
+                reader.ignore(100, '\n');
+            } while (nom != nomObjet); // on part du principe que l'objet existe dans le txt
+        }
+
+        reader.close();
     }
 
     // CONSTRUCTEUR PAR COPIE
@@ -42,7 +52,6 @@ using namespace std;
 
     // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
     const unsigned int &Objet::getVitesseObjet() const { return bonusVitesse; }
-
 
     // MUTATEUR NOM OBJET
     void Objet::setNomObjet(const string &n) { nom = n; }

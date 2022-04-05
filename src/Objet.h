@@ -1,7 +1,6 @@
 #ifndef OBJET_H_INCLUDED
 #define OBJET_H_INCLUDED
 #include <string>
-//#include "data/Objet.txt"
 
 using namespace std;
 
@@ -16,7 +15,7 @@ public:
     Objet();
 
     // CONSTRUCTEUR STRING
-    Objet(const string &objet);
+    Objet(const string &nomObjet);
 
     // CONSTRUCTEUR PAR COPIE
     Objet(const Objet &o);

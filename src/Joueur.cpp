@@ -1,5 +1,6 @@
 #include "Joueur.h"
 #include <iostream>
+#include <fstream>
 #include <string.h>
 
 
@@ -22,15 +23,72 @@ using namespace std;
 
     }
 
-    // CONSTRUCTEUR PERSONNALISÉ
-    Joueur::Joueur(const string &n, const unsigned int &vit, const unsigned int &f, const unsigned int &vie,  Inventaire in, const Arme &ar)
+    // CONSTRUCTEUR TXT
+    Joueur::Joueur(const string &nj)
     {
-            setNom(n);
+        int id, id_comp; // id du joueur qui va etre utilisé comme comparatif et id du joueur 
+        int vie, vitesse;
+        float force;
+
+        ifstream readJoueur("data/Joueur.txt"); // recuperer l'id et le nom du joueur
+        if(readJoueur.is_open())
+        {
+            do
+            {
+                readJoueur >> id >> nomJoueur;
+                readJoueur.ignore(100, '\n'); // saut de ligne
+            } while (nomJoueur != nj); 
+        }
+        readJoueur.close();
+
+        ifstream readStatistiques("data/Statistiques.txt"); // recuperer les stats du joueur
+        if(readStatistiques.is_open())
+        {
+            do
+            {
+                readStatistiques >> id_comp >> vie >> vitesse >> force;
+                readStatistiques.ignore(100, '\n'); // saut de ligne
+            } while (id_comp != id);
+
             stat.setVie(vie);
-            stat.setForce(f);
-            stat.setVitesse(vit);
-            arm = ar;
-            inv = in;
+            stat.setVitesse(vitesse);
+            stat.setForce(force);
+        }
+        readStatistiques.close();
+
+        ifstream readInventaire("data/Inventaire.txt"); // recuperer l'inventaire
+        int id_objet[4];
+        if(readInventaire.is_open())
+        {
+                do
+                {
+                    readInventaire >> id_comp >> id_objet[0] >> id_objet[1] >> id_objet[2] >> id_objet[3];
+                    readStatistiques.ignore(100, '\n'); // saut de ligne
+                } while (id_comp != id);
+        }
+        readInventaire.close();
+
+        ifstream readObjet("data/Objet.txt");
+        if(readObjet.is_open())
+        {
+            string nom;
+            int bonusvie, bonusvitesse;
+            float bonusforce;
+
+            for(int i = 0; i < 4; i++)
+            {
+                id_comp = id_objet[i];
+                do
+                {
+                    readObjet >> id_objet[i] >> nom >> bonusvie >> bonusvitesse >> bonusforce;
+                    readObjet.ignore(100, '\n'); // saut de ligne
+                } while (id_comp != id_objet[i]);
+
+                inv.ajouterObjet(i, nom, bonusvie, bonusvitesse, bonusforce);
+            }
+        }
+
+        // FAIRE PAREIL AVEC L'ARME ET LES ATTAQUES
     }
 
 
@@ -125,7 +183,6 @@ using namespace std;
     {
         return stat;
     }
-
 
 
     int Joueur::Attaquer(int i)

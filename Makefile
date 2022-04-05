@@ -1,4 +1,4 @@
-all: bin/main
+all: bin/main 
 
 clean:
 	rm bin/* obj/*

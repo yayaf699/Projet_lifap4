@@ -39,9 +39,9 @@ public:
     void afficherStat();
 private:
 
-    int vie;
-    int vitesse;
-    float force;
+    int vie; // sur 100
+    int vitesse; // sur 100
+    float force; // multiplicateur
 };
 
 #endif // STATISTIQUES_H_INCLUDED

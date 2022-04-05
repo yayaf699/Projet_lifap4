@@ -1,6 +1,7 @@
-Potion 5 0 0 0
-SuperPotion 10 0 0 0
-MegaPotion 20 0 0 0
-ForcePlus 0 2 0 0
-VitessePlus 0 0 2 0
-EndurancePlus 0 0 0 2
+Potion 10 0 0 
+SuperPotion 20 0 0 
+MegaPotion 30 0 0 
+VitessePlus 0 10 0 
+ForcePlus 0 0 1.1 
+
+
