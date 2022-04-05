@@ -55,13 +55,14 @@ using namespace std;
     // RECHERCHER OBJET
      unsigned int Inventaire::rechercherObjetInventaire(Objet o)
     {
-        for( unsigned int i = 0; i < taille_inventaire; i++){
+        for(  unsigned int i = 0; i < (unsigned int)taille_inventaire; i++){
             if(inventaire[i].getNomObjet() == o.getNomObjet())
             {
                 return i;
             }
 
         }
+        return -1;
     }
 
 
@@ -75,9 +76,11 @@ using namespace std;
 
     }
 
-     // AJOUTER OBJET
-     void Inventaire::ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, int bonusforce)
-     {
-         // à finir
-     }
+  void Inventaire::ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce)
+  {
+       inventaire[indice].setNomObjet(nom);
+       inventaire[indice].setForceObjet(bonusforce);
+       inventaire[indice].setVieObjet(bonusvie);
+       inventaire[indice].setVitesseObjet(bonusvitesse);
+}
 
