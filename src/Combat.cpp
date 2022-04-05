@@ -64,6 +64,8 @@ void Combat::tourDuPerso()
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
+            system("clear");
+
     }
     while (choix != 1 && choix != 2 );
 
@@ -74,6 +76,7 @@ void Combat::tourDuPerso()
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
+            system("clear");
             TraiterActionAttaque(Perso.Attaquer(choix-1)); //choix -1 car tableau
 
             cout << "SANTE DE L'ADVERSAIRE APRES VOTRE ATTAQUE : "<< IA.getStats().getVie()<< "\n"<<endl;
@@ -87,6 +90,7 @@ void Combat::tourDuPerso()
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
+            system("clear");
             Perso.utiliserObjet(Perso.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
             break;
 
@@ -107,6 +111,8 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
+            system("clear");
+
     }
     while (choix != 1 && choix != 2 );
 
@@ -117,6 +123,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
+            system("clear");
             TraiterActionAttaque(IA.Attaquer(choix-1)); //choix -1 car tableau
             cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
             break;
@@ -129,6 +136,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
             cout << "\n Quel objet utiliser ?" << endl;
             cin >> choix;
             system("CLS"); // clean tout le texte de l'invite de commande
+            system("clear");
             IA.utiliserObjet(IA.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
             break;
 
@@ -177,8 +185,14 @@ void Combat::combatDeroulement()
 
 void Combat::DecisionIa() //IA OFFENSIF
 {
+    //
     system("CLS"); // clean tout le texte de l'invite de commande
-    int importanceAtt =0, importanceObjet=0,TMPimportanceAtt =0, TMPimportanceObjet=0, numAttaque, numObjet;
+    system("clear");
+    int importanceAtt =0;
+    int importanceObjet=0;
+    int TMPimportanceAtt =0;
+    int TMPimportanceObjet = 0;
+    int numAttaque, numObjet;
     for(int i=0; i<4; i=i+1)
     {
         if(IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
