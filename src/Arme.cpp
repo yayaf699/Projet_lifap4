@@ -107,3 +107,10 @@ using namespace std;
         return -1 * (tabAttaque[i].getDegats());
     }
 
+     Attaque Arme::getAtk(int i)
+    {
+        return tabAttaque[i];
+    }
+
+
+
