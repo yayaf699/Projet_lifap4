@@ -1,0 +1,11 @@
+SolidSnake 100 80 1.1 Potion VitessePlus ForcePlus MegaPotion
+Mario 100 50 1.5 Potion VitessePlus ForcePlus MegaPotion
+Goku 100 70 1.5 Potion VitessePlus ForcePlus MegaPotion
+DonkeyKong 100 40 1.8 Potion VitessePlus ForcePlus MegaPotion
+CaptainFalcon 100 60 1.4 Potion VitessePlus ForcePlus MegaPotion
+Ryu 100 50 1.6 Potion VitessePlus ForcePlus MegaPotion
+MegaMan 100 80 1.1 Potion VitessePlus ForcePlus MegaPotion
+Cloud 100 30 1.9 Potion VitessePlus ForcePlus MegaPotion
+Mewtwo 100 99 1.0 Potion VitessePlus ForcePlus MegaPotion
+
+

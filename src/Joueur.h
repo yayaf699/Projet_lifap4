@@ -12,14 +12,10 @@ using namespace std;
 class Joueur{
 public:
 
-// LES CONSTRUCTEURS ET DESTRUCTEUR
+// LE CONSTRUCTEUR
 
     // CONSTRUCTEUR PAR DEFAUT
     Joueur();
-
-    // CONSTRUCTEUR PERSONNALISÉ
-    Joueur(const string &nj);
-
 
 // LES ACCESSEURS ET MUTATEURS
 
@@ -57,6 +53,8 @@ public:
     void utiliserObjet(Objet o);
 
     Joueur &operator=(const Joueur &j);
+
+    void ajouterJoueur(unsigned int n);
 
 private:
 

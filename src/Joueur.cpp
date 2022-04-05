@@ -23,74 +23,6 @@ using namespace std;
 
     }
 
-    // CONSTRUCTEUR TXT
-    Joueur::Joueur(const string &nj)
-    {
-        int id, id_comp; // id du joueur qui va etre utilisé comme comparatif et id du joueur 
-        int vie, vitesse;
-        float force;
-
-        ifstream readJoueur("data/Joueur.txt"); // recuperer l'id et le nom du joueur
-        if(readJoueur.is_open())
-        {
-            do
-            {
-                readJoueur >> id >> nomJoueur;
-                readJoueur.ignore(100, '\n'); // saut de ligne
-            } while (nomJoueur != nj); 
-        }
-        readJoueur.close();
-
-        ifstream readStatistiques("data/Statistiques.txt"); // recuperer les stats du joueur
-        if(readStatistiques.is_open())
-        {
-            do
-            {
-                readStatistiques >> id_comp >> vie >> vitesse >> force;
-                readStatistiques.ignore(100, '\n'); // saut de ligne
-            } while (id_comp != id);
-
-            stat.setVie(vie);
-            stat.setVitesse(vitesse);
-            stat.setForce(force);
-        }
-        readStatistiques.close();
-
-        ifstream readInventaire("data/Inventaire.txt"); // recuperer l'inventaire
-        int id_objet[4];
-        if(readInventaire.is_open())
-        {
-                do
-                {
-                    readInventaire >> id_comp >> id_objet[0] >> id_objet[1] >> id_objet[2] >> id_objet[3];
-                    readStatistiques.ignore(100, '\n'); // saut de ligne
-                } while (id_comp != id);
-        }
-        readInventaire.close();
-
-        ifstream readObjet("data/Objet.txt");
-        if(readObjet.is_open())
-        {
-            string nom;
-            int bonusvie, bonusvitesse;
-            float bonusforce;
-
-            for(int i = 0; i < 4; i++)
-            {
-                id_comp = id_objet[i];
-                do
-                {
-                    readObjet >> id_objet[i] >> nom >> bonusvie >> bonusvitesse >> bonusforce;
-                    readObjet.ignore(100, '\n'); // saut de ligne
-                } while (id_comp != id_objet[i]);
-
-                inv.ajouterObjet(i, nom, bonusvie, bonusvitesse, bonusforce);
-            }
-        }
-
-        // FAIRE PAREIL AVEC L'ARME ET LES ATTAQUES
-    }
-
 
 // LES ACCESSEURS ET MUTATEURS
 
@@ -202,4 +134,38 @@ using namespace std;
         setStat("force", o.getForceObjet());
         setStat("vitesse", o.getVitesseObjet());
         inv.retirerObjetInventaire(o);
+    }
+
+void Joueur::ajouterJoueur(unsigned int n)
+    {
+        int vie, vitesse;
+        float force;
+        string objetsNom[4];
+
+        ifstream readJoueur("data/Joueur_stat_inventaire.txt"); // recuperer les stats du joueur et son inventaire
+        if(readJoueur.is_open())
+        {
+            for(unsigned int i = 0; i < n; i++) readJoueur.ignore(100, '\n'); // saut de ligne
+             readJoueur >> nomJoueur >> vie >> vitesse >> force >> objetsNom[0] >> objetsNom[1] >> objetsNom[2] >> objetsNom[3];
+            stat.setVie(vie);
+            stat.setVitesse(vitesse);
+            stat.setForce(force);
+        }
+        readJoueur.close();
+
+        ifstream readInventaire("data/Objet.txt"); // r
+        if(readInventaire.is_open())
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                string nomObjetRecherche;
+                do
+                {
+                    readInventaire >> nomObjetRecherche >> vie >> vitesse >> force;
+                    readInventaire.ignore(100, '\n'); // saut de ligne
+                } while(objetNom[i] != nomObjetRecherche);
+
+                inv.ajouterObjet(i, nomObjetRecherche, vie, vitesse, force);
+            }
+        }
     }

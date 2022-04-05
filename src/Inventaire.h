@@ -40,7 +40,7 @@ public:
      unsigned int rechercherObjetInventaire(Objet o) ;
 
      // AJOUTER OBJET
-     void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, int bonusforce);
+     void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce);
 
 
 private:

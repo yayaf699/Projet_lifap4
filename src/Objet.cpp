@@ -77,7 +77,7 @@ using namespace std;
             cout<<"Bonus vitesse: +"<<getVitesseObjet()<<", ";
             cout<<"Bonus force: +"<<getForceObjet()<<"\n";
         }
-        else cout << "emplacement vide";
+        else cout << "emplacement vide"; 
     }
 
 
