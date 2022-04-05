@@ -37,7 +37,7 @@ public:
     void retirerObjetInventaire(Objet &o);
 
     // RECHERCHER OBJET
-     unsigned int rechercherObjetInventaire(string nomObjet) ;
+    int rechercherObjetInventaire(string nomObjet) ;
 
      // AJOUTER OBJET
      void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce);
