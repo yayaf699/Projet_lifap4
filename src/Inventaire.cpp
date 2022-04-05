@@ -53,9 +53,9 @@ using namespace std;
     }
 
     // RECHERCHER OBJET
-     unsigned int Inventaire::rechercherObjetInventaire(string nomObjet)
+    int Inventaire::rechercherObjetInventaire(string nomObjet)
     {
-        for(  unsigned int i = 0; i < (unsigned int)taille_inventaire; i++){
+        for(  int i = 0; i < taille_inventaire; i++){
             if(inventaire[i].getNomObjet() == nomObjet)
             {
                 return i;
