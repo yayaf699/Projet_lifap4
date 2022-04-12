@@ -1,11 +1,11 @@
 #include "Combat.h"
 #include <cstdlib>
 #include<iostream>
-#include <unistd.h>
 #include<stdio.h>
-#include<stdlib.h> //as system function is in the standard library
-#ifdef _WIN32 // note the underscore: without it, it's not msdn official!
+#include<stdlib.h>
+#include <time.h>
 #include <Windows.h>
+#ifdef _WIN32 // lorsqu'on compile avec windows
 const bool os = true;
 #elif __linux__
 const bool os = false;
@@ -44,7 +44,7 @@ void Combat::Clear()
     }
 }
 
-void Combat::TraiterActionAttaque( Attaque att)
+void Combat::TraiterActionAttaque(Attaque att)
 {
     if (tour == false)
     {
@@ -59,10 +59,13 @@ void Combat::TraiterActionAttaque( Attaque att)
         else
         {
             int tmpRandVarCoupCrit = (rand() % 100) +1;
-            if(tmpRandVarCoupCrit<30) // 30 % de chance que GELE SE PRODUIT
+            if(tmpRandVarCoupCrit<20) // 20 % de chance que ATTAQUE CRITIQUE se produisent
             {
-                Perso.SetVie(Perso.getVie() -  1.1*att.getDegats()); // retire vie joueur qui se fait attaquer
-                cout<<"COUP CRITIQUE : "<<"cette attaque inflige : "<<1.1*att.getDegats()<<" degats !"<<endl;
+                srand(time(NULL));
+                int MultiplicateurCrit = (rand() % (int(1.5*10)-10))+1;
+                int degatCrit = ((float(MultiplicateurCrit)/10)+1.0)*att.getDegats();
+                cout<<"COUP CRITIQUE : "<<"cette attaque inflige : "<<degatCrit<<" degats !"<<endl;
+                Perso.SetVie(Perso.getVie() - att.getDegats());
             }
             else
             {
@@ -112,10 +115,13 @@ void Combat::TraiterActionAttaque( Attaque att)
         else
         {
             int tmpRandVarCoupCrit = (rand() % 100) +1;
-            if(tmpRandVarCoupCrit<30) // 30 % de chance que GELE SE PRODUIT
+            if(tmpRandVarCoupCrit<20) // 20 % de chance que ATTAQUE CRITIQUE se produisent
             {
-                IA.SetVie(IA.getVie() -  1.1*att.getDegats()); // retire vie joueur qui se fait attaquer
-                cout<<"COUP CRITIQUE : "<<"cette attaque inflige : "<<1.1*att.getDegats()<<" degats !"<<endl;
+                srand(time(NULL));
+                int MultiplicateurCrit = (rand() % (int(1.5*10)-10))+1;
+                int degatCrit = ((float(MultiplicateurCrit)/10)+1.0)*att.getDegats();
+                cout<<"COUP CRITIQUE : "<<"cette attaque inflige : "<<degatCrit<<" degats !"<<endl;
+                IA.SetVie(IA.getVie() - att.getDegats());
             }
             else
             {
@@ -160,7 +166,7 @@ void Combat::tourDuPerso()
 {
     unsigned int choix;
     do{
-            system("color 30");
+            if(os==true){system("color 30");}
             cout<< "TOUR DU JOUEUR \n "<<endl;
             cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
             cin >> choix;
@@ -288,7 +294,7 @@ void Combat::VerifierEtatJoueur()
                     {
                             cout<<"ETAT JOUEUR : "<<Perso.getEtat()<< " pendant "<< Perso.getNbTourEtat()<< " tours"<<endl;
                             DecisionIa();
-                            sleep(5); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
+                            Sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
                             Perso.setNbTourEtat(Perso.getNbTourEtat()-1);
                     }
                 }
@@ -363,7 +369,7 @@ void Combat::combatDeroulement()
             VerifierEtatJoueur();
             tour = false; // au tour de l'ia
             cout<<"L'IA reflechi a son prochain tour (c'est faux mais faut que t'ai le temps de lire)"<<endl;
-            sleep(5); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
+            Sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
             DecisionIa(); // donne le controle a l'IA
             VerifierEtatJoueur();
             tour = true; // au tour du joueur
@@ -377,7 +383,7 @@ void Combat::combatDeroulement()
         {
             tour = false;
             cout<<"L'IA reflechi a son prochain tour (c'est faux mais faut que t'ai le temps de lire)"<<endl;
-            sleep(5); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
+            Sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
             DecisionIa(); // donne le controle a l'IA
             VerifierEtatJoueur();
             tour = true; // au tour du joueur
