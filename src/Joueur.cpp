@@ -148,6 +148,22 @@ using namespace std;
         setStat("vie", o.getVieObjet());
         setStat("force", o.getForceObjet());
         setStat("vitesse", o.getVitesseObjet());
+        if(o.getNomObjet().compare("Soda")==0)
+        {
+            getArme().affAttaques();
+            cout<<"De quelle attaque voulez vous augmentez son nombre d'utilisation ?"<<endl;
+            int choix;
+            cin>>choix;
+            while(getArme().getAtk(choix-1).getNombreMaxUtilisation() !=0 )
+            {
+                cout<<"\n Cette attaque possède deja au moins 1 utilisation \n"<<endl;
+                cout<<"De quelle attaque voulez vous augmentez son nombre d'utilisation ?"<<endl;
+                cin >> choix;
+            }
+            getArme().getAtk(choix-1).setNombreMaxUtilisation(1);
+            cout<<"ICI 2 / "<<getArme().getAtk(choix-1).getNombreMaxUtilisation();
+            cout<<"L'attaque "<<getArme().getAtk(choix-1).getNomAttaque()<<" possede desormais : "<<getArme().getAtk(choix-1).getNombreMaxUtilisation()<<" utilisation"<<endl;
+        }
         inv.retirerObjetInventaire(o);
     }
 
@@ -198,7 +214,7 @@ using namespace std;
                 do
                 {
                     readInventaire >> nomObjetRecherche >> vie >> vitesse >> force;
-                    readInventaire.ignore(100, '\n'); // saut de ligne
+                    readInventaire.ignore(1000, '\n'); // saut de ligne
                 } while(objetsNom[i] != nomObjetRecherche);
 
                 cout << nomObjetRecherche <<" "<< vie <<" "<< vitesse <<" "<< force <<endl;
@@ -216,7 +232,7 @@ using namespace std;
                 do
                 {
                     readAttaque >> nomObjetRecherche >> degats >> nbUtilisationMax;
-                    readAttaque.ignore(100, '\n'); // saut de ligne
+                    readAttaque.ignore(1000, '\n'); // saut de ligne
                 } while (attaquesNom[i] != nomObjetRecherche);
 
                 cout << nomObjetRecherche <<" "<<degats <<" "<<nbUtilisationMax<<endl;
