@@ -17,6 +17,7 @@ using namespace std;
         inventaire[1].setVitesseObjet(50);
         inventaire[2].setNomObjet("Pillule de force");
         inventaire[2].setForceObjet(0.2);
+        inventaire[3].setNomObjet("Soda");
     }
 
     // DESTRUCTEUR
