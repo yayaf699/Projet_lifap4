@@ -1,0 +1,29 @@
+SuperAttaqueDiscrete 40 2 
+SuperCoupDeMarteau 40 2 
+SuperPunch 40 2
+SuperKamehameha 40 2
+FalconPunch 40 2
+SuperKick 40 2
+SuperBlaster 40 2 
+FinalSlash 40 2
+FatalPunch 40 2
+DoubleSlash 20 5
+Kamehameha 20 5
+Hadouken 20 5
+Laser 20 5
+CQC 20 5
+Souplesse 20 5 
+Balayette 20 5
+CoupDeBaton 20 5
+CoupDePoing 20 5
+CoupDeMarteau 20 5 
+CoupDeCasque 20 5
+CoupDEpee 20 5
+MentalAttaque 10 10
+Saut 10 10
+Charge 10 10
+Ecrasement 10 10
+Punch 10 10
+
+
+

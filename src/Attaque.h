@@ -12,7 +12,7 @@ public :
     Attaque();
 
 
-    Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int TabStatsAttMag[3],string descriptionAtt);
+    Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int degatsSp,string descriptionAtt);
 
 
     //~Attaque();
@@ -32,29 +32,33 @@ public :
 
     string getDescAttaque();
 
+    int getDegatSp();
 
     void setDescAttaque(string descAttaque_);
 
-
     void setNomAttaque(string nomAtt);
-
 
     void setDegats(int deg);
 
-
     void setNombreMaxUtilisation(int nombreAttMax);
 
+    void setTypeDegats(string nomTypeAtt);
 
-    void setTypeAttaque(string nomTypeAtt);
+     string  getTypeDegats();
+
+
+
 
 private :
 
     string nomAttaque;
     int degats;
-    string typeAttaque;
+    int degatsSpeciaux;
+    string typeDegats;
     string descAttaque;
     int nombreMaxUtilisation;
-    int TabStatsAttMagique[3];
+    int etatNombreTour;
+
 };
 
 #endif // ATTAQUE_H_INCLUDED

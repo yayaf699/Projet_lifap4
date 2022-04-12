@@ -7,27 +7,21 @@ Attaque::Attaque()
 {
     nomAttaque = "Coup d'epee";
     degats = 100;
-    typeAttaque = "Legere";
+    typeDegats = "Legere";
     descAttaque = "Un simple coup d'epee";
     nombreMaxUtilisation = 50;
-    int TabStatsAttMagique[3];
-    for (int i = 0 ; i< 3 ; i=i+1)
-    {
-        TabStatsAttMagique[i] = 0;
-    }
+    degatsSpeciaux = 10;
 }
 
-Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int TabStatsAttMag[3],string descriptionAtt)
+Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string typeDegats_, int degatsSp,string descriptionAtt)
 {
     nomAttaque = nomAtt;
     degats = deg;
-    typeAttaque = nomTypeAtt;
+    degatsSpeciaux = degatsSp;
+    typeDegats = typeDegats_;
     descAttaque = descriptionAtt;
     nombreMaxUtilisation = nombreAttMax;
-    for (int i = 0 ; i< 3 ; i=i+1)
-    {
-        TabStatsAttMagique[i] = 0;
-    } // c'est un tableau qui contient des statistiques que l'attaque changera � l'adversaire
+
 
 }
 
@@ -55,7 +49,12 @@ int Attaque::getDegats()
 
 string Attaque::getTypeAttaque()
 {
-    return typeAttaque;
+    return typeDegats;
+}
+
+int Attaque::getDegatSp()
+{
+    return degatsSpeciaux;
 }
 
 int Attaque::getNombreMaxUtilisation()
@@ -88,8 +87,12 @@ void Attaque::setNombreMaxUtilisation(int nombreAttMax)
     nombreMaxUtilisation = nombreAttMax;
 }
 
-void Attaque::setTypeAttaque(string nomTypeAtt)
+void Attaque::setTypeDegats(string nomTypeAtt)
 {
-    typeAttaque = nomTypeAtt;
+    typeDegats = nomTypeAtt;
 }
 
+string  Attaque::getTypeDegats()
+{
+    return typeDegats;
+}

@@ -16,9 +16,10 @@ public:
 
 	//~Combat();
 
-	
+
 	void tourDuPerso();
 
+    void Clear();
 
 	void tourIA();
 
@@ -26,10 +27,12 @@ public:
 	void combatDeroulement();
 
 
-	void TraiterActionAttaque(int degats);
+	void TraiterActionAttaque(Attaque att);
 
 
 	void DecisionIa();
+
+	void VerifierEtatJoueur();
 
 private:
 

@@ -13,6 +13,7 @@ using namespace std;
 
 int main(){
     Joueur a, b;
+    a.ajouterJoueur(5);
     Combat c(a, b);
     c.combatDeroulement();
     return 0;

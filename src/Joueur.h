@@ -44,9 +44,11 @@ public:
 
     Arme getArme();
 
+    string getEtat();
+
     Statistiques getStats();
 
-    int Attaquer(int i);
+    Attaque Attaquer(int i);
 
     void afficherInventaire() const;
 
@@ -56,13 +58,20 @@ public:
 
     void ajouterJoueur(unsigned int n);
 
+    int getNbTourEtat();
+    void setNbTourEtat(int nbTour);
+
+    void setEtat(string etat_);
+
 private:
 
     string nomJoueur;
-
+    string etat;
+    int nbTourEtat;
     Statistiques stat; // les stats du joueur
     Inventaire inv; // l'inventaire d'objets du joueur
     Arme arm; // l'arme du joueur
+
 };
 
 #endif // JOUEUR_H_INCLUDED

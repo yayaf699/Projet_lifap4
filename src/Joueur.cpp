@@ -14,12 +14,8 @@ using namespace std;
     Joueur::Joueur()
     {
         nomJoueur = "Monkey D. Nordin";
-
-
-        // stat.afficherStat();
-        // cout << arm.getNomArme() << endl;
-        // arm.GetAttaques();
-
+        etat = "";
+        nbTourEtat = 0;
 
     }
 
@@ -116,8 +112,17 @@ using namespace std;
         return stat;
     }
 
+    void Joueur::setEtat(string etat_)
+    {
+        etat = etat_;
+    }
 
-    int Joueur::Attaquer(int i)
+    string Joueur::getEtat()
+    {
+        return etat;
+    }
+
+    Attaque Joueur::Attaquer(int i)
     {
         return arm.utiliserAttaque(i);
     }
@@ -125,6 +130,16 @@ using namespace std;
     void Joueur::afficherInventaire() const
     {
         inv.afficherInventaire();
+    }
+
+    int Joueur::getNbTourEtat()
+    {
+        return nbTourEtat;
+    }
+
+    void Joueur::setNbTourEtat(int nbTour)
+    {
+        nbTourEtat = nbTour;
     }
 
     // UTILISER L'OBJET
@@ -136,36 +151,77 @@ using namespace std;
         inv.retirerObjetInventaire(o);
     }
 
-void Joueur::ajouterJoueur(unsigned int n)
+    void Joueur::ajouterJoueur(unsigned int n)
     {
-        int vie, vitesse;
-        float force;
-        string objetsNom[4];
+        int vie, vitesse; float force; // variable de passage pour les stats joueur et les stats objet
+        string objetsNom[4]; // noms objet dans l'inventaire
 
-        ifstream readJoueur("data/Joueur_stat_inventaire.txt"); // recuperer les stats du joueur et son inventaire
+        string ArmeNom;
+        string attaquesNom[4];
+        int degats;
+        int nbUtilisationMax;
+
+        string nomObjetRecherche; // variable de passage
+
+        ifstream readJoueur("data/Joueur_stat_inventaire.txt"); // recuperer les stats du joueur, son inventaire, son arme et le nom des attaques
         if(readJoueur.is_open())
         {
-            for(unsigned int i = 0; i < n; i++) readJoueur.ignore(100, '\n'); // saut de ligne
-             readJoueur >> nomJoueur >> vie >> vitesse >> force >> objetsNom[0] >> objetsNom[1] >> objetsNom[2] >> objetsNom[3];
+            int i = 0;
+            do
+            {
+            readJoueur >> nomJoueur >> vie >> vitesse >> force;
+            readJoueur >> objetsNom[0] >> objetsNom[1] >> objetsNom[2] >> objetsNom[3];
+            readJoueur >> ArmeNom;
+            readJoueur >> attaquesNom[0] >> attaquesNom[1] >> attaquesNom[2] >> attaquesNom[3];
+
+            readJoueur.ignore(100, '\n');
+            i++;
+            } while (i != n);
+
+            //cout << nomJoueur <<" "<< vie <<" "<< vitesse <<" "<< force <<endl;
+            //cout << objetsNom[0] <<" "<< objetsNom[1] <<" "<< objetsNom[2] <<" "<< objetsNom[3] <<endl;
+            //cout << ArmeNom <<endl;
+            //cout << attaquesNom[0] <<" "<< attaquesNom[1] <<" "<< attaquesNom[2] <<" "<< attaquesNom[3] <<endl;
+
             stat.setVie(vie);
             stat.setVitesse(vitesse);
             stat.setForce(force);
         }
         readJoueur.close();
 
-        ifstream readInventaire("data/Objet.txt"); // r
+        ifstream readInventaire("data/Objet.txt"); // recuperer  le contenu de l'inventaire
         if(readInventaire.is_open())
         {
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i <= 3; i++)
             {
-                string nomObjetRecherche;
+                ifstream readInventaire("data/Objet.txt");
                 do
                 {
                     readInventaire >> nomObjetRecherche >> vie >> vitesse >> force;
                     readInventaire.ignore(100, '\n'); // saut de ligne
-                } while(objetNom[i] != nomObjetRecherche);
+                } while(objetsNom[i] != nomObjetRecherche);
 
+                cout << nomObjetRecherche <<" "<< vie <<" "<< vitesse <<" "<< force <<endl;
                 inv.ajouterObjet(i, nomObjetRecherche, vie, vitesse, force);
             }
         }
+        readInventaire.close();
+
+        ifstream readAttaque("data/Attaque.txt"); // recuperer le contenu des attaques
+        if(readAttaque.is_open())
+        {
+            for(int i = 0; i <= 3; i++)
+            {
+                ifstream readAttaque("data/Attaque.txt");
+                do
+                {
+                    readAttaque >> nomObjetRecherche >> degats >> nbUtilisationMax;
+                    readAttaque.ignore(100, '\n'); // saut de ligne
+                } while (attaquesNom[i] != nomObjetRecherche);
+
+                cout << nomObjetRecherche <<" "<<degats <<" "<<nbUtilisationMax<<endl;
+                arm.ajouterAttaque(i, nomObjetRecherche, degats, nbUtilisationMax);
+            }
+        }
+        readAttaque.close();
     }
