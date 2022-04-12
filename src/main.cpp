@@ -12,9 +12,12 @@
 using namespace std;
 
 int main(){
-    Joueur a, b;
-    a.ajouterJoueur(5);
-    Combat c(a, b);
-    c.combatDeroulement();
+
+    Menu MenuJeu;
+
+    MenuJeu.MenuPrincipale();
+    //MenuJeu.Jouer();
+
+
     return 0;
 }
