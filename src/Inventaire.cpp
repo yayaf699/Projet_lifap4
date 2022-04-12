@@ -53,10 +53,10 @@ using namespace std;
     }
 
     // RECHERCHER OBJET
-     unsigned int Inventaire::rechercherObjetInventaire(Objet o)
+    int Inventaire::rechercherObjetInventaire(string nomObjet)
     {
-        for(  unsigned int i = 0; i < (unsigned int)taille_inventaire; i++){
-            if(inventaire[i].getNomObjet() == o.getNomObjet())
+        for(  int i = 0; i < taille_inventaire; i++){
+            if(inventaire[i].getNomObjet() == nomObjet)
             {
                 return i;
             }
@@ -69,10 +69,10 @@ using namespace std;
     // JETER UN OBJET
     void Inventaire::retirerObjetInventaire(Objet &o)
     {
-        inventaire[rechercherObjetInventaire(o)].setVieObjet(0);
-        inventaire[rechercherObjetInventaire(o)].setVitesseObjet(0);
-        inventaire[rechercherObjetInventaire(o)].setForceObjet(0.0);
-        inventaire[rechercherObjetInventaire(o)].setNomObjet("emplacement vide");
+        inventaire[rechercherObjetInventaire(o.getNomObjet())].setVieObjet(0);
+        inventaire[rechercherObjetInventaire(o.getNomObjet())].setVitesseObjet(0);
+        inventaire[rechercherObjetInventaire(o.getNomObjet())].setForceObjet(0.0);
+        inventaire[rechercherObjetInventaire(o.getNomObjet())].setNomObjet("emplacement vide");
 
     }
 
