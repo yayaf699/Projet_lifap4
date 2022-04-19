@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <time.h>
-#include <Windows.h>
+//#include <Windows.h>
 #ifdef _WIN32 // lorsqu'on compile avec windows
 const bool os = true;
 #elif __linux__
@@ -294,7 +294,7 @@ void Combat::VerifierEtatJoueur()
                     {
                             cout<<"ETAT JOUEUR : "<<Perso.getEtat()<< " pendant "<< Perso.getNbTourEtat()<< " tours"<<endl;
                             DecisionIa();
-                            Sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
+                            //sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
                             Perso.setNbTourEtat(Perso.getNbTourEtat()-1);
                     }
                 }
@@ -369,7 +369,7 @@ void Combat::combatDeroulement()
             VerifierEtatJoueur();
             tour = false; // au tour de l'ia
             cout<<"L'IA reflechi a son prochain tour (c'est faux mais faut que t'ai le temps de lire)"<<endl;
-            Sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
+            //sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
             DecisionIa(); // donne le controle a l'IA
             VerifierEtatJoueur();
             tour = true; // au tour du joueur
@@ -383,7 +383,7 @@ void Combat::combatDeroulement()
         {
             tour = false;
             cout<<"L'IA reflechi a son prochain tour (c'est faux mais faut que t'ai le temps de lire)"<<endl;
-            Sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
+            //sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
             DecisionIa(); // donne le controle a l'IA
             VerifierEtatJoueur();
             tour = true; // au tour du joueur
