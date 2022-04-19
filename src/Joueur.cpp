@@ -70,8 +70,11 @@ using namespace std;
     // OPERATEUR << POUR AFFICHER TOUTES LES STATS
     void Joueur::afficherJoueur()
     {
-         cout<<"\n ******* STAT DU JOUEUR ******* \n"<<endl;
-         stat.afficherStat();
+        cout<<"\n ******* NOM ******* \n"<<endl;
+        cout<<getNom()<<endl;
+
+        cout<<"\n ******* STAT DU JOUEUR ******* \n"<<endl;
+        stat.afficherStat();
 
         cout<<" \n ******* INVENTAIRE ******* \n"<<endl;
         inv.afficherInventaire();
@@ -156,7 +159,7 @@ using namespace std;
             cin>>choix;
             while(getArme().getAtk(choix-1).getNombreMaxUtilisation() !=0 )
             {
-                cout<<"\n Cette attaque possède deja au moins 1 utilisation \n"<<endl;
+                cout<<"\n Cette attaque possï¿½de deja au moins 1 utilisation \n"<<endl;
                 cout<<"De quelle attaque voulez vous augmentez son nombre d'utilisation ?"<<endl;
                 cin >> choix;
             }
@@ -169,59 +172,71 @@ using namespace std;
 
     void Joueur::ajouterJoueur(unsigned int n)
     {
-        int vie, vitesse; float force; // variable de passage pour les stats joueur et les stats objet
-        string objetsNom[4]; // noms objet dans l'inventaire
+        // sens de lecture du fichier Joueur_stat_inventaire
+        // nom etat nbTourEtat statVie statVitesse statForce objet1 objet2 objet3 objet4 nomArme attaque1 attaque2 attaque3 attaque4
+        
+        string nom, etat;
+        int nbTour, statVie, statVitesse;
+        float statForce;
 
-        string ArmeNom;
-        string attaquesNom[4];
-        int degats;
-        int nbUtilisationMax;
+        string objets[4];
+        string nomArme;
+        string attaques[4];
 
-        string nomObjetRecherche; // variable de passage
+        string ElementRecherche; // variable de passage
 
         ifstream readJoueur("data/Joueur_stat_inventaire.txt"); // recuperer les stats du joueur, son inventaire, son arme et le nom des attaques
         if(readJoueur.is_open())
         {
-            int i = 0;
+            int i = 1;
             do
             {
-            readJoueur >> nomJoueur >> vie >> vitesse >> force;
-            readJoueur >> objetsNom[0] >> objetsNom[1] >> objetsNom[2] >> objetsNom[3];
-            readJoueur >> ArmeNom;
-            readJoueur >> attaquesNom[0] >> attaquesNom[1] >> attaquesNom[2] >> attaquesNom[3];
-
-            readJoueur.ignore(100, '\n');
+            readJoueur.ignore(1000, '\n');
             i++;
-            } while (i != n);
+            } while (i != n); // on parcours le fichier qu'une fois
 
-            //cout << nomJoueur <<" "<< vie <<" "<< vitesse <<" "<< force <<endl;
-            //cout << objetsNom[0] <<" "<< objetsNom[1] <<" "<< objetsNom[2] <<" "<< objetsNom[3] <<endl;
-            //cout << ArmeNom <<endl;
-            //cout << attaquesNom[0] <<" "<< attaquesNom[1] <<" "<< attaquesNom[2] <<" "<< attaquesNom[3] <<endl;
+            readJoueur >> nom >> etat >> nbTour >> statVie >> statVitesse >> statForce;
+            readJoueur >> objets[0] >> objets[1] >> objets[2] >> objets[3];
+            readJoueur >> nomArme;
+            readJoueur >> attaques[0] >> attaques[1] >> attaques[2] >> attaques[3];
 
-            stat.setVie(vie);
-            stat.setVitesse(vitesse);
-            stat.setForce(force);
+            setNom(nom);
+            setEtat(etat);
+
+            stat.setVie(statVie);
+            stat.setVitesse(statVitesse);
+            stat.setForce(statForce); 
+
+            arm.setNomArme(nomArme);       
         }
         readJoueur.close();
 
         ifstream readInventaire("data/Objet.txt"); // recuperer  le contenu de l'inventaire
         if(readInventaire.is_open())
         {
-            for(int i = 0; i <= 3; i++)
+            for(int i = 0; i <= 3; i++) // parcourir le fichier en fonction du nombre d'objets
             {
                 ifstream readInventaire("data/Objet.txt");
                 do
                 {
-                    readInventaire >> nomObjetRecherche >> vie >> vitesse >> force;
+                    readInventaire >> ElementRecherche >> statVie >> statVitesse >> statForce;
                     readInventaire.ignore(1000, '\n'); // saut de ligne
-                } while(objetsNom[i] != nomObjetRecherche);
+                } while(objets[i] != ElementRecherche);
 
-                cout << nomObjetRecherche <<" "<< vie <<" "<< vitesse <<" "<< force <<endl;
-                inv.ajouterObjet(i, nomObjetRecherche, vie, vitesse, force);
+                inv.ajouterObjet(i, ElementRecherche, statVie, statVitesse, statForce);
+                readInventaire.close();
             }
         }
         readInventaire.close();
+/*
+        // lecture des stats des attaques 
+        // sens de lecture
+        // nom degats degatsSpeciaux typeDegats descAttaque nombreMaxUtilisation etatNombreTour
+        int degats, degatsSpeciaux, nombreMaxUtilisation, etatNombreTour;
+        string typeDegats, typeAttaque;
+        string descAttaque = "";
+        string concatenationChaine;
+        string description = "";
 
         ifstream readAttaque("data/Attaque.txt"); // recuperer le contenu des attaques
         if(readAttaque.is_open())
@@ -231,13 +246,23 @@ using namespace std;
                 ifstream readAttaque("data/Attaque.txt");
                 do
                 {
-                    readAttaque >> nomObjetRecherche >> degats >> nbUtilisationMax;
-                    readAttaque.ignore(1000, '\n'); // saut de ligne
-                } while (attaquesNom[i] != nomObjetRecherche);
+                    readAttaque >> nom >> degats >> degatsSpeciaux >> typeDegats >> typeAttaque;
 
-                cout << nomObjetRecherche <<" "<<degats <<" "<<nbUtilisationMax<<endl;
-                arm.ajouterAttaque(i, nomObjetRecherche, degats, nbUtilisationMax);
+                    // descAttaque concatenation des mots
+                    while (descAttaque != "/")
+                    {
+                        readAttaque >> concatenationChaine >> descAttaque;
+                        description = description + " " + concatenationChaine + " " +  descAttaque + " ";
+                    }
+
+                    readAttaque >> nombreMaxUtilisation >> etatNombreTour;
+                    readAttaque.ignore(1000, '\n'); // saut de ligne
+                } while (attaques[i] != ElementRecherche);
+
+                arm.ajouterAttaque(i, nom, degats, degatsSpeciaux, typeDegats, typeAttaque, descAttaque, nombreMaxUtilisation, etatNombreTour);
+                readAttaque.close();
             }
         }
         readAttaque.close();
+*/
     }
