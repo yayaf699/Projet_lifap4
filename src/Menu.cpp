@@ -62,12 +62,23 @@ using namespace std;
     
     void Menu::Quitter() // quitter le menu et le jeu
     {
+        // version txt
         char reponse;
         cout << "etes vous sur de vouloir quitter le jeu ? [o/n]" << endl;
         cin >> reponse;
 
         if(reponse == 'o') exit(0);
         else MenuPrincipale();
+
+        /*   VERSION SDL
+            *
+            *
+            * 
+            * 
+            * 
+            * 
+        */
+       
     }
     
     void Menu::MenuPersonnage() 
@@ -96,6 +107,11 @@ using namespace std;
         TonPersonnage.afficherJoueur();
         TonPersonnage.ajouterJoueur(choixPersonnage);
 
+        for(int i = 0; i < taille_tabMenu; i++)
+        {
+            if(choixPersonnage != i+1) cout << i+1 << ". " << tabMenuPersonnage[i] << endl;
+        }
+
         cout <<"Quel adversaire voulez vous choisir ?"<<endl;
         cin>>choixAdversaire;
         Adversaire.afficherJoueur();
@@ -110,6 +126,8 @@ using namespace std;
             * 
             * 
         */
+
+       Jouer();
     }
 
     
