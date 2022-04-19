@@ -1,29 +1,32 @@
-SuperAttaqueDiscrete 40 2 
-SuperCoupDeMarteau 40 2 
-SuperPunch 40 2
-SuperKamehameha 40 2
-FalconPunch 40 2
-SuperKick 40 2
-SuperBlaster 40 2 
-FinalSlash 40 2
-FatalPunch 40 2
-DoubleSlash 20 5
-Kamehameha 20 5
-Hadouken 20 5
-Laser 20 5
-CQC 20 5
-Souplesse 20 5 
-Balayette 20 5
-CoupDeBaton 20 5
-CoupDePoing 20 5
-CoupDeMarteau 20 5 
-CoupDeCasque 20 5
-CoupDEpee 20 5
-MentalAttaque 10 10
-Saut 10 10
-Charge 10 10
-Ecrasement 10 10
-Punch 10 10
+SuperAttaqueDiscrete 40 2  combat un double coup d'epee surpuissant est effectué / 5
+SuperCoupDeMarteau 40 2  combat un double coup d'epee surpuissant est effectué / 5
+SuperPunch 40 2  combat un double coup d'epee surpuissant est effectué / 5
+SuperKamehameha 40 2  combat un double coup d'epee surpuissant est effectué / 5
+FalconPunch 40 2  combat un double coup d'epee surpuissant est effectué / 5
+SuperKick 40 2  combat un double coup d'epee surpuissant est effectué / 5
+SuperBlaster 40 2  combat un double coup d'epee surpuissant est effectué / 5
+FinalSlash 40 2  combat un double coup d'epee surpuissant est effectué / 5
+FatalPunch 40 2  combat un double coup d'epee surpuissant est effectué / 5
+DoubleSlash 20 5 combat un double coup d'epee surpuissant est effectué / 5
+Kamehameha 20 5 projection un Kamehameha est effectué / 5
+Hadouken 20 5 projection un Hadouken est effectué / 5
+Laser 20 5 projection un tir de laser est effectué / 5
+CQC 20 5 combat CQC des techniques de combat rapproché sont effectué / 5
+Souplesse 20 5 combat une souplesse est effectué / 5
+Balayette 20 5 combat une balayette est effectué / 5
+CoupDeBaton 20 5 combat un coup de baton est effectué / 5
+CoupDePoing 20 5 combat un coup de poing est effectué / 5
+CoupDeMarteau 20 5 combat un coup de marteau est effectué / 5
+CoupDeCasque 20 5 combat un coup de casque est effectué / 5
+CoupDEpee 20 5 combat un coup d'epee est effectué / 5
+MentalAttaque 10 5 psy une attaque mentale est effectué / 10
+Saut 10 5 combat un saut bien placé est effectué / 10
+Charge 10 5 combat une charge est effectué / 10
+Ecrasement 10 5 combat un ecrasement est effectué / 10
+Punch 10 5 combat un coup de poing bien placé est effectué / 10
 
 
 
+
+
+ / nom degats degatsSpeciaux typeDegats typeAttaque descAttaque nombreMaxUtilisation etatNombreTour
