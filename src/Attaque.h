@@ -9,13 +9,16 @@ class Attaque
 
 public :
 
+    // CONSTRUCTEUR
     Attaque();
 
-
+    // CONSTRUCTEUR PAR COPIE
     Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int degatsSp,string descriptionAtt);
 
 
     //~Attaque();
+
+// LES ACCESSEURS ET MUTATEURS 
 
     // ACCESSEUR NOM ATTAQUE
     string getNomAttaque();
@@ -23,31 +26,47 @@ public :
     // ACCESSEUR DEGATS ATTAQUE
     int getDegats();
 
-    // ACCESSEUR TYPE ATTAQUE
-    string getTypeAttaque();
-
-    // ACCESSEUR NOMBR UTILISATION ATTAQUE
+    // ACCESSEUR NOMBRE UTILISATION ATTAQUE
     int getNombreMaxUtilisation();
 
-
+    // ACCESSEUR DESCRIPTION D'ATTAQUE
     string getDescAttaque();
 
+    // ACCESSEUR DEGATS SPECIAUX
     int getDegatSp();
 
-    void setDescAttaque(string descAttaque_);
+    // ACCESSEUR TYPE ATTAQUE
+    string  getTypeDegats();
 
-    void setNomAttaque(string nomAtt);
+    // ACCESSEUR TYPE DE DEGATS
+    string  getTypeAttaque();
 
-    void setDegats(int deg);
+    // ACCESSEUR NOMBRE TOUR ETAT 
+    int getEtatNombreTour();
 
-    void setNombreMaxUtilisation(int nombreAttMax);
+    // MUTATEUR NOM ATTAQUE
+    void setNomAttaque(string nomAttaque_);
 
-    void setTypeDegats(string nomTypeAtt);
+    // MUTATEUR DEGATS ATTAQUE
+    void setDegats(int degats_);
 
-     string  getTypeDegats();
+    // MUTATEUR NOMBRE UTILISATION ATTAQUE
+    void setNombreMaxUtilisation(int NombreMaxUtilisation_);
 
+    // MUTATEUR DESCRIPTION D'ATTAQUE
+    void setDescAttaque(string DescAttaque_);
 
+    // MUTATEUR DEGATS SPECIAUX
+    void setDegatSp(int degatSP_);
 
+    // MUTATEUR TYPE DE DEGATS
+    void setTypeDegats(string typeDegats_);
+
+    // MUTATEUR TYPE ATTAQUE
+    void  setTypeAttaque(string typeAttaque_);
+
+    // MUTATEUR NOMBRE TOUR ETAT 
+    int setEtatNombreTour(int etatNombreTour_);
 
 private :
 
@@ -55,6 +74,7 @@ private :
     int degats;
     int degatsSpeciaux;
     string typeDegats;
+    string typeAttaque;
     string descAttaque;
     int nombreMaxUtilisation;
     int etatNombreTour;
