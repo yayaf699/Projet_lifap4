@@ -113,11 +113,16 @@ using namespace std;
         return tabAttaque[i];
     }
 
-    void Arme::ajouterAttaque(const unsigned int indice, string nom, int degats_, int nombreMaxUtilisation_)
+    void Arme::ajouterAttaque(int indice, string nomAttaque, int degats, int degatsSpeciaux, string typeDegats, string typeAttaque, string descAttaque, int nombreMaxUtilisation, int etatNombreTour)
     {
-        tabAttaque[indice].setNomAttaque(nom);
-        tabAttaque[indice].setDegats(degats_);
-        tabAttaque[indice].setNombreMaxUtilisation(nombreMaxUtilisation_);
+        tabAttaque[indice].setNomAttaque(nomAttaque);
+        tabAttaque[indice].setDegats(degats);
+        tabAttaque[indice].setDegatSp(degatsSpeciaux);
+        tabAttaque[indice].setTypeDegats(typeDegats);
+        tabAttaque[indice].setTypeAttaque(typeAttaque);
+        tabAttaque[indice].setDescAttaque(descAttaque);
+        tabAttaque[indice].setNombreMaxUtilisation(nombreMaxUtilisation);
+        tabAttaque[indice].setEtatNombreTour(etatNombreTour);
     }
 
 
