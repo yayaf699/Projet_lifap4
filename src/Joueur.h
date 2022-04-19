@@ -25,8 +25,35 @@ public:
     // MUTATEUR NOM
     void setNom(const string& n);
 
+    // ACCESSEUR STATS
+    Statistiques getStats();
+
     //MUTATEUR STATS
     void setStat(const string &s, float valeur);
+
+    // ACCESSEUR VIE
+    int getVie();
+
+    // MUTATEUR VIE
+    void SetVie(int valeur);
+
+    // ACCESSEUR ARME
+    Arme getArme();
+
+    // ACCESSEUR INVENTAIRE
+    Inventaire getInv();
+
+    // ACCESSEUR ETAT
+    string getEtat();
+
+    // MUTATEUR ETAT
+    void setEtat(string etat_);
+
+    // ACCESSEUR NOMBRE DE TOURS ETAT
+    int getNbTourEtat();
+
+    // MUTATEUR NOMBRE DE TOURS ETAT
+    void setNbTourEtat(int nbTour);
 
 // GESTION DU JOUEUR
 
@@ -36,32 +63,20 @@ public:
     // OPERATEUR << POUR AFFICHER TOUTES LES STATS
     void afficherJoueur();
 
-    int getVie();
-
-    void SetVie(int valeur);
-
-    Inventaire getInv();
-
-    Arme getArme();
-
-    string getEtat();
-
-    Statistiques getStats();
-
+    // ATTAQUER
     Attaque Attaquer(int i);
 
+    // AFFICHE L'INVENTAIRE
     void afficherInventaire() const;
 
+    // UTILISER L'OBJET
     void utiliserObjet(Objet o);
 
+    // OPERATEUR =
     Joueur &operator=(const Joueur &j);
 
+    // AJOUTER UN JOUEUR
     void ajouterJoueur(unsigned int n);
-
-    int getNbTourEtat();
-    void setNbTourEtat(int nbTour);
-
-    void setEtat(string etat_);
 
 private:
 
