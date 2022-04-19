@@ -37,62 +37,50 @@ Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string typeDegats_, int 
 //     }
 // }
 
-string Attaque::getNomAttaque()
-{
-    return nomAttaque;
-}
+    // ACCESSEUR NOM ATTAQUE
+    string Attaque::getNomAttaque() { return nomAttaque; }
 
-int Attaque::getDegats()
-{
-    return degats;
-}
+    // ACCESSEUR DEGATS ATTAQUE
+    int Attaque::getDegats() { return degats; }
 
-string Attaque::getTypeAttaque()
-{
-    return typeDegats;
-}
+    // ACCESSEUR NOMBRE UTILISATION ATTAQUE
+    int Attaque::getNombreMaxUtilisation() { return nombreMaxUtilisation; }
 
-int Attaque::getDegatSp()
-{
-    return degatsSpeciaux;
-}
+    // ACCESSEUR DESCRIPTION D'ATTAQUE
+    string Attaque::getDescAttaque() { return descAttaque; }
 
-int Attaque::getNombreMaxUtilisation()
-{
-    return nombreMaxUtilisation;
-}
+    // ACCESSEUR DEGATS SPECIAUX
+    int Attaque::getDegatSp() { return degatsSpeciaux; }
 
-string Attaque::getDescAttaque()
-{
-    return descAttaque;
-}
+    // ACCESSEUR TYPE DE DEGATS
+    string  Attaque::getTypeDegats() { return typeDegats; }
 
-void Attaque::setDescAttaque(string descAttaque_)
-{
-    descAttaque = descAttaque_;
-}
+    // ACCESSEUR TYPE DE DEGATS
+    string  Attaque::getTypeAttaque() { return typeAttaque; }
 
-void Attaque::setNomAttaque(string nomAtt)
-{
-    nomAttaque = nomAtt;
-}
+    // ACCESSEUR NOMBRE TOUR ETAT 
+    int Attaque::getEtatNombreTour() { return etatNombreTour; }
 
-void Attaque::setDegats(int deg)
-{
-    degats = deg;
-}
+    // MUTATEUR NOM ATTAQUE
+    void Attaque::setNomAttaque(string nomAttaque_) { nomAttaque = nomAttaque_; }
 
-void Attaque::setNombreMaxUtilisation(int nombreAttMax)
-{
-    nombreMaxUtilisation = nombreAttMax;
-}
+    // MUTATEUR DEGATS ATTAQUE
+    void Attaque::setDegats(int degats_) { degats = degats_; }
 
-void Attaque::setTypeDegats(string nomTypeAtt)
-{
-    typeDegats = nomTypeAtt;
-}
+    // MUTATEUR NOMBRE UTILISATION ATTAQUE
+    void Attaque::setNombreMaxUtilisation(int NombreMaxUtilisation_) { nombreMaxUtilisation = NombreMaxUtilisation_; }
 
-string  Attaque::getTypeDegats()
-{
-    return typeDegats;
-}
+    // MUTATEUR DESCRIPTION D'ATTAQUE
+    void Attaque::setDescAttaque(string DescAttaque_) { descAttaque = DescAttaque_; }
+
+    // MUTATEUR DEGATS SPECIAUX
+    void Attaque::setDegatSp(int degatSP_) { degatsSpeciaux = degatSP_; }
+
+    // MUTATEUR TYPE DE DEGATS
+    void Attaque::setTypeDegats(string typeDegats_) { typeDegats = typeDegats_; }
+
+    // MUTATEUR TYPE ATTAQUE
+    void  Attaque::setTypeAttaque(string typeAttaque_) { typeAttaque = typeAttaque_; }
+
+    // MUTATEUR NOMBRE TOUR ETAT 
+    int Attaque::setEtatNombreTour(int etatNombreTour_) { etatNombreTour = etatNombreTour_; }
