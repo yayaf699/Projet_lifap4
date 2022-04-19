@@ -46,10 +46,7 @@ public:
 
      Attaque getAtk(int i);
 
-    void ajouterAttaque(const unsigned int indice, string nom, int degats_, int nombreMaxUtilisation_);
-
-
-
+    void ajouterAttaque(int indice, string nomAttaque, int degats, int degatsSpeciaux, string typeDegats, string typeAttaque, string descAttaque, int nombreMaxUtilisation, int etatNombreTour);
 
 private:
 
