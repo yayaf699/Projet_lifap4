@@ -3,5 +3,3 @@ SuperPotion 20 0 0
 MegaPotion 30 0 0 
 VitessePlus 0 10 0 
 ForcePlus 0 0 1.1 
-
-
