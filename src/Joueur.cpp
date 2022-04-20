@@ -224,11 +224,10 @@ using namespace std;
                 } while(objets[i] != ElementRecherche);
 
                 inv.ajouterObjet(i, ElementRecherche, statVie, statVitesse, statForce);
-                readInventaire.close();
             }
         }
         readInventaire.close();
-/*
+
         // lecture des stats des attaques 
         // sens de lecture
         // nom degats degatsSpeciaux typeDegats descAttaque nombreMaxUtilisation etatNombreTour
@@ -237,6 +236,7 @@ using namespace std;
         string descAttaque = "";
         string concatenationChaine;
         string description = "";
+        string sautDeMot;
 
         ifstream readAttaque("data/Attaque.txt"); // recuperer le contenu des attaques
         if(readAttaque.is_open())
@@ -246,23 +246,15 @@ using namespace std;
                 ifstream readAttaque("data/Attaque.txt");
                 do
                 {
-                    readAttaque >> nom >> degats >> degatsSpeciaux >> typeDegats >> typeAttaque;
-
-                    // descAttaque concatenation des mots
-                    while (descAttaque != "/")
-                    {
-                        readAttaque >> concatenationChaine >> descAttaque;
-                        description = description + " " + concatenationChaine + " " +  descAttaque + " ";
-                    }
-
-                    readAttaque >> nombreMaxUtilisation >> etatNombreTour;
+                    readAttaque >> ElementRecherche >> degats >> degatsSpeciaux >> typeDegats >> typeAttaque;
+                    readAttaque >> descAttaque >> nombreMaxUtilisation >> etatNombreTour; 
                     readAttaque.ignore(1000, '\n'); // saut de ligne
                 } while (attaques[i] != ElementRecherche);
 
-                arm.ajouterAttaque(i, nom, degats, degatsSpeciaux, typeDegats, typeAttaque, descAttaque, nombreMaxUtilisation, etatNombreTour);
-                readAttaque.close();
+                cout<<i<<" "<<ElementRecherche<<" "<<degats<<" "<<degatsSpeciaux<<" "<<typeDegats<<" "<<typeAttaque<<" "<<descAttaque<<" "<<nombreMaxUtilisation<<" "<<etatNombreTour<<" "<<endl;
+                arm.ajouterAttaque(i, ElementRecherche, degats, degatsSpeciaux, typeDegats, typeAttaque, descAttaque, nombreMaxUtilisation, etatNombreTour);
+                arm.ajouterAttaque(2,"test nom attaque",5,5,"test type de degats", "test type attaque", "test description attaque",5,5);
             }
         }
         readAttaque.close();
-*/
     }
