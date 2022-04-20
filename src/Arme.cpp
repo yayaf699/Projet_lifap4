@@ -87,19 +87,16 @@ using namespace std;
         cout<<"NOM DE L'ARME: "<<nomArme<<"\n"<<endl;
         for(int i = 0; i < nbAttaque; i++)
         {
+            //  nom degats degatsSpeciaux typeDegats typeAttaque descAttaque nombreMaxUtilisation etatNombreTour
             cout<<i+1<<". "<<endl;
             cout<<"NOM D'ATTAQUE : "<<tabAttaque[i].getNomAttaque()<<endl;
             cout<<"DEGATS :"<<tabAttaque[i].getDegats()<<endl;
-            cout<<"TYPE DE L'ATTAQUE :"<<tabAttaque[i].getDescAttaque()<<endl;
-            cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation()<<"\n "<<endl;
-
-            /*if(tabAttaque.getTypeAttaque() == "strategique")
-            {
-                // affiche les stats supplementaires des attaques strategiques
-
-            }
-            cout<<endl;
-            */
+            cout<<"DEGATS SPECIAUX :"<<tabAttaque[i].getDegatSp()<<endl;
+            cout<<"TYPE DE DEGATS :"<<tabAttaque[i].getTypeDegats()<<endl;
+            cout<<"TYPE DE L'ATTAQUE :"<<tabAttaque[i].getTypeAttaque()<<endl;
+            cout<<"DESCRIPTION D'ATTAQUE :"<<tabAttaque[i].getDescAttaque()<<endl;
+            cout<<"NOMBRE MAX D'UTILISATION :"<<tabAttaque[i].getNombreMaxUtilisation()<<endl;
+            cout<<"ETAT NOMBRE DE TOURS :"<<tabAttaque[i].getEtatNombreTour()<<endl;
         }
     }
 
