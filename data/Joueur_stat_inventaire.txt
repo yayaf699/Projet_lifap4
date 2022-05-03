@@ -1,14 +1,213 @@
-SolidSnake sain 1000 100 80 1.1 Potion SuperPotion MegaPotion VitessePlus Couteau SuperAttaqueDiscrete CQC Souplesse Balayette
-Mario sain 1000 100 50 1.5 Potion SuperPotion MegaPotion VitessePlus Marteau SuperCoupDeMarteau SuperPunch Saut Charge
-Goku sain 1000 100 70 1.5 Potion SuperPotion MegaPotion VitessePlus BatonMagique SuperKamehameha Kamehameha CoupDeBaton CoupDePoing
-DonkeyKong sain 1000 100 40 1.8 Potion SuperPotion MegaPotion VitessePlus Marteau SuperCoupDeMarteau CoupDeMarteau Charge Ecrasement
-CaptainFalcon sain 1000 100 60 1.4 Potion SuperPotion MegaPotion VitessePlus SuperGant FalconPunch SuperPunch Souplesse Punch
-Ryu sain 1000 100 50 1.6 Potion SuperPotion MegaPotion VitessePlus Bandeau Hadouken SuperKick Balayette CoupDePoing
-MegaMan sain 1000 100 80 1.1 Potion SuperPotion MegaPotion VitessePlus Blaster SuperBlaster Laser Charge CoupDeCasque
-Cloud sain 1000 100 30 1.9 Potion SuperPotion MegaPotion VitessePlus SuperEpee FinalSlash DoubleSlash CoupDEpee Ecrasement
-Mewtwo sain 1000 100 99 1.0 Potion SuperPotion MegaPotion VitessePlus PouvoirPsychique FatalPunch MentalAttaque Souplesse Ecrasement
+[
+    {
+        "Nom": "Solid Snake",
+        "Arme": "Couteau",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 80, 
+            "statForce": 1.1
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super Attaque Discrete",
+            "CQC",
+            "Souplesse",
+            "Balayette"
+        ]
+    },
+    {
+        "Nom": "Mario",
+        "Arme": "Marteau",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 50, 
+            "statForce": 1.5
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "SuperCoupDeMarteau",
+            "SuperPunch",
+            "Saut", 
+            "Charge"
+        ]
+    },
+    {
+        "Nom": "Goku",
+        "Arme": "Baton Magique",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 70, 
+            "statForce": 1.5
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super Kamehameha",
+            "Kamehameha", 
+            "CoupDeBaton", 
+            "CoupDePoing"
+        ]
+    },
+    {
+        "Nom": "Donkey Kong",
+        "Arme": "Marteau",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 40, 
+            "statForce": 1.8
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "SuperCoupDeMarteau",
+            "CoupDeMarteau", 
+            "Charge", 
+            "Ecrasement"
+        ]
+    },
+    {
+        "Nom": "Captain Falcon",
+        "Arme": "Super Gant",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 40, 
+            "statForce": 1.8
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "FalconPunch", 
+            "SuperPunch", 
+            "Souplesse", 
+            "Punch"
+        ]
+    },
+    {
+        "Nom": "Ryu",
+        "Arme": "Bandeau",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 50, 
+            "statForce": 1.6
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Hadouken", 
+            "SuperKick", 
+            "Balayette", 
+            "CoupDePoing"
+        ]
+    },
+    {
+        "Nom": "MegaMan",
+        "Arme": "Blaster",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 80, 
+            "statForce": 1.1
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "SuperBlaster", 
+            "Laser", 
+            "Charge", 
+            "CoupDeCasque"
+        ]
+    },
+    {
+        "Nom": "Cloud",
+        "Arme": "SuperEpee",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 30, 
+            "statForce": 1.9
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "FinalSlash", 
+            "DoubleSlash", 
+            "CoupDEpee", 
+            "Ecrasement"
+        ]
+    },
+    {
+        "Nom": "Mewtwo",
+        "Arme": "PouvoirPsychique",
+        "Stats" : {
+            "etat": "sain",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 30, 
+            "statForce": 1.9
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "FatalPunch", 
+            "MentalAttaque", 
+            "Souplesse", 
+            "Ecrasement"
+        ]
+    }
+
+]
 
 
 
-
-// nom etat nbTourEtat statVie statVitesse statForce objet1 objet2 objet3 objet4 nomArme attaque1 attaque2 attaque3 attaque4
