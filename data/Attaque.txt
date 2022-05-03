@@ -170,7 +170,7 @@
            "etatNombreTour" : 0
 	},
 	{
-	   "nom": "Pistolet",
+	   "nom": "Super Blaster",
 	   "degats": 10,
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "saignement",
@@ -190,7 +190,7 @@
            "etatNombreTour" : 2
 	},
 	{
-	   "nom": "Medusa attaque",
+	   "nom": "Snake Progression",
 	   "degats": 20,
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "petrification",
@@ -250,7 +250,7 @@
            "etatNombreTour" : 0
 	},
 	{
-	   "nom": "Coup d'epee",
+	   "nom": "Coup epee",
 	   "degats": 10,
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "saignement",
