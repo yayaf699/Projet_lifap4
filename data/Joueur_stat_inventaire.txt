@@ -1,9 +1,8 @@
-[
+"Joueur" : [
     {
         "Nom": "Solid Snake",
-        "Arme": "Couteau",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 80, 
@@ -24,9 +23,8 @@
     },
     {
         "Nom": "Mario",
-        "Arme": "Marteau",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 50, 
@@ -39,17 +37,16 @@
             "VitessePlus"
         ],
         "Attaques": [
-            "SuperCoupDeMarteau",
-            "SuperPunch",
+            "Super coup de marteau",
+            "Super Punch",
             "Saut", 
             "Charge"
         ]
     },
     {
         "Nom": "Goku",
-        "Arme": "Baton Magique",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 70, 
@@ -64,15 +61,14 @@
         "Attaques": [
             "Super Kamehameha",
             "Kamehameha", 
-            "CoupDeBaton", 
-            "CoupDePoing"
+            "Coup de baton", 
+            "Coup de poing"
         ]
     },
     {
         "Nom": "Donkey Kong",
-        "Arme": "Marteau",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 40, 
@@ -85,17 +81,16 @@
             "VitessePlus"
         ],
         "Attaques": [
-            "SuperCoupDeMarteau",
-            "CoupDeMarteau", 
+            "Super coup de marteau",
+            "Coup de marteau", 
             "Charge", 
             "Ecrasement"
         ]
     },
     {
         "Nom": "Captain Falcon",
-        "Arme": "Super Gant",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 40, 
@@ -108,17 +103,16 @@
             "VitessePlus"
         ],
         "Attaques": [
-            "FalconPunch", 
-            "SuperPunch", 
-            "Souplesse", 
+            "Falcon Punch", 
+            "Super Punch", 
+            "Falcon Mobile", 
             "Punch"
         ]
     },
     {
         "Nom": "Ryu",
-        "Arme": "Bandeau",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 50, 
@@ -134,14 +128,13 @@
             "Hadouken", 
             "SuperKick", 
             "Balayette", 
-            "CoupDePoing"
+            "Coup de poing"
         ]
     },
     {
         "Nom": "MegaMan",
-        "Arme": "Blaster",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 80, 
@@ -154,17 +147,16 @@
             "VitessePlus"
         ],
         "Attaques": [
-            "SuperBlaster", 
+            "Super Blaster", 
             "Laser", 
             "Charge", 
-            "CoupDeCasque"
+            "Coup de casque"
         ]
     },
     {
         "Nom": "Cloud",
-        "Arme": "SuperEpee",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 30, 
@@ -177,17 +169,16 @@
             "VitessePlus"
         ],
         "Attaques": [
-            "FinalSlash", 
-            "DoubleSlash", 
-            "CoupDEpee", 
+            "Final Slash", 
+            "Double Slash", 
+            "Coup epee", 
             "Ecrasement"
         ]
     },
     {
         "Nom": "Mewtwo",
-        "Arme": "PouvoirPsychique",
         "Stats" : {
-            "etat": "sain",
+            "etat": "",
             "nbTourEtat": 0, 
             "statVie": 100,
             "statVitesse": 30, 
@@ -200,10 +191,32 @@
             "VitessePlus"
         ],
         "Attaques": [
-            "FatalPunch", 
-            "MentalAttaque", 
+            "Fatal Punch", 
+            "Mental Attaque", 
             "Souplesse", 
             "Ecrasement"
+        ]
+    },
+    {
+        "Nom": "Medusa",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 60, 
+            "statForce": 1.2
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Morsure du serpent", 
+            "Mental Attaque", 
+            "Freeze", 
+            "Snake Progression"
         ]
     }
 
