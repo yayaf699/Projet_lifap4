@@ -16,41 +16,36 @@ public:
     // CONSTRUCTEUR
     Arme();
 
-    // CONSTRUCTEUR PAR COPIE
-    Arme(const string &n, const int &nb, Attaque tab[]);
-
     // DESTRUCTEUR
     ~Arme();
 
 // ACCESSEURS ET MUTATEURS
 
-    // ACCESSEUR NOM
-    const string &getNomArme() const;
+    // ACCESSEUR NOMBRE D'ATTAQUE
+    int getNbAttaque();
 
     // ACCESSEUR ATTAQUE
-    Attaque utiliserAttaque( int i);
+    string getNomAttaque(int i);
 
-    // MUTATEUR NOM
-    void setNomArme(const string &n);
-
-    void affAttaques();
-
+    // MUTATEUR ATTAQUE
+    void setNomAttaque(const unsigned int &i, const string &n);
 
 // GESTION ARME
 
-    // CHOIX DE L'ATTAQUE
-    const unsigned int &choixAttaque();
-
-    // AFFICHER LES STATS DE L'ARME
-    void afficher() const;
-
-     Attaque getAtk(int i);
-
+    // AJOUTER ATTAQUE
     void ajouterAttaque(int indice, string nomAttaque, int degats, int degatsSpeciaux, string typeDegats, string typeAttaque, string descAttaque, int nombreMaxUtilisation, int etatNombreTour);
+
+    // RETOURNE I-EME ATTAQUE
+    Attaque retourneAttaqueArme(const unsigned int &i);
+
+    // AFFICHER LES STATS DE TOUTES LES ATTAQUES
+    void afficherStat();
+
+    // L'UTILISATION DE L'ATTAQUE
+    Attaque utiliserAttaque(int i);
 
 private:
 
-    string nomArme;
     int nbAttaque;
     Attaque *tabAttaque;
 };
