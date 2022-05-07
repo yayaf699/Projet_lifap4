@@ -1,13 +1,13 @@
-"Attaque" : [
+[
 	{
 	   "nom": "Fatal Punch",
 	   "degats": 10,
-	   "degatsSpeciaux" : 5, 
-	   "typeDegats" : "brulure",
-	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Coup de pied enflammé vers l'avant, provoque brulure"
-	   "nombreMaxUtilisation" : 5,
-           "etatNombreTour" : 4
+	   "degatsSpeciaux": 5, 
+	   "typeDegats": "brulure",
+	   "typeAttaque": "moyenne",
+	   "descAttaque": "Coup de pied enflammé vers l'avant, provoque brulure",
+	   "nombreMaxUtilisation": 5,
+    	"etatNombreTour": 4
 	},
 	{
 	   "nom": "Kamehameha",
@@ -15,7 +15,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "brulure",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Lance un kamehameha sur l'adversaire, provoque brulure"
+	   "descAttaque" : "Lance un kamehameha sur l'adversaire, provoque brulure",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 2
 	},
@@ -25,7 +25,7 @@
 	   "degatsSpeciaux" : 0,
 	   "typeDegats" : "",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Attaque l'adversaire de dos"
+	   "descAttaque" : "Attaque l'adversaire de dos",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 0
 	},
@@ -35,7 +35,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "brulure",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Coup de pied enflammé vers l'avant, provoque brulure"
+	   "descAttaque" : "Coup de pied enflammé vers l'avant, provoque brulure",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 4
 	},
@@ -45,7 +45,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "lourde",
-	   "descAttaque" : "Puissant uppercut"
+	   "descAttaque" : "Puissant uppercut",
 	   "nombreMaxUtilisation" : 1,
            "etatNombreTour" : 0
 	},
@@ -65,7 +65,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "saignement",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Combo de coup d'epee, provoque saignement"
+	   "descAttaque" : "Combo de coup d'epee, provoque saignement",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 2
 	},
@@ -75,29 +75,19 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Puissant coup de poing"
+	   "descAttaque" : "Puissant coup de poing",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 0
-	}
+	},
 	{
 	   "nom": "Falcon Mobile",
 	   "degats": 30,
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "stun",
 	   "typeAttaque" : "lourde", 
-	   "descAttaque" : "Fait appel à la Falcon-Mobile, qui s'écrase sur l'adversaire. Paralyse l'adversaire"    
+	   "descAttaque" : "Fait appel à la Falcon-Mobile, qui s'écrase sur l'adversaire. Paralyse l'adversaire",  
 	   "nombreUtilisation" : 1,
            "etatNombreTour" : 1
-	},
-	{
-	   "nom": "Super Attaque Discrete",
-	   "degats": 10,
-	   "degatsSpeciaux" : 0, 
-	   "typeDegats" : "",
-	   "typeAttaque" : "legere",
-	   "descAttaque" : "Attaque l'adversaire par surprise"
-	   "nombreMaxUtilisation" : 10,
-           "etatNombreTour" : 0
 	},
 	{
 	   "nom": "Super Kamehameha",
@@ -105,7 +95,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "brulure",
 	   "typeAttaque" : "lourde",
-	   "descAttaque" : "Lance un super kamehameha sur l'adversaire, provoque brulure"
+	   "descAttaque" : "Lance un super kamehameha sur l'adversaire, provoque brulure",
 	   "nombreMaxUtilisation" : 1,
            "etatNombreTour" : 3
 	},
@@ -115,7 +105,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "brulure",
 	   "typeAttaque" : "lourde",
-	   "descAttaque" : "Lance un hadouken sur l'adversaire, provoque brulure"
+	   "descAttaque" : "Lance un hadouken sur l'adversaire, provoque brulure",
 	   "nombreMaxUtilisation" : 1,
            "etatNombreTour" : 3
 	},
@@ -125,7 +115,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "brulure",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Lance un rayon laser sur l'adversaire, provoque brulure"
+	   "descAttaque" : "Lance un rayon laser sur l'adversaire, provoque brulure",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 3
 	},
@@ -135,7 +125,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "poison",
 	   "typeAttaque" : "lourde",
-	   "descAttaque" : "Donne un coup de poing à l'adversaire, provoque poison"
+	   "descAttaque" : "Donne un coup de poing à l'adversaire, provoque poison",
 	   "nombreMaxUtilisation" : 1,
            "etatNombreTour" : 3
 	},
@@ -145,7 +135,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Lance une attaque magique qui blesse l'adversaire"
+	   "descAttaque" : "Lance une attaque magique qui blesse l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -155,7 +145,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "stun",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Saisie l'adversaire puis le jete sur le sol, provoque paralysie"
+	   "descAttaque" : "Saisie l'adversaire puis le jete sur le sol, provoque paralysie",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -165,7 +155,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Donne un coup de baton à l'adversaire"
+	   "descAttaque" : "Donne un coup de baton à l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -175,7 +165,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "saignement",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Tire sur l'adversaire, provoque saignement"
+	   "descAttaque" : "Tire sur l'adversaire, provoque saignement",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 3
 	},
@@ -185,7 +175,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "gele",
 	   "typeAttaque" : "lourde",
-	   "descAttaque" : "Jete un sort de glace sur l'adversaire, gele l'adversaire"
+	   "descAttaque" : "Jete un sort de glace sur l'adversaire, gele l'adversaire",
 	   "nombreMaxUtilisation" : 1,
            "etatNombreTour" : 2
 	},
@@ -195,7 +185,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "petrification",
 	   "typeAttaque" : "lourde",
-	   "descAttaque" : "Fait appel au serpent de Medusa, petrifie l'adversaire"
+	   "descAttaque" : "Fait appel au serpent de Medusa, petrifie l'adversaire",
 	   "nombreMaxUtilisation" : 1,
            "etatNombreTour" : 2
 	},
@@ -205,7 +195,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "saignement",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Donne un  grand coup d'épee à l'adversaire, provoque saignement à l'adversaire"
+	   "descAttaque" : "Donne un  grand coup d'épee à l'adversaire, provoque saignement à l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 2
 	},
@@ -215,7 +205,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Donne un coup de marteau à l'adversaire"
+	   "descAttaque" : "Donne un coup de marteau à l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -225,7 +215,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Ecrase avec son pied l'adversaire"
+	   "descAttaque" : "Ecrase avec son pied l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -235,7 +225,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Fonce sur l'adversaire"
+	   "descAttaque" : "Fonce sur l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -245,7 +235,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Saute sur l'adversaire"
+	   "descAttaque" : "Saute sur l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -255,7 +245,7 @@
 	   "degatsSpeciaux" : 5, 
 	   "typeDegats" : "saignement",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Donne un simple coup d'epee à l'adversaire, provoque saignement"
+	   "descAttaque" : "Donne un simple coup d'epee à l'adversaire, provoque saignement",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 2
 	},
@@ -265,7 +255,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Donne un coup de casque à l'adversaire"
+	   "descAttaque" : "Donne un coup de casque à l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -275,7 +265,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Donne un coup de poing à l'adversaire"
+	   "descAttaque" : "Donne un coup de poing à l'adversaire",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 0
 	},
@@ -285,7 +275,7 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "paralysie",
 	   "typeAttaque" : "legere",
-	   "descAttaque" : "Fait tomber l'adversaire, inflige paralysie"
+	   "descAttaque" : "Fait tomber l'adversaire, inflige paralysie",
 	   "nombreMaxUtilisation" : 10,
            "etatNombreTour" : 1
 	},
@@ -295,8 +285,10 @@
 	   "degatsSpeciaux" : 0, 
 	   "typeDegats" : "",
 	   "typeAttaque" : "moyenne",
-	   "descAttaque" : "Combo d'attaque legere en combat rapproché"
+	   "descAttaque" : "Combo d'attaque legere en combat rapproché",
 	   "nombreMaxUtilisation" : 5,
            "etatNombreTour" : 0
 	}
 ]
+
+
