@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <jsoncpp/json/value.h>
+#include <jsoncpp/json/json.h>
 #include "Objet.h"
 
 using namespace std;
@@ -11,23 +13,6 @@ using namespace std;
     {
         nom = "emplacement vide";
         bonusVie = bonusVitesse = bonusForce = 0;
-    }
-
-    // CONSTRUCTEUR STRING
-    Objet::Objet(const string &nomObjet)
-    {
-        ifstream reader("data/Objet.txt");
-
-        if(reader.is_open())
-        {
-            do
-            {
-                reader >> nom >> bonusVie >> bonusVitesse >> bonusForce;
-                reader.ignore(100, '\n');
-            } while (nom != nomObjet); // on part du principe que l'objet existe dans le txt
-        }
-
-        reader.close();
     }
 
     // CONSTRUCTEUR PAR COPIE
@@ -78,6 +63,24 @@ using namespace std;
             cout<<"Bonus force: +"<<getForceObjet()<<"\n";
         }
         else cout << "emplacement vide"; 
+    }
+
+    // AJOUTER OBJET JSON
+    void Objet::ajouterObjetJSON(const string &nomJSON)
+    {
+        ifstream ObjetJSON("data/Objet.json");
+        Json::Value actualObjet;
+        Json::Reader readerObjet;
+
+        readerObjet.parse(ObjetJSON, actualObjet);
+
+        int i = 0;
+        while(nomJSON != actualObjet[i]["NomObjet"].asString()) i++;
+
+        nom = actualObjet[i]["NomObjet"].asString();
+        bonusVie = actualObjet[i]["BonusVie"].asInt();
+        bonusVitesse = actualObjet[i]["BonusVitesse"].asInt();
+        bonusForce = actualObjet[i]["BonusForce"].asFloat();
     }
 
 
