@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <fstream>
 
+
+
 using namespace std;
 
     Menu::Menu() // constructeur
@@ -10,7 +12,7 @@ using namespace std;
         TonPersonnage.ajouterJoueur(2);
         Adversaire.ajouterJoueur(4);
 
-        taille_tabMenu = 9;
+        taille_tabMenu = 10; // nombre de personnages dans le jeu
         tabMenuPersonnage = new string [taille_tabMenu];
     }
 
@@ -83,18 +85,22 @@ using namespace std;
     
     void Menu::MenuPersonnage() 
     {
-        // on remplit un tableau avec le nom des personnages
-        ifstream MenuPersonnage("data/Joueur_stat_inventaire.txt"); // ouvrir le fichier txt à partir de la premiere ligne
-        if(MenuPersonnage.is_open())
+    // on remplit un tableau avec le nom des personnages
+        ifstream Perso("data/Joueur_stats_inventaire.json");
+        Json::Value PersoJson;
+        Json::Reader readerPerso;
+
+        readerPerso.parse(Perso, PersoJson); 
+
+        for(int i = 0; i < taille_tabMenu; i++)
         {
-            for(int i = 0; i < taille_tabMenu; i++)
-            {
-                MenuPersonnage >> tabMenuPersonnage[i];
-                MenuPersonnage.ignore(1000, '\n'); // saut de ligne
-            }
+            tabMenuPersonnage[i] = PersoJson[i]["Nom"].asString();
         }
 
-        // version txt
+        Perso.close();
+        
+
+    // version txt
         for(int i = 0; i < taille_tabMenu; i++)
         {
             cout << i+1 << ". " << tabMenuPersonnage[i] << endl;
@@ -118,14 +124,14 @@ using namespace std;
         Adversaire.ajouterJoueur(choixAdversaire);
 
 
-        /*   VERSION SDL
+    /*   VERSION SDL
             *
             *
             * 
             * 
             * 
             * 
-        */
+    */
 
        Jouer();
     }
