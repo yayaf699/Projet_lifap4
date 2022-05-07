@@ -4,27 +4,45 @@
 #include "Combat.h"
 #include "Joueur.h"
 
+#include <jsoncpp/json/value.h>
+#include <jsoncpp/json/reader.h>
+
 using namespace std;
 
 class Menu
 {
 public:
 
-    Menu(); // constructeur par défaut
+// CONSTRUCTEUR ET DESTRUCTEUR 
+
+    // constructeur par défaut
+    Menu(); 
     
-    ~Menu(); // destructeur par défaut
+    // destructeur par défaut
+    ~Menu(); 
 
-    void MenuPrincipale(); // afficher le menu principale
+// GESTION DU MENU
 
-    void Jouer(); // lancer le jeu
+    // afficher le menu principale
+    void MenuPrincipale(); 
 
-    void Aide(); // voir les aides du jeu
+    // lancer le jeu
+    void Jouer(); 
 
-    void Quitter(); // quitter le menu et le jeu
+    // voir les aides du jeu
+    void Aide(); 
 
-    void MenuPersonnage(); // afficher les personnages
+    // quitter le menu et le jeu
+    void Quitter(); 
 
-    int choisirPersonnage(); // choisir le personnage et retourne l'entier de son rang dans le txt
+    // afficher les personnages
+    void MenuPersonnage(); 
+
+    // choisir le personnage et retourne l'entier de son rang dans le txt
+    int choisirPersonnage(); 
+
+    // afficher le menu en sdl
+    void afficherMenuSDL();
 
 private:
 
