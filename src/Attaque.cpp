@@ -1,41 +1,41 @@
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <jsoncpp/json/value.h>
+#include <jsoncpp/json/json.h>
 #include "Attaque.h"
+
 using namespace std;
 
-Attaque::Attaque()
-{
-    nomAttaque = "Coup d'epee";
-    degats = 100;
-    typeDegats = "Legere";
-    descAttaque = "Un simple coup d'epee";
-    nombreMaxUtilisation = 50;
-    degatsSpeciaux = 10;
-}
+// LES CONSTRUCTEURS 
 
-Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string typeDegats_, int degatsSp,string descriptionAtt)
-{
-    nomAttaque = nomAtt;
-    degats = deg;
-    degatsSpeciaux = degatsSp;
-    typeDegats = typeDegats_;
-    descAttaque = descriptionAtt;
-    nombreMaxUtilisation = nombreAttMax;
+    // CONSTRUCTEUR PAR COPIE
+    Attaque::Attaque()
+        {
+        nomAttaque = "coup de poing";
+        degats = 10;
+        degatsSpeciaux = 5;
+        typeDegats = "Legere";
+        typeAttaque = "Confusion";
+        descAttaque = "un coup de poing dans la figure";
+        nombreMaxUtilisation = 30;
+        etatNombreTour = 2;
+    }
 
+    // CONSTRUCTEUR PAR COPIE
+    Attaque::Attaque(string nomAttaque_, int degats_, int degatsSpeciaux_, int typeDegats_, string typeAttaque_, string descAttaque_, int nombreMaxUtilisation_, int etatNombreTour_)
+    {
+        nomAttaque = nomAttaque_;
+        degats = degats_;
+        degatsSpeciaux = degatsSpeciaux_;
+        typeDegats = typeDegats_;
+        typeAttaque = typeAttaque_;
+        descAttaque = descAttaque_;
+        nombreMaxUtilisation = nombreMaxUtilisation_;
+        etatNombreTour = etatNombreTour_;
+    }
 
-}
-
-// Attaque::~Attaque()
-// {
-//     nomAttaque ="";
-//     degats =0;
-//     typeAttaque ="";
-//     nombreMaxUtilisation = 0;
-//     for (int i = 0 ; i< 3 ; i=i+1)
-//     {
-//         TabStatsAttMagique[i] = 0;
-//     }
-// }
+// LES ACCESSEURS ET MUTATEURS 
 
     // ACCESSEUR NOM ATTAQUE
     string Attaque::getNomAttaque() { return nomAttaque; }
@@ -46,11 +46,11 @@ Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string typeDegats_, int 
     // ACCESSEUR NOMBRE UTILISATION ATTAQUE
     int Attaque::getNombreMaxUtilisation() { return nombreMaxUtilisation; }
 
-    // ACCESSEUR DESCRIPTION D'ATTAQUE
-    string Attaque::getDescAttaque() { return descAttaque; }
-
     // ACCESSEUR DEGATS SPECIAUX
     int Attaque::getDegatSp() { return degatsSpeciaux; }
+
+    // ACCESSEUR DESCRIPTION D'ATTAQUE
+    string Attaque::getDescAttaque() { return descAttaque; }
 
     // ACCESSEUR TYPE DE DEGATS
     string  Attaque::getTypeDegats() { return typeDegats; }
@@ -83,4 +83,41 @@ Attaque::Attaque(string nomAtt,int deg,int nombreAttMax,string typeDegats_, int 
     void  Attaque::setTypeAttaque(string typeAttaque_) { typeAttaque = typeAttaque_; }
 
     // MUTATEUR NOMBRE TOUR ETAT 
-    int Attaque::setEtatNombreTour(int etatNombreTour_) { etatNombreTour = etatNombreTour_; }
+    void Attaque::setEtatNombreTour(int etatNombreTour_) { etatNombreTour = etatNombreTour_; }
+
+// GESTION DES ATTAQUES
+
+    // AJOUTER ATTAQUE JSON
+    void Attaque::ajouterAttaqueJSON(const string &nomJSON)
+    {
+        ifstream AttaqueJSON("data/Attaque.json");
+        Json::Value actualAttaque;
+        Json::Reader readerAttaque;
+
+        readerAttaque.parse(AttaqueJSON, actualAttaque);
+
+        int i = 0;
+        while(nomJSON != actualAttaque[i]["nom"].asString()) i++;
+
+        nomAttaque = actualAttaque[i]["nom"].asString();
+        degats = actualAttaque[i]["degats"].asInt();
+        degatsSpeciaux = actualAttaque[i]["degatsSpeciaux"].asInt();
+        typeDegats = actualAttaque[i]["typeDegats"].asString();
+        typeAttaque = actualAttaque[i]["typeAttaque"].asString();
+        descAttaque = actualAttaque[i]["descAttaque"].asString();
+        nombreMaxUtilisation = actualAttaque[i]["nombreMaxUtilisation"].asInt();
+        etatNombreTour = actualAttaque[i]["etatNombreTour"].asInt();
+    }
+
+    // AJOUTER ATTAQUE
+    void Attaque::ajouterAttaque(Attaque a)
+    {
+        nomAttaque = a.getNomAttaque();
+        degats = a.getDegats();
+        degatsSpeciaux = a.getDegatSp();
+        typeDegats = a.getTypeDegats();
+        typeAttaque = a.getTypeAttaque();
+        descAttaque = a.getDescAttaque();
+        nombreMaxUtilisation = a.getNombreMaxUtilisation();
+        etatNombreTour = a.getEtatNombreTour();
+    }
