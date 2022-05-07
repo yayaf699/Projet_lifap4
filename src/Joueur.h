@@ -17,6 +17,7 @@ public:
     // CONSTRUCTEUR PAR DEFAUT
     Joueur();
 
+
 // LES ACCESSEURS ET MUTATEURS
 
     // ACCESSEUR NOM
