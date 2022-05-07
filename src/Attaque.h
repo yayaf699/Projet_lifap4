@@ -9,14 +9,13 @@ class Attaque
 
 public :
 
+// LES CONSTRUCTEURS 
+    
     // CONSTRUCTEUR
     Attaque();
 
     // CONSTRUCTEUR PAR COPIE
-    Attaque(string nomAtt,int deg,int nombreAttMax,string nomTypeAtt, int degatsSp,string descriptionAtt);
-
-
-    //~Attaque();
+    Attaque(string nomAttaque_, int degats_, int degatsSpeciaux_, int typeDegats_, string typeAttaque_, string descAttaque_, int nombreMaxUtilisation_, int etatNombreTour_);
 
 // LES ACCESSEURS ET MUTATEURS 
 
@@ -36,10 +35,10 @@ public :
     int getDegatSp();
 
     // ACCESSEUR TYPE ATTAQUE
-    string  getTypeDegats();
+    string getTypeDegats();
 
-    // ACCESSEUR TYPE DE DEGATS
-    string  getTypeAttaque();
+    // ACCsESSEUR TYPE DE DEGATS
+    string getTypeAttaque();
 
     // ACCESSEUR NOMBRE TOUR ETAT 
     int getEtatNombreTour();
@@ -63,10 +62,18 @@ public :
     void setTypeDegats(string typeDegats_);
 
     // MUTATEUR TYPE ATTAQUE
-    void  setTypeAttaque(string typeAttaque_);
+    void setTypeAttaque(string typeAttaque_);
 
     // MUTATEUR NOMBRE TOUR ETAT 
-    int setEtatNombreTour(int etatNombreTour_);
+    void setEtatNombreTour(int etatNombreTour_);
+
+// GESTION DES ATTAQUES
+
+    // AJOUTER ATTAQUE JSON
+    void ajouterAttaqueJSON(const string &nomJSON);
+
+    // AJOUTER ATTAQUE
+    void ajouterAttaque(Attaque a);
 
 private :
 
