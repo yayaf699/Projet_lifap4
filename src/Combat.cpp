@@ -11,10 +11,6 @@ const bool os = true;
 const bool os = false;
 #endif
 
-
-
-
-
 using namespace std;
 
 
@@ -177,10 +173,10 @@ void Combat::tourDuPerso()
     switch (choix)
     {
     case 1:
-            Perso.getArme().afficher();
+            Perso.getArme().afficherStat();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
-            while(Perso.getArme().getAtk(choix-1).getNombreMaxUtilisation() == 0)
+            while(Perso.getArme().retourneAttaqueArme(choix-1).getNombreMaxUtilisation() == 0)
             {
                 cout<<"\n Cette attaque n'est plus utilisable \n"<<endl;
                 cout << "\n Quel attaque utiliser ?" << endl;
@@ -188,7 +184,7 @@ void Combat::tourDuPerso()
             }
             Clear();
             TraiterActionAttaque(Perso.Attaquer(choix-1));
-            cout<<"VOUS AVEZ UTILISEZ "<<Perso.getArme().getAtk(choix-1).getNomAttaque()<<"\n"<<endl;
+            cout<<"VOUS AVEZ UTILISEZ "<<Perso.getArme().retourneAttaqueArme(choix-1).getNomAttaque()<<"\n"<<endl;
             cout << "SANTE DE L'ADVERSAIRE APRES VOTRE ATTAQUE : "<< IA.getStats().getVie()<< "\n"<<endl;
             break;
 
@@ -229,7 +225,7 @@ void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
     switch (choix)
     {
     case 1:
-            IA.getArme().afficher();
+            IA.getArme().afficherStat();
             cout << "\n Quel attaque utiliser ?" << endl;
             cin >> choix;
             Clear();
@@ -406,9 +402,9 @@ void Combat::DecisionIa() //IA OFFENSIF
     int numAttaque, numObjet;
     for(int i=0; i<4; i=i+1)
     {
-        if(IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
+        if(IA.getArme().retourneAttaqueArme(i).getNombreMaxUtilisation() > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
         {
-            TMPimportanceAtt = IA.getArme().getAtk(i).getDegats();
+            TMPimportanceAtt = IA.getArme().retourneAttaqueArme(i).getDegats();
             if(TMPimportanceAtt>importanceAtt)
             {
                 importanceAtt = TMPimportanceAtt;
@@ -416,7 +412,7 @@ void Combat::DecisionIa() //IA OFFENSIF
             }
 
         }
-        if (Perso.getVie()-IA.getArme().getAtk(i).getDegats()<= 0 && IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut tuer le joueur en 1 attaque
+        if (Perso.getVie()-IA.getArme().retourneAttaqueArme(i).getDegats()<= 0 && IA.getArme().retourneAttaqueArme(i).getNombreMaxUtilisation() > 0 ) // l'ia peut tuer le joueur en 1 attaque
         {
             TMPimportanceAtt = 100000;// action les plus importante
             if(TMPimportanceAtt>importanceAtt)
@@ -426,7 +422,7 @@ void Combat::DecisionIa() //IA OFFENSIF
             }
         }
 
-        if(IA.getInv().rechercherObjetInventaire("Pillule de sante")  != -1 && IA.getVie()-Perso.getArme().getAtk(i).getDegats() <= 0 && Perso.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
+        if(IA.getInv().rechercherObjetInventaire("Pillule de sante")  != -1 && IA.getVie()-Perso.getArme().retourneAttaqueArme(i).getDegats() <= 0 && Perso.getArme().retourneAttaqueArme(i).getNombreMaxUtilisation() > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
         {
             TMPimportanceObjet = 100000; // action les plus importante
             importanceObjet = 100000; // action les plus importante
@@ -437,9 +433,9 @@ void Combat::DecisionIa() //IA OFFENSIF
 
     if(importanceAtt >= importanceObjet) // l'action la plus importante est effecutee
     {
-        cout<<"L'ADVERSAIRE A UTILISER "<<IA.getArme().getAtk(numAttaque).getNomAttaque()<<"\n"<<endl;
+        cout<<"L'ADVERSAIRE A UTILISER "<<IA.getArme().retourneAttaqueArme(numAttaque).getNomAttaque()<<"\n"<<endl;
         TraiterActionAttaque(IA.Attaquer(numAttaque));
-        IA.getArme().getAtk(numAttaque).setNombreMaxUtilisation(IA.getArme().getAtk(numAttaque).getNombreMaxUtilisation()-1);
+        IA.getArme().retourneAttaqueArme(numAttaque).setNombreMaxUtilisation(IA.getArme().retourneAttaqueArme(numAttaque).getNombreMaxUtilisation()-1);
     }
     else
     {
