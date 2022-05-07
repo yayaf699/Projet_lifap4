@@ -1,4 +1,4 @@
-"Joueur" : [
+[
     {
         "Nom": "Solid Snake",
         "Stats" : {
@@ -221,6 +221,7 @@
     }
 
 ]
+
 
 
 
