@@ -19,16 +19,22 @@ public:
     // DESTRUCTEUR
     ~Inventaire();
 
-
-// GESTION DE L'INVENTAIRE
+// ACCESSEURS ET MUTATEURS
 
     // ACCESSEUR TAILLE INVENTAIRE
     const unsigned int getTailleInventaire();
 
-    const string &getObjet(const unsigned int &n);
+    // ACCESSEUR NOM OBJET
+    const string &getNomObjetInv(const unsigned int &i);
+
+    // ACCESSEUR NOM OBJET
+    void setNomObjetInv(const unsigned int &i, const string &n);
+
+
+// GESTION DE L'INVENTAIRE
 
     // RETOURNE I-EME OBJET
-    const Objet &retourneObjetInventaire(const unsigned int &i) const;
+    Objet retourneObjetInventaire(const unsigned int &i);
 
     // AFFICHER INVENTAIRE
     void afficherInventaire() const;
@@ -39,8 +45,8 @@ public:
     // RECHERCHER OBJET
     int rechercherObjetInventaire(string nomObjet) ;
 
-     // AJOUTER OBJET
-     void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce);
+    // AJOUTER OBJET
+    void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce);
 
 
 private:
