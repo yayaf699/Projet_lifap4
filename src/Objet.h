@@ -14,9 +14,6 @@ public:
     // CONSTRUCTEUR
     Objet();
 
-    // CONSTRUCTEUR STRING
-    Objet(const string &nomObjet);
-
     // CONSTRUCTEUR PAR COPIE
     Objet(const Objet &o);
 
@@ -52,6 +49,9 @@ public:
 
     // L'AFFICHER L'OBJET
     void afficherObjet();
+
+    // AJOUTER OBJET JSON
+    void ajouterObjetJSON(const string &nomJSON);
 
 
 private:
