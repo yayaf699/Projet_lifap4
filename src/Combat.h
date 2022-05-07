@@ -7,31 +7,35 @@ class Combat{
 
 public:
 
+// LES CONSTRUCTEURS 
+
 	//CONSTRUCTEUR
 	Combat();
 
 	//CONSTRUCTEUR PAR COPIE
 	Combat(const Joueur &Perso_, const Joueur &IA_);
 
+// GESTION DU COMBAT
 
-	//~Combat();
-
-
+	// 
 	void tourDuPerso();
 
+	//
     void Clear();
 
+	//
 	void tourIA();
 
-
+	//
 	void combatDeroulement();
 
-
+	//
 	void TraiterActionAttaque(Attaque att);
 
-
+	//
 	void DecisionIa();
 
+	//
 	void VerifierEtatJoueur();
 
 private:
