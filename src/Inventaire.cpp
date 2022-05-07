@@ -28,19 +28,21 @@ using namespace std;
         delete inventaire;
     }
 
+// ACCESSEURS ET MUTATEURS
 
+    // ACCESSEUR TAILLE INVENTAIRE
+    const unsigned int Inventaire::getTailleInventaire(){ return taille_inventaire; }
+
+    // ACCESSEUR NOM OBJET
+    const string &Inventaire::getNomObjetInv(const unsigned int &n){ return inventaire[n].getNomObjet(); }
+
+    // ACCESSEUR NOM OBJET
+    void Inventaire::setNomObjetInv(const unsigned int &i, const string &n) { inventaire[i].setNomObjet(n); }
 
 // GESTION DE L'INVENTAIRE
 
-    const unsigned int Inventaire::getTailleInventaire(){ return taille_inventaire; }
-
-    const string &Inventaire::getObjet(const unsigned int &n){ return inventaire[n].getNomObjet(); }
-
     // RETOURNE I-EME OBJET
-    const Objet &Inventaire::retourneObjetInventaire(const unsigned int &i) const
-    {
-        return inventaire[i];
-    }
+    Objet Inventaire::retourneObjetInventaire(const unsigned int &i){ return inventaire[i]; }
 
     // AFFICHER INVENTAIRE
     void Inventaire::afficherInventaire() const
@@ -83,5 +85,5 @@ using namespace std;
        inventaire[indice].setForceObjet(bonusforce);
        inventaire[indice].setVieObjet(bonusvie);
        inventaire[indice].setVitesseObjet(bonusvitesse);
-}
+  }
 
