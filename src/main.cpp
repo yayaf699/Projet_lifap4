@@ -13,14 +13,11 @@ using namespace std;
 
 int main(){
 
-    //Joueur j;
-
-    //j.ajouterJoueur(5);
-    //j.afficherJoueur();
 
     Menu jeu;
 
     jeu.MenuPrincipale();
+
 
 
     return 0;
