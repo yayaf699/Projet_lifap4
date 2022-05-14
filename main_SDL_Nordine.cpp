@@ -22,7 +22,7 @@ int init(char *name, SDL_Window **win, SDL_Renderer **ren)
 
     if(SDL_Init(SDL_INIT_EVERYTHING)<0)
     {
-        fprintf(stderr,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
+        fprintf(stderr,"ï¿½chec de l'initialisation de la SDL (%s)\n",SDL_GetError());
         success = 0;
     }
     else{
@@ -30,7 +30,7 @@ int init(char *name, SDL_Window **win, SDL_Renderer **ren)
 
         if( win == NULL )
         {
-            fprintf(stderr,"Échec à la création de la fenêtre (%s)\n",SDL_GetError());
+            fprintf(stderr,"ï¿½chec ï¿½ la crï¿½ation de la fenï¿½tre (%s)\n",SDL_GetError());
             success = 0;
         }
         else
@@ -38,7 +38,7 @@ int init(char *name, SDL_Window **win, SDL_Renderer **ren)
             *ren = SDL_CreateRenderer(*win,-1,SDL_RENDERER_ACCELERATED);
             if( ren == NULL )
             {
-                fprintf(stderr,"Échec à la création de la fenêtre (%s)\n",SDL_GetError());
+                fprintf(stderr,"ï¿½chec ï¿½ la crï¿½ation de la fenï¿½tre (%s)\n",SDL_GetError());
                 success = 0;
             }
         }
@@ -370,7 +370,7 @@ void initMap2(SDL_Renderer *ren, int carte[21][21])
 
     SDL_RenderCopy(ren, tex_Bg_Mine, NULL, &dst_Bg_Mine);
 
-    SDL_SetRenderDrawColor(ren, 67,77, 88, 100); // met la fenetre en gris foncé
+    SDL_SetRenderDrawColor(ren, 67,77, 88, 100); // met la fenetre en gris foncï¿½
 
     for(int i=0; i<21; i=i+1)
     {
@@ -519,7 +519,7 @@ void initMap3(SDL_Renderer *ren, int carte[21][21])
 
     SDL_RenderCopy(ren, tex_Blue_falcon, NULL, &dst_Blue_falcon);
 
-    SDL_SetRenderDrawColor(ren, 67,77, 88, 100); // met la fenetre en gris foncé
+    SDL_SetRenderDrawColor(ren, 67,77, 88, 100); // met la fenetre en gris foncï¿½
 
     SDL_RenderCopy(ren, tex_Dojo, NULL, &dst_Dojo);
 
@@ -949,7 +949,7 @@ SDL_Texture *loadTexture(char *filename, SDL_Renderer *ren)
 
     if (pic == NULL)
     {
-        fprintf(stderr,"Échec lors du chargement de l'image (%s)\n",SDL_GetError());
+        fprintf(stderr,"ï¿½chec lors du chargement de l'image (%s)\n",SDL_GetError());
         return NULL;
     }
 
@@ -958,7 +958,7 @@ SDL_Texture *loadTexture(char *filename, SDL_Renderer *ren)
 
     if (tex == NULL)
     {
-        fprintf(stderr,"Échec lors du chargement de l'image (%s)\n",SDL_GetError());
+        fprintf(stderr,"ï¿½chec lors du chargement de l'image (%s)\n",SDL_GetError());
     }
 
     return tex;
@@ -1991,7 +1991,7 @@ bool Verif_Collision(int NouvellePositionX, int NouvellePositionY, int carte[21]
     return false;
 }
 
-//Permet de laisser la fenêtre affichée jusqu'à fermeture par l'utilisateur
+//Permet de laisser la fenï¿½tre affichï¿½e jusqu'ï¿½ fermeture par l'utilisateur
 void pause(SDL_Renderer *renderer, SDL_Rect &posPerso,int carte[21][21], int & NumCarte)
 {
     int quit = 0;
