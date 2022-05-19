@@ -1,454 +1,337 @@
 #include "Combat.h"
 #include <cstdlib>
-#include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
-//#include <Windows.h>
-#ifdef _WIN32 // lorsqu'on compile avec windows
-const bool os = true;
-#elif __linux__
-const bool os = false;
-#endif
-
-
-
 
 
 using namespace std;
 
+// LES CONSTRUCTEURS 
 
-Combat::Combat(){
-    tour = true;
-    fini = false;
-    tempsLimiteParTour = 30;
-}
+	// contructeur
+	Combat::Combat() 
+	{  
+		tour = true;
+		fini = false;
+		vainqueur = true;
+		tempsLimiteParTour = 20;
+	}
 
-Combat::Combat(const Joueur &Perso_, const Joueur &IA_){
-    Perso = Perso_;
-    IA = IA_;
-    tour = true;
-    fini = false;
-    tempsLimiteParTour = 30;
-}
+	// constructeur par copie
+	Combat::Combat(Joueur Perso_, Joueur IA_) 
+	{ 
+		tour = true;
+		fini = false;
+		vainqueur = true;
+		tempsLimiteParTour = 20;
+	}
 
-void Combat::Clear()
-{
-    if(os)
-    {
-        system("CLS"); // clean tout le texte de l'invite de commande
-    }
-    else
-    {
-        system("clear");
-    }
-}
+// LES ACCESSEURS
 
-void Combat::TraiterActionAttaque(Attaque att)
-{
-    if (tour == false)
-    {
-        if((Perso.getEtat().compare("invincible") == 0 | Perso.getEtat().compare("invisible") == 0)&& Perso.getNbTourEtat() > 0)
-        {
-            return ;
-        }
-        if(Perso.getVie() - att.getDegats() < 0)
-        {
-            Perso.SetVie(0); // retire vie joueur à 0
-        }
-        else
-        {
-            int tmpRandVarCoupCrit = (rand() % 100) +1;
-            if(tmpRandVarCoupCrit<20) // 20 % de chance que ATTAQUE CRITIQUE se produisent
-            {
-                srand(time(NULL));
-                int MultiplicateurCrit = (rand() % (int(1.5*10)-10))+1;
-                int degatCrit = ((float(MultiplicateurCrit)/10)+1.0)*att.getDegats();
-                cout<<"COUP CRITIQUE : "<<"cette attaque inflige : "<<degatCrit<<" degats !"<<endl;
-                Perso.SetVie(Perso.getVie() - att.getDegats());
-            }
-            else
-            {
-                Perso.SetVie(Perso.getVie() - att.getDegats()); // retire vie joueur qui se fait attaquer
-            }
-        }
-        if(att.getTypeAttaque().compare("stun") == 0 | att.getTypeAttaque().compare("gele") == 0 | att.getTypeAttaque().compare("petrification") == 0)
-        {
-            int tmpRandVar = (rand() % 100) +1;
-            if(tmpRandVar<70) // 70 % de chance que GELE SE PRODUIT
-            {
-                IA.setEtat(att.getTypeAttaque());
-                IA.setNbTourEtat(3);
-                cout<<"Le JOUEUR subit "<< att.getTypeAttaque() <<endl;
-                return ;
-            }
-        }
-        else if(att.getTypeAttaque().compare("saignement") == 0 | att.getTypeAttaque().compare("brulure") == 0 | att.getTypeAttaque().compare("poison") == 0)
-        {
-            int tmpRandVar = (rand() % 100) +1;
-            if(tmpRandVar>50) // 50 % de chance que SAIGNEMENT SE PRODUIT
-            {
-                Perso.setEtat(att.getTypeAttaque());
-                Perso.setNbTourEtat(5);
-                cout<<"Le JOUEUR subit "<< att.getTypeAttaque() <<endl;
-                return ;
-            }
-        }
-        else if(att.getTypeAttaque().compare("invincible") == 0 | att.getTypeAttaque().compare("invisible") == 0)
-        {
-                IA.setEtat(att.getTypeAttaque());
-                IA.setNbTourEtat(2);
-                cout<<"L'IA est "<< att.getTypeAttaque() << " pendant 2 tours"<<endl;
-                return ;
-        }
-    }
-    else
-    {
-        if((IA.getEtat().compare("invincible") == 0 | IA.getEtat().compare("invisible") == 0)&& IA.getNbTourEtat() > 0)
-        {
-            return ;
-        }
-         if(IA.getVie() - att.getDegats() < 0)
-        {
-            IA.SetVie(0); // retire vie joueur à 0
-        }
-        else
-        {
-            int tmpRandVarCoupCrit = (rand() % 100) +1;
-            if(tmpRandVarCoupCrit<20) // 20 % de chance que ATTAQUE CRITIQUE se produisent
-            {
-                srand(time(NULL));
-                int MultiplicateurCrit = (rand() % (int(1.5*10)-10))+1;
-                int degatCrit = ((float(MultiplicateurCrit)/10)+1.0)*att.getDegats();
-                cout<<"COUP CRITIQUE : "<<"cette attaque inflige : "<<degatCrit<<" degats !"<<endl;
-                IA.SetVie(IA.getVie() - att.getDegats());
-            }
-            else
-            {
-                IA.SetVie(IA.getVie() - att.getDegats()); // retire vie joueur qui se fait attaquer
-            }
-        }
-        if(att.getTypeAttaque().compare("stun") == 0 | att.getTypeAttaque().compare("gele") == 0 | att.getTypeAttaque().compare("petrification") == 0)
-        {
-            int tmpRandVar = (rand() % 100) +1;
-            if(tmpRandVar<70) // 70 % de chance que GELE SE PRODUIT
-            {
-                IA.setEtat(att.getTypeAttaque());
-                IA.setNbTourEtat(3);
-                cout<<"L'IA subit "<< att.getTypeAttaque() <<endl;
-                return ;
+	// accesseur Perso
+	Joueur Combat::getPerso() { return Perso; }
 
-            }
-        }
-        else if(att.getTypeAttaque().compare("saignement") == 0 | att.getTypeAttaque().compare("brulure") == 0 | att.getTypeAttaque().compare("poison") == 0)
-        {
-            int tmpRandVar = (rand() % 100) +1;
-            if(tmpRandVar>50) // 50 % de chance que SAIGNEMENT SE PRODUIT
-            {
-                IA.setEtat(att.getTypeAttaque());
-                IA.setNbTourEtat(5);
-                return ;
-            }
-        }
-        else if(att.getTypeAttaque().compare("invincible") == 0 | att.getTypeAttaque().compare("invisible") == 0)
-        {
-                Perso.setEtat(att.getTypeAttaque());
-                Perso.setNbTourEtat(2);
-                cout<<"Le JOUEUR est "<< att.getTypeAttaque() << " pendant 2 tours"<<endl;
-                return ;
-        }
-    }
-}
+	// accesseur Joueur
+	Joueur Combat::getIA_adversaire() { return IA_adversaire; }
+
+	// accesseur tour
+	bool Combat::getTour() { return tour; }
+
+	// accesseur fini
+	bool Combat::getFini() { return fini; }
+
+	// accesseur vainqueur
+	bool Combat::getVainqueur() { return vainqueur; }
+
+	// acesseur tempsLimiteParTour
+	unsigned int Combat::getTempsLimiteParTour() { return tempsLimiteParTour; }
+
+// LES MUTATEURS
+
+	// mutateur tour
+	void Combat::setTour(bool t) { tour = t; }
+
+	// mutateur fini
+	void Combat::setFini(bool f) { fini = f; }
+
+	// mutateur vainqueur
+	void Combat::setVainqueur(bool v) { vainqueur = v; }
+
+	// mutateur tempsLimiteParTour
+	void Combat::setTempsLimiteParTour(unsigned int temps) { tempsLimiteParTour = temps; }
+
+// GESTION DU COMBAT
+
+	// traite le tour du perso
+	void Combat::tourDuPerso(Sdljeu &sdl) 
+	{  
+		// ###################################################################################################### VERSION TEXT 
+		int choix, vie_t0, vie_t1;
+		sdl.majLogPerso(Perso);
+		sdl.majLogIA(IA_adversaire);
+		if(Perso.getStats().getVie() < 0)
+		{
+			cout<<Perso.getNom()<<" EST MORT"<<endl; // boite de dialogue + animation mort
+			string txt = Perso.getNom() + " EST MORT";
+			sdl.majlogs(txt.c_str(), false, Perso);
+			vainqueur = false;
+			fini = true;
+		}
+			do{
+				cout<< "TOUR DE "<< Perso.getNom()<<endl; // boite de dialogue
+				cout<<"1. Attaque"<<endl<<"2. Inventaire"<<endl; // version sdl scan code avec les fleches pour aller sur la case attaque ou inventaire et Entrer pour valider // boite de dialogue
+				cout<<"QUE VOULEZ VOUS FAIRE ?"<<endl;// boite de dialogue
+				if(!sdl.withsdl) cin>>choix; 
+
+				else {
+					string txt = "QUE VOULEZ VOUS FAIRE ?";
+					choix = sdl.majlogs(txt, true, Perso);
+					}
+			}
+			while(choix != 1 && choix != 2);
+
+			if(choix == 1)
+			{
+				int choixAttaque;
+				do
+				{	
+					Perso.getArme().afficherStat(); // affiche les attaques avec stats et nb utilisation restante // boite de dialogue // version sdl scan code avec les fleches pour aller sur la case attaque ou inventaire et Entrer pour valider, ECHAP pour revenir au choix Attaque/Objet recursivité
+					cout<<"\n Quelle attaque voulez vous utiliser ?"; // pas dans la version sdl
+					if(!sdl.withsdl) cin>>choixAttaque;
+					else{
+						choixAttaque = sdl.majlogsChoix(Perso, true);
+					}
+
+					if(Perso.getArme().getTabAttaque(choixAttaque-1).getNombreUtilisationReste() == 0)
+					{	
+						cout<<"IMPOSSIBLE ! Nombre d'utilisation de cette attaque est à 0"<<endl; // boite de dialogue	
+					} 
+				} while (Perso.getArme().getTabAttaque(choixAttaque-1).getNombreUtilisationReste() == 0);
 
 
-
-void Combat::tourDuPerso()
-{
-    unsigned int choix;
-    do{
-            if(os==true){system("color 30");}
-            cout<< "TOUR DU JOUEUR \n "<<endl;
-            cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
-            cin >> choix;
-            Clear(); //fonction qui nettoie l'invite de commande
-    }
-    while (choix != 1 && choix != 2 );
-
-    switch (choix)
-    {
-    case 1:
-            Perso.getArme().afficher();
-            cout << "\n Quel attaque utiliser ?" << endl;
-            cin >> choix;
-            while(Perso.getArme().getAtk(choix-1).getNombreMaxUtilisation() == 0)
-            {
-                cout<<"\n Cette attaque n'est plus utilisable \n"<<endl;
-                cout << "\n Quel attaque utiliser ?" << endl;
-                cin >> choix;
-            }
-            Clear();
-            TraiterActionAttaque(Perso.Attaquer(choix-1));
-            cout<<"VOUS AVEZ UTILISEZ "<<Perso.getArme().getAtk(choix-1).getNomAttaque()<<"\n"<<endl;
-            cout << "SANTE DE L'ADVERSAIRE APRES VOTRE ATTAQUE : "<< IA.getStats().getVie()<< "\n"<<endl;
-            break;
-
-    case 2:
-            cout << "VOICI LES STATS DE VOTRE PERSONNAGE : \n "<<endl;
-            Perso.getStats().afficherStat();
-            cout << "\n";
-            Perso.getInv().afficherInventaire();
-            cout << "\n Quel objet utiliser ?" << endl;
-            cin >> choix;
-            Clear();
-            cout<<"VOUS AVEZ UTILISEZ "<<Perso.getInv().retourneObjetInventaire(choix-1).getNomObjet()<<"\n"<<endl;
-            Perso.utiliserObjet(Perso.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
-            cout << "VOTRE SANTE APRES UTILISATION DE L'OBJET : "<< Perso.getStats().getVie()<< "\n"<<endl;
-            break;
+				vie_t0 = IA_adversaire.getStats().getVie(); // la vie l'adversaire avant l'attaque 
+				TraiterActionAttaque(Perso.Attaquer(choixAttaque-1)); 
+				vie_t1 = IA_adversaire.getStats().getVie(); // la vie l'adversaire apres l'attaque
 
 
-    default:
-        break;
-    }
+				cout<<"VOUS UTILISEZ L'ATTAQUE :"<<Perso.getArme().getTabAttaque(choixAttaque-1).getNomAttaque()<<endl; // boite de dialogue
+				if(vie_t1-vie_t0 > Perso.getArme().getTabAttaque(choixAttaque-1).getDegats()) // si random degat critique // boite de dialogue
+				{
+					cout<<"DEGATS CRITIQUE !!!"<<endl; 
+				}
+
+				if(IA_adversaire.getEtat() != "") // Les degats speciaux ont été activés // boite de dialogue
+				{
+					cout<<IA_adversaire.getNom()
+						<<" souffre de "
+						<<IA_adversaire.getEtat()
+						<<" pendant "
+						<<IA_adversaire.getNbTourEtat()
+						<<" tours."<<endl;
+				}
+
+				cout<<"LA BARRE DE VIE DE L'ADVERSAIRE BAISSE: "<< vie_t0 - vie_t1 <<" pv"<<endl; // boite de dialogue
+				cout<<"LA VIE DE VOTRE ADVERSAIRE EST À: "<<IA_adversaire.getStats().getVie()<<endl; // fonction sdl annimation de la barre de vie qui baisse
+
+			} 
+			else if (choix == 2)
+			{
+				int choixObjet;
+
+				Perso.getStats().afficherStat(); // sdl stats du perso dans une case sur le coté
+				cout<<endl;
+				Perso.getInv().afficherInventaire(); // boite de dialogue // version sdl scan code avec les fleches pour aller sur la case attaque ou inventaire et Entrer pour valider 
+				cout<<"\n Quelle objet voulez vous utiliser ?"; // pas dans la version sdl
+				if(!sdl.withsdl) cin>>choixObjet;
+				else{
+					sdl.majlogsChoix(Perso, false);
+				}
+
+				cout<<"VOUS UTILISEZ L'OBJET: "<<Perso.getInv().getInventaire(choixObjet-1).getNomObjet()<<endl; // boite de dialogue
+
+				if(Perso.getInv().getInventaire(choixObjet-1).getVieObjet() > 0) // bonus vie sdl animation barre de vie qui monte
+				{
+					vie_t0 = Perso.getStats().getVie();
+					Perso.utiliserObjet(Perso.getInv().getInventaire(choixObjet-1));
+					vie_t1 = Perso.getStats().getVie();
+
+					cout << "VOTRE VIE AUGMENTE DE :" << vie_t1 - vie_t0 << endl; // boite de dialogue
+					cout<< "VOTRE VIE EST À: "<<Perso.getStats().getVie()<<" pv"<<endl; // bonus vie sdl animation barre de vie qui monte
+				}
+				else // autre bonus animation le personnage clignote vert prendant qql secondes
+				{
+					Perso.utiliserObjet(Perso.getInv().getInventaire(choixObjet-1));
+				}
+			} 
+
+		// passage au tour de l'IA
+		tour = false;		
+	}
+
+	// traite le tour de l'IA
+	void Combat::tourIA(Sdljeu &sdl) 
+	{  
+		if(IA_adversaire.getStats().getVie() < 0)
+		{
+			cout<<IA_adversaire.getNom()<<" EST MORT"<<endl; // boite de dialogue + animation mort
+			string txt = IA_adversaire.getNom() + " EST MORT";
+			if(sdl.withsdl) sdl.majlogs(txt.c_str(), false, Perso);
+			vainqueur = false;
+			fini = true;
+		}
+		int vie_t0, vie_t1;
+		Attaque attaqueChoisi = IA_cerveau.MeilleurChoixAttaque(Perso.getStats().getVie(), IA_adversaire);// on sauvegarde le choix random
+		Objet objetChoisi = IA_cerveau.MeilleurChoixObjet(Perso.getStats().getVie(), IA_adversaire);
+		
+
+			if(IA_cerveau.MeilleurChoix(Perso.getStats().getVie(), IA_adversaire) == "Attaque") // si l'IA choisi d'attaquer
+			{
+				vie_t0 = Perso.getStats().getVie(); // la vie l'adversaire avant l'attaque 
+				TraiterActionAttaque(attaqueChoisi);
+				vie_t1 = Perso.getStats().getVie(); // la vie l'adversaire apres l'attaque
+			
+				cout<<IA_adversaire.getNom()<<" UTILISE L'ATTAQUE :"<<attaqueChoisi.getNomAttaque()<<endl; // boite de dialogue
+				if(vie_t0 - vie_t1 > attaqueChoisi.getDegats()) // si random degat critique // boite de dialogue
+				{
+					cout<<"DEGATS CRITIQUE !!!"<<endl; 
+				}
+
+				if(Perso.getEtat() != "") // Les degats speciaux ont été activés // boite de dialogue
+				{
+					cout<<Perso.getNom()
+						<<" souffre de "
+						<<Perso.getEtat()
+						<<" pendant "
+						<<Perso.getNbTourEtat()
+						<<" tours."<<endl;
+				}
+				cout<<"VOTRE BARRE DE VIE DE BAISSE DE: "<< vie_t0 - vie_t1 <<" pv"<<endl; // boite de dialogue
+				cout<<"VOTRE VIE EST À: "<<Perso.getStats().getVie()<<endl; // fonction sdl annimation de la barre de vie qui baisse
+			}
+			else // si l'IA choisi d'utiliser un objet
+			{ 
+				cout<<IA_adversaire.getNom()<<" UTILISE L'OBJET "<<objetChoisi.getNomObjet()<<endl; // boite de dialogue
+
+				if(objetChoisi.getVieObjet() > 0)
+				{ // bonus vie sdl animation barre de vie qui monte
+
+					vie_t0 = IA_adversaire.getStats().getVie();
+					IA_adversaire.utiliserObjet(objetChoisi);  
+					vie_t1 = IA_adversaire.getStats().getVie();
+
+					cout << "VOTRE VIE AUGMENTE DE :" << vie_t1 - vie_t0 << endl; // boite de dialogue
+					cout<< "VOTRE VIE EST À: "<<IA_adversaire.getStats().getVie()<<" pv"<<endl; // bonus vie sdl animation barre de vie qui monte
+				}
+				else
+				{ // autre bonus animation le personnage clignote vert prendant qql secondes
+					IA_adversaire.utiliserObjet(objetChoisi);
+				}
+			}
+		
+		tour = true; // passage au tour du joueur
+	}
+
+	// traite attaque
+	void Combat::TraiterActionAttaque(Attaque a) 
+	{  
+		if(tour) // perso joue, IA subit
+		{
+			cout<<"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx PERSO"<<endl;
+
+				int intRandom = rand() % 100;
+				if(intRandom < (Perso.getStats().getVitesse() * Perso.getStats().getForce())) // vitesse*force = % de chance d'avoir un COUP CRITIQUE
+				{
+					srand(time(NULL));
+					float MultiplicateurCrit = (((rand()%20)+5)/100)+1;  // 1.05 < x < 1.25
+					int degatCrit = int(MultiplicateurCrit*a.getDegats());
+	
+					// MAJ vie IA
+					IA_adversaire.MajVieJoueur(degatCrit);
+				}
+				else
+				{
+					// MAJ vie IA
+					IA_adversaire.MajVieJoueur(a.getDegats()); 
+				}
+	
+				if(intRandom < 10 && IA_adversaire.getNbTourEtat() == 0 && a.getDegatSp() != 0) // 10% de chance que les degats speciaux s'activent et s'ils ne sont pas deja activés 
+				{
+					IA_adversaire.setEtat(a.getTypeDegats());
+					IA_adversaire.setNbTourEtat(a.getEtatNombreTour());
+				}
+			
+			int cmpt = 0;
+			while(a.getNomAttaque() != Perso.getArme().getTabAttaque(cmpt).getNomAttaque()) cmpt++;
+
+			Perso.getArme().MajNombreUtilisation(cmpt);
+		}
+		else // IA joue, perso subit
+		{
+			cout<<"yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy IA"<<endl;
+
+				int intRandom = rand() % 100;
+				if(intRandom < (IA_adversaire.getStats().getVitesse() * IA_adversaire.getStats().getForce())) // vitesse*force = % de chance d'avoir un COUP CRITIQUE
+				{
+					srand(time(NULL));
+					float MultiplicateurCrit = (((rand()%20)+5)/100)+1;  // 1.05 < x < 1.25
+					int degatCrit = int(MultiplicateurCrit*a.getDegats());
+	
+					// MAJ vie IA
+					Perso.MajVieJoueur(degatCrit);
+				}
+				else
+				{
+					// MAJ vie IA
+					Perso.MajVieJoueur(a.getDegats()); 
+				}
+	
+				if(intRandom < 10 && Perso.getNbTourEtat() == 0 && a.getDegatSp() != 0) // 10% de chance que les degats speciaux s'activent et s'ils ne sont pas deja activés 
+				{
+					Perso.setEtat(a.getTypeDegats());
+					Perso.setNbTourEtat(a.getEtatNombreTour());
+				}
+
+			int cmpt = 0;
+			while(a.getNomAttaque() != IA_adversaire.getArme().getTabAttaque(cmpt).getNomAttaque()) cmpt++;
+
+			IA_adversaire.getArme().MajNombreUtilisation(cmpt);
+		}
+	}
+
+	// bouvcle du combat
+	void Combat::combatDeroulement(Joueur A_me, Joueur B_ia, Sdljeu &sdl) 
+	{  
+		Perso = A_me;
+		IA_adversaire = B_ia;
+
+		if(sdl.withsdl) sdl.initCombat(A_me, B_ia);
+
+		cout<<"PERSO:"<<endl;
+		cout<<"---------------------------------------------------------------"<<endl;
+		Perso.afficherJoueur();
+		cout<<"---------------------------------------------------------------"<<endl;
+		IA_adversaire.afficherJoueur();
+		cout<<"---------------------------------------------------------------"<<endl;
 
 
+		while(!fini)
+		{
+			tourDuPerso(sdl);
+			tourIA(sdl);
+		}
 
-}
+		// si perso vainqueur il recoit un récompense en pieces
+		// animation de fin de combat 
 
-void Combat::tourIA() // POUR L INSTANT COPIE DU TOUR JOUEUR
-   {
-    unsigned int choix;
-    do{
-            cout<< "TOUR DE L'IA \n" <<endl;
-            cout << "Que voulez vous faire ? \n \n 1. Attaquer \n \n 2. Utiliser un objet \n" << endl;
-            cin >> choix;
-            Clear();
-
-    }
-    while (choix != 1 && choix != 2 );
-
-    switch (choix)
-    {
-    case 1:
-            IA.getArme().afficher();
-            cout << "\n Quel attaque utiliser ?" << endl;
-            cin >> choix;
-            Clear();
-            TraiterActionAttaque(IA.Attaquer(choix-1)); //choix -1 car tableau
-            cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
-            break;
-
-    case 2:
-            cout << "VOICI LES STATS DE VOTRE PERSONNAGE : \n "<<endl;
-            IA.getStats().afficherStat();
-            cout << "\n";
-            IA.getInv().afficherInventaire();
-            cout << "\n Quel objet utiliser ?" << endl;
-            cin >> choix;
-            Clear();
-            IA.utiliserObjet(IA.getInv().retourneObjetInventaire(choix-1)); //choix -1 car tableau
-            break;
-
-
-    default:
-        break;
-    }
-
-
-
-
-}
-
-
-void Combat::VerifierEtatJoueur()
-{
-
-    if(tour==false)
-    {
-        if(IA.getEtat().compare("")!=0) // c'est optimiser pour ne pas rentrer pour rien
-        {
-            if(IA.getNbTourEtat()>0) // DANS CETTE FONCTION ON TRAITE ETAT JOUEUR (SAIGNEMENT,PARALYSIE...)
-            {
-                    if(IA.getEtat().compare("saignement") == 0 | IA.getEtat().compare("brulure") == 0 | IA.getEtat().compare("poison") == 0)
-                {
-                    int tmpRandVar = (rand() % 100) +1;
-                    if(tmpRandVar>=50) // 50% de CHANCE DE SUBIR LE SAIGNEMENT
-                    {
-                        IA.SetVie(IA.getVie()-10);
-                        cout<<"L'IA saigne : -10 pv"<<endl;
-                        cout << "SA SANTE DESORMAIS : "<< IA.getStats().getVie() << "\n" << endl;
-                    }
-                }
-            }
-            else
-            {
-                IA.setEtat("");
-            }
-        }
-        if(Perso.getEtat().compare("")!=0) // c'est optimiser pour ne pas rentrer pour rien
-        {
-            if(Perso.getNbTourEtat()>0) // DANS CETTE FONCTION ON TRAITE ETAT JOUEUR (SAIGNEMENT,PARALYSIE...)
-            {
-                    if(Perso.getEtat().compare("stun") == 0 | Perso.getEtat().compare("gele") == 0 | Perso.getEtat().compare("petrification") == 0)
-                {
-                    for(int i =0; i<3;i=i+1) // -1 car je laisse le tour
-                    {
-                            cout<<"ETAT JOUEUR : "<<Perso.getEtat()<< " pendant "<< Perso.getNbTourEtat()<< " tours"<<endl;
-                            DecisionIa();
-                            //sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
-                            Perso.setNbTourEtat(Perso.getNbTourEtat()-1);
-                    }
-                }
-            }
-            else
-            {
-                Perso.setEtat("");
-            }
-        }
-    }
-
-
-   if(tour==true)
-    {
-        if(Perso.getEtat().compare("")!=0) // c'est optimiser pour ne pas rentrer pour rien
-        {
-            if(Perso.getNbTourEtat()>0) // DANS CETTE FONCTION ON TRAITE ETAT JOUEUR (SAIGNEMENT,PARALYSIE...)
-            {
-                    if(Perso.getEtat().compare("saignement") == 0 | Perso.getEtat().compare("brulure") == 0 | Perso.getEtat().compare("poison") == 0)
-                {
-                    int tmpRandVar = (rand() % 100) +1;
-                    if(tmpRandVar>=50) // 50% de CHANCE DE SUBIR LE SAIGNEMENT
-                    {
-                        Perso.SetVie(Perso.getVie()-10);
-                        cout<<"LE JOUEUR saigne : -10 pv"<<endl;
-                        cout << "SA SANTE DESORMAIS : "<< Perso.getStats().getVie() << "\n" << endl;
-                    }
-                }
-            }
-        }
-        if(IA.getEtat().compare("")!=0) // c'est optimiser pour ne pas rentrer pour rien
-        {
-            if(IA.getNbTourEtat()>0) // DANS CETTE FONCTION ON TRAITE ETAT JOUEUR (SAIGNEMENT,PARALYSIE...)
-            {
-                    if(IA.getEtat().compare("stun") == 0 | IA.getEtat().compare("gele") == 0 | IA.getEtat().compare("petrification") == 0)
-                {
-                    for(int i =0; i<3;i=i+1) // -1 car je laisse le tour
-                    {
-                            cout<<"ETAT IA : "<<IA.getEtat()<< " pendant "<< IA.getNbTourEtat()<< " tours"<<endl;
-                            tourDuPerso();
-                            IA.setNbTourEtat(IA.getNbTourEtat()-1);
-                    }
-                }
-            }
-        }
-    }
-
-    if(Perso.getVie() <= 0) // verif sante
-        {
-            cout<<Perso.getNom() << " (Joueur) est mort "<<endl;
-
-            exit(1);
-        }
-
-    if(IA.getVie() <= 0) // verif sante
-        {
-            cout<<IA.getNom() << " (IA) est mort "<<endl;
-
-            exit(1);
-        }
-
-}
-
-
-void Combat::combatDeroulement()
-{
-    if(Perso.getStats().getVitesse()>=IA.getStats().getVitesse())
-    {
-        while(1)
-        {
-            tourDuPerso(); // donne le controle au joueur
-            VerifierEtatJoueur();
-            tour = false; // au tour de l'ia
-            cout<<"L'IA reflechi a son prochain tour (c'est faux mais faut que t'ai le temps de lire)"<<endl;
-            //sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
-            DecisionIa(); // donne le controle a l'IA
-            VerifierEtatJoueur();
-            tour = true; // au tour du joueur
-            Perso.setNbTourEtat(Perso.getNbTourEtat()-1); // FIN      TOUR
-            IA.setNbTourEtat(IA.getNbTourEtat()-1);         //        DE
-        }
-    }
-    else
-    {
-        while(1)
-        {
-            tour = false;
-            cout<<"L'IA reflechi a son prochain tour (c'est faux mais faut que t'ai le temps de lire)"<<endl;
-            //sleep(7000); // sur windows, mettez votre commande linux en bas sans retirer elle (C EST DES MILLISECONDES)
-            DecisionIa(); // donne le controle a l'IA
-            VerifierEtatJoueur();
-            tour = true; // au tour du joueur
-            tourDuPerso(); // donne le controle au joueur
-            VerifierEtatJoueur();
-            Perso.setNbTourEtat(Perso.getNbTourEtat()-1); // FIN      TOUR
-            IA.setNbTourEtat(IA.getNbTourEtat()-1);         //        DE
-        }
-    }
-}
-
-
-void Combat::DecisionIa() //IA OFFENSIF
-{
-    Clear();
-    int importanceAtt =0;
-    int importanceObjet=0;
-    int TMPimportanceAtt =0;
-    int TMPimportanceObjet = 0;
-    int numAttaque, numObjet;
-    for(int i=0; i<4; i=i+1)
-    {
-        if(IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // on retiens l'attaque la plus forte et DISPONIBLE de l'IA
-        {
-            TMPimportanceAtt = IA.getArme().getAtk(i).getDegats();
-            if(TMPimportanceAtt>importanceAtt)
-            {
-                importanceAtt = TMPimportanceAtt;
-                numAttaque = i;
-            }
-
-        }
-        if (Perso.getVie()-IA.getArme().getAtk(i).getDegats()<= 0 && IA.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut tuer le joueur en 1 attaque
-        {
-            TMPimportanceAtt = 100000;// action les plus importante
-            if(TMPimportanceAtt>importanceAtt)
-            {
-                importanceAtt = TMPimportanceAtt;
-                 numAttaque = i;
-            }
-        }
-
-        if(IA.getInv().rechercherObjetInventaire("Pillule de sante")  != -1 && IA.getVie()-Perso.getArme().getAtk(i).getDegats() <= 0 && Perso.getArme().getAtk(i).getNombreMaxUtilisation() > 0 ) // l'ia peut se faire tuer par le joueur au prochain tour donc elle se soigne
-        {
-            TMPimportanceObjet = 100000; // action les plus importante
-            importanceObjet = 100000; // action les plus importante
-            numObjet = IA.getInv().rechercherObjetInventaire("Pillule de sante");
-        }
-
-    }
-
-    if(importanceAtt >= importanceObjet) // l'action la plus importante est effecutee
-    {
-        cout<<"L'ADVERSAIRE A UTILISER "<<IA.getArme().getAtk(numAttaque).getNomAttaque()<<"\n"<<endl;
-        TraiterActionAttaque(IA.Attaquer(numAttaque));
-        IA.getArme().getAtk(numAttaque).setNombreMaxUtilisation(IA.getArme().getAtk(numAttaque).getNombreMaxUtilisation()-1);
-    }
-    else
-    {
-        cout<<"L'ADVERSAIRE A UTILISER "<<IA.getInv().retourneObjetInventaire(numObjet).getNomObjet() <<"\n"<<endl;
-        IA.utiliserObjet(IA.getInv().retourneObjetInventaire(numObjet));
-    }
-    cout << "VOTRE SANTE APRES L'ATTAQUE RECU : "<< Perso.getStats().getVie() << "\n" << endl;
-
-}
-
-
-
+		if(vainqueur) // si perso gagne
+		{
+			//perso get pieces
+			// boite de dialogue
+		}
+		else // si IA gagne
+		{
+			// boite de dialogue
+		} 
+	}

@@ -21,14 +21,10 @@ using namespace std;
         force = f;
     }
 
-// ACCESSEURS ET MUTATEURS
+// ACCESSEURS
 
     // ACCESSEUR VIE
-    const int &Statistiques::getVie() const
-    {
-        return vie;
-    }
-
+    const int &Statistiques::getVie() const { return vie; }
 
     // ACCESSEUR VITESSE
     const int &Statistiques::getVitesse() const { return vitesse; }
@@ -36,8 +32,10 @@ using namespace std;
     // ACCESSEUR FORCE
     const float &Statistiques::getForce() const { return force; }
 
+// MUTATEURS
+
     // MUTATEUR VIE
-    void Statistiques::setVie(const int &v) { vie = v;  }
+    void Statistiques::setVie(int v) { vie = v; }
 
     // MUTATEUR VITESSE
     void Statistiques::setVitesse(const int &vi) { vitesse = vi; }
@@ -47,6 +45,7 @@ using namespace std;
 
 // GESTION STATS
 
+    // AFFICHER LES STATS
     void Statistiques::afficherStat()
     {
         cout<<"VIE: "<<vie<<endl;

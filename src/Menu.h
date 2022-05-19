@@ -1,38 +1,107 @@
+/**
+ * @file Menu.h
+ * @author
+ * @brief 
+ * @version 0.1
+ * @date 2022-04-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 #include <iostream>
 #include "Combat.h"
 #include "Joueur.h"
+#include "jeuSdl.h"
+
+#include <jsoncpp/json/value.h>
+#include <jsoncpp/json/reader.h>
 
 using namespace std;
 
+/**
+ * @brief Classe Menu
+ * 
+ */
 class Menu
 {
 public:
 
-    Menu(); // constructeur par défaut
+
+// CONSTRUCTEUR ET DESTRUCTEUR 
+
+    /**
+     * @brief Constructeur de la classe Menu
+     * 
+     */
+    Menu(); 
     
-    ~Menu(); // destructeur par défaut
+    /**
+     * @brief Destructeur de la classe Menu
+     * 
+     */
+    ~Menu(); 
 
-    void MenuPrincipale(); // afficher le menu principale
+// GESTION DU MENU
 
-    void Jouer(); // lancer le jeu
+    /**
+     * @brief affiche le menu principal
+     * 
+     * @param sdl 
+     */
+    void MenuPrincipal(Sdljeu &sdl); 
 
-    void Aide(); // voir les aides du jeu
+    /**
+     * @brief lance le Combat après avoir choisi les 2 personnages qui combattront
+     * 
+     * @param sdl 
+     */
+    void Jouer(Sdljeu &sdl); 
 
-    void Quitter(); // quitter le menu et le jeu
+    // voir les aides du jeu
+    void Aide(); 
 
-    void MenuPersonnage(); // afficher les personnages
+    /**
+     * @brief quitte la fenêtre sdl et le jeu
+     * 
+     * @param sdl 
+     */
+    void Quitter(Sdljeu &sdl); 
 
-    int choisirPersonnage(); // choisir le personnage et retourne l'entier de son rang dans le txt
+    /**
+     * @brief Menu qui permet de choisir les personnages qui vont combattre
+     * 
+     * @param sdl 
+     */
+    void MenuPersonnage(Sdljeu &sdl); 
+
 
 private:
 
+    /**
+     * @brief Le Joueur correspondant à notre personnage
+     * 
+     */
     Joueur TonPersonnage;
+
+    /**
+     * @brief Le joueur qu'utilisera l'adversaire
+     * 
+     */
     Joueur Adversaire;
 
-    int taille_tabMenu;
+    /**
+     * @brief Le tableau de noms des personnages
+     * 
+     */
     string *tabMenuPersonnage;
+    /**
+     * @brief Le nombre de personnages pour pouvoir parcourir le tableau
+     * 
+     */
+    int taille_tabMenu;
 };
 
 #endif // fin de la classe

@@ -1,0 +1,294 @@
+[
+	{
+	   "nom": "Fatal Punch",
+	   "degats": 10,
+	   "degatsSpeciaux": 5, 
+	   "typeDegats": "brulure",
+	   "typeAttaque": "moyenne",
+	   "descAttaque": "Coup de pied enflammé vers l'avant, provoque brulure",
+	   "nombreMaxUtilisation": 5,
+    	"etatNombreTour": 4
+	},
+	{
+	   "nom": "Kamehameha",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "brulure",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Lance un kamehameha sur l'adversaire, provoque brulure",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 2
+	},
+	{
+	   "nom": "Super Attaque Discrete",
+	   "degats": 15,
+	   "degatsSpeciaux" : 0,
+	   "typeDegats" : "",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Attaque l'adversaire de dos",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Super coup de marteau",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "brulure",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Coup de pied enflammé vers l'avant, provoque brulure",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 4
+	},
+	{
+	   "nom": "Super Punch",
+	   "degats": 30,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "lourde",
+	   "descAttaque" : "Puissant uppercut",
+	   "nombreMaxUtilisation" : 1,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Super Kick",
+	   "degats": 15,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Puissant coup de pied",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 4
+	},
+	{
+	   "nom": "Double Slash",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "saignement",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Combo de coup d'epee, provoque saignement",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 2
+	},
+	{
+	   "nom": "Falcon punch",
+	   "degats": 15,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Puissant coup de poing",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Falcon Mobile",
+	   "degats": 30,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "stun",
+	   "typeAttaque" : "lourde", 
+	   "descAttaque" : "Fait appel à la Falcon-Mobile, qui s'écrase sur l'adversaire. Paralyse l'adversaire",  
+	   "nombreUtilisation" : 1,
+           "etatNombreTour" : 1
+	},
+	{
+	   "nom": "Super Kamehameha",
+	   "degats": 30,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "brulure",
+	   "typeAttaque" : "lourde",
+	   "descAttaque" : "Lance un super kamehameha sur l'adversaire, provoque brulure",
+	   "nombreMaxUtilisation" : 1,
+           "etatNombreTour" : 3
+	},
+	{
+	   "nom": "Hadouken",
+	   "degats": 30,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "brulure",
+	   "typeAttaque" : "lourde",
+	   "descAttaque" : "Lance un hadouken sur l'adversaire, provoque brulure",
+	   "nombreMaxUtilisation" : 1,
+           "etatNombreTour" : 3
+	},
+        {
+	   "nom": "Laser",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "brulure",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Lance un rayon laser sur l'adversaire, provoque brulure",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 3
+	},
+	 {
+	   "nom": "Morsure du serpent",
+	   "degats": 30,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "poison",
+	   "typeAttaque" : "lourde",
+	   "descAttaque" : "Donne un coup de poing à l'adversaire, provoque poison",
+	   "nombreMaxUtilisation" : 1,
+           "etatNombreTour" : 3
+	},
+	{
+	   "nom": "Mental Attaque",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Lance une attaque magique qui blesse l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Souplesse",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "stun",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Saisie l'adversaire puis le jete sur le sol, provoque paralysie",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Coup de baton",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Donne un coup de baton à l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Super Blaster",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "saignement",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Tire sur l'adversaire, provoque saignement",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 3
+	},
+	{
+	   "nom": "Freeze",
+	   "degats": 20,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "gele",
+	   "typeAttaque" : "lourde",
+	   "descAttaque" : "Jete un sort de glace sur l'adversaire, gele l'adversaire",
+	   "nombreMaxUtilisation" : 1,
+           "etatNombreTour" : 2
+	},
+	{
+	   "nom": "Snake Progression",
+	   "degats": 20,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "petrification",
+	   "typeAttaque" : "lourde",
+	   "descAttaque" : "Fait appel au serpent de Medusa, petrifie l'adversaire",
+	   "nombreMaxUtilisation" : 1,
+           "etatNombreTour" : 2
+	},
+	{
+	   "nom": "Final Slash",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "saignement",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Donne un  grand coup d'épee à l'adversaire, provoque saignement à l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 2
+	},
+{
+	   "nom": "Coup de marteau",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Donne un coup de marteau à l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Ecrasement",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Ecrase avec son pied l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Charge",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Fonce sur l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Saut",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Saute sur l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Coup epee",
+	   "degats": 10,
+	   "degatsSpeciaux" : 5, 
+	   "typeDegats" : "saignement",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Donne un simple coup d'epee à l'adversaire, provoque saignement",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 2
+	},
+	{
+	   "nom": "Coup de casque",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Donne un coup de casque à l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Coup de poing",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Donne un coup de poing à l'adversaire",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 0
+	},
+	{
+	   "nom": "Balayette",
+	   "degats": 10,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "paralysie",
+	   "typeAttaque" : "legere",
+	   "descAttaque" : "Fait tomber l'adversaire, inflige paralysie",
+	   "nombreMaxUtilisation" : 10,
+           "etatNombreTour" : 1
+	},
+	{
+	   "nom": "CQC",
+	   "degats": 20,
+	   "degatsSpeciaux" : 0, 
+	   "typeDegats" : "",
+	   "typeAttaque" : "moyenne",
+	   "descAttaque" : "Combo d'attaque legere en combat rapproché",
+	   "nombreMaxUtilisation" : 5,
+           "etatNombreTour" : 0
+	}
+]
+
+

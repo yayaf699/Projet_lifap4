@@ -7,40 +7,94 @@ public:
 
 // COSNTRUCTEURS ET DESTRUCTEURS
 
-    // CONSTRUCTEUR
+    /**
+     * @brief Constructeur par défaut de la classe Statistiques
+     * 
+     */
     Statistiques();
 
-    // CONSTRUCTEUR PAR COPIE
+    /**
+     * @brief Constructeur par copie de la classe Statistiques
+     * 
+     * @param v 
+     * @param vi 
+     * @param f 
+     */
     Statistiques(const int &v, const int &vi, const float &f);
 
 // ACCESSEURS ET MUTATEURS
 
-    // ACCESSEUR VIE
+    /**
+     * @brief Accesseur: récupère la vie
+     * 
+     * @return const int& 
+     */
     const int &getVie() const;
 
 
-    // ACCESSEUR VITESSE
+    /**
+     * @brief Accesseur: récupère la vie
+     * 
+     * @return const int& 
+     */
     const int &getVitesse() const;
 
-    // ACCESSEUR FORCE
+    /**
+     * @brief Accesseur: récupère la vie
+     * 
+     * @return const float& 
+     */
     const float &getForce() const;
 
-    // MUTATEUR VIE
-    void setVie(const int &v);
+    /**
+     * @brief Mutateur: Initialise la vie
+     * 
+     * @param v 
+     */
+    void setVie(int v);
 
-    // MUTATEUR VITESSE
+    /**
+     * @brief Mutateur: Initialise la vitesse
+     * 
+     * @param vi 
+     */
     void setVitesse(const int &vi);
 
-    // MUTATEUR FORCE
+    /**
+     * @brief Mutateur: Initialise la force
+     * 
+     * @param f 
+     */
     void setForce(const float &f);
 
 // GESTION STATS
 
+    /**
+     * @brief affiche les statistiques en mode texte
+     * 
+     */
     void afficherStat();
+
+
+    
 private:
 
+    /**
+     * @brief Les PV du personnage, entre 0 et 100
+     * 
+     */
     int vie; // sur 100
+
+    /**
+     * @brief La vitesse du personnage
+     * 
+     */
     int vitesse; // sur 100
+
+    /**
+     * @brief La force du personnage
+     * 
+     */
     float force; // multiplicateur
 };
 

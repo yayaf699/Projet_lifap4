@@ -1,0 +1,227 @@
+[
+    {
+        "Nom": "SolidSnake",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 40, 
+            "statForce": 1.1
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super Attaque Discrete",
+            "CQC",
+            "Souplesse",
+            "Balayette"
+        ]
+    },
+    {
+        "Nom": "Mario",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 25, 
+            "statForce": 1.5
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super coup de marteau",
+            "Super Punch",
+            "Saut", 
+            "Charge"
+        ]
+    },
+    {
+        "Nom": "Goku",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 35, 
+            "statForce": 1.5
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super Kamehameha",
+            "Kamehameha", 
+            "Coup de baton", 
+            "Coup de poing"
+        ]
+    },
+    {
+        "Nom": "DonkeyKong",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 20, 
+            "statForce": 1.8
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super coup de marteau",
+            "Coup de marteau", 
+            "Charge", 
+            "Ecrasement"
+        ]
+    },
+    {
+        "Nom": "CaptainFalcon",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 20, 
+            "statForce": 1.8
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Falcon Punch", 
+            "Super Punch", 
+            "Falcon Mobile", 
+            "Punch"
+        ]
+    },
+    {
+        "Nom": "Ryu",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 25, 
+            "statForce": 1.6
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Hadouken", 
+            "SuperKick", 
+            "Balayette", 
+            "Coup de poing"
+        ]
+    },
+    {
+        "Nom": "MegaMan",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 40, 
+            "statForce": 1.1
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Super Blaster", 
+            "Laser", 
+            "Charge", 
+            "Coup de casque"
+        ]
+    },
+    {
+        "Nom": "Cloud",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 15, 
+            "statForce": 1.9
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Final Slash", 
+            "Double Slash", 
+            "Coup epee", 
+            "Ecrasement"
+        ]
+    },
+    {
+        "Nom": "Mewtwo",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 15, 
+            "statForce": 1.9
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Fatal Punch", 
+            "Mental Attaque", 
+            "Souplesse", 
+            "Ecrasement"
+        ]
+    },
+    {
+        "Nom": "Medusa",
+        "Stats" : {
+            "etat": "",
+            "nbTourEtat": 0, 
+            "statVie": 100,
+            "statVitesse": 30, 
+            "statForce": 1.2
+        },
+        "Inventaire": [
+            "Potion",
+            "SuperPotion", 
+            "MegaPotion", 
+            "VitessePlus"
+        ],
+        "Attaques": [
+            "Morsure du serpent", 
+            "Mental Attaque", 
+            "Freeze", 
+            "Snake Progression"
+        ]
+    }
+
+]
+
+
+
+

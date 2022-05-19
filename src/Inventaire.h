@@ -1,3 +1,13 @@
+/**
+ * @file Inventaire.h
+ * @author 
+ * @brief 
+ * @version 0.1
+ * @date 2022-05-16
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef INVENTAIRE_H_INCLUDED
 #define INVENTAIRE_H_INCLUDED
 #include "Objet.h"
@@ -13,34 +23,68 @@ public:
 
 // CONSTRUCTEUR ET DESTRUCTEUR
 
-    // CONSTRUCTEUR
+    /**
+     * @brief Constructeur par défaut de la classe Inventaire
+     * 
+     */
     Inventaire();
 
-    // DESTRUCTEUR
+    /**
+     * @brief Destructeur de la classe Inventaire
+     * 
+     */
     ~Inventaire();
 
+// ACCESSEURS
+
+    /**
+     * @brief accesseur: recupere la taille de l'inventaire
+     * 
+     * @return const unsigned int 
+     */
+    const unsigned int getTailleInventaire();
+
+    /**
+     * @brief Accesseur: récupère l'objet de l'inventaire qui correspond à l'indice en paramètre
+     * 
+     * @param i 
+     * @return Objet 
+     */
+    Objet getInventaire(const unsigned int &i);
 
 // GESTION DE L'INVENTAIRE
 
-    // ACCESSEUR TAILLE INVENTAIRE
-    const unsigned int getTailleInventaire();
-
-    const string &getObjet(const unsigned int &n);
-
-    // RETOURNE I-EME OBJET
-    const Objet &retourneObjetInventaire(const unsigned int &i) const;
-
-    // AFFICHER INVENTAIRE
+    /**
+     * @brief Affiche l'inventaire en mode txt
+     * 
+     */
     void afficherInventaire() const;
 
-    // JETER UN OBJET
+    /**
+     * @brief jète un objet de l'inventaire
+     * 
+     * @param o 
+     */
     void retirerObjetInventaire(Objet &o);
 
-    // RECHERCHER OBJET
+    /**
+     * @brief Recherche un objet de l'inventaire et retourne son indice
+     * 
+     * @param nomObjet 
+     * @return int 
+     */
     int rechercherObjetInventaire(string nomObjet) ;
 
-     // AJOUTER OBJET
-     void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce);
+    /**
+     * @brief Ajoute un objet
+     * 
+     * @param indice 
+     * @param nom 
+     * @param bonusvie 
+     * @param bonusvitesse 
+     * @param bonusforce 
+     */
+    void ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce);
 
 
 private:

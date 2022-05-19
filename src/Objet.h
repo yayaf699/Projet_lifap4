@@ -1,3 +1,13 @@
+/**
+ * @file Objet.h
+ * @author 
+ * @brief 
+ * @version 0.1
+ * @date 2022-05-16
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #ifndef OBJET_H_INCLUDED
 #define OBJET_H_INCLUDED
 #include <string>
@@ -11,56 +21,125 @@ public:
 
 // LES CONSTRUCTEURS
 
-    // CONSTRUCTEUR
+    /**
+     * @brief Constructeur par défaut de la classe Objet
+     * 
+     */
     Objet();
 
-    // CONSTRUCTEUR STRING
-    Objet(const string &nomObjet);
-
-    // CONSTRUCTEUR PAR COPIE
+    /**
+     * @brief Constructeur par copie de la classe Objet
+     * 
+     * @param o 
+     */
     Objet(const Objet &o);
 
-// LES ACCESEURS ET MUTATEURS
+// LES ACCESEURS
 
-    // ACCESSEUR NOM OBJET
+    /**
+     * @brief Accesseur: récupère le nom de l'objet
+     * 
+     * @return const string& 
+     */
     const string &getNomObjet() const;
 
-    // ACCESSEUR BONUS DE VIE SUR L'OBJET
+    /**
+     * @brief Accesseur: récupère la vie de l'objet
+     * 
+     * @return const unsigned int& 
+     */
     const unsigned int &getVieObjet() const;
 
-    // ACCESSEUR BONUS DE FORCE SUR L'OBJET
+    /**
+     * @brief Accesseur: récupère la force de l'objet
+     * 
+     * @return const float& 
+     */
     const float &getForceObjet() const;
 
-    // ACCESSEUR BONUS DE VITESSE SUR L'OBJET
+    /**
+     * @brief Accesseur: récupère la vitesse de l'objet
+     * 
+     * @return const unsigned int& 
+     */
     const unsigned int &getVitesseObjet() const;
 
+    /**
+     * @brief 
+     * 
+     * @return const unsigned int& 
+     */
+    const unsigned int &getAttaqueUtilisation() const;
 
-    // MUTATEUR NOM OBJET
+
+// LES MUTATEURS
+
+    /**
+     * @brief Mutateur: change le nom de l'objet
+     * 
+     * @param n 
+     */
     void setNomObjet(const string &n);
 
-    // MUTATEUR BONUS DE VIE SUR L'OBJET
+    /**
+     * @brief Mutateur: change la vie de l'objet
+     * 
+     * @param v 
+     */
     void setVieObjet(const unsigned int &v);
 
-    // MUTATEUR BONUS DE FORCE SUR L'OBJET
+    /**
+     * @brief Mutateur: change la force de l'objet
+     * 
+     * @param f 
+     */
     void setForceObjet(const  float &f);
 
-    // MUTATEUR BONUS DE VITESSE SUR L'OBJET
+    /**
+     * @brief Mutateur: change la vitesse de l'objet
+     * 
+     * @param vi 
+     */
     void setVitesseObjet(const unsigned int &vi);
+
+    /**
+     * @brief Mutateur: change le nombre d'utilisation de l'attaque
+     * 
+     * @param ut 
+     */
+    void setAttaqueUtilisation(const unsigned int &ut);
 
 
 // GESTION DE L'OBJET
 
-    // L'AFFICHER L'OBJET
+    /**
+     * @brief Affiche les informations de l'objet en mode txt
+     * 
+     */
     void afficherObjet();
+
+    /**
+     * @brief ajoute l'objet à partir de son nom en recuperant ses stats dans un .json
+     * 
+     * @param nomJSON 
+     */
+    void ajouterObjetJSON(const string &nomJSON);
 
 
 private:
 
-    string nom; // nom de l'objet
-    unsigned int bonusVie, bonusVitesse;
+    /**
+     * @brief Nom de l'objet
+     * 
+     */
+    string nom; 
+
+    /**
+     * @brief Stats de l'objet
+     * 
+     */
+    unsigned int bonusVie, bonusVitesse, bonusAttaqueUtilisation;
     float bonusForce;
 };
-
-
 
 #endif // OBJET_H_INCLUDED

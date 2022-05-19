@@ -1,61 +1,79 @@
 #include "Joueur.h"
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
+#include <jsoncpp/json/value.h>
+#include <jsoncpp/json/reader.h>
 
 
 using namespace std;
 
 
-// LES CONSTRUCTEURS ET DESTRUCTEUR
+// LE CONSTRUCTEUR
 
-
-    // CONSTRUCTEUR PAR DEFAUT
+    // constructeur par défaut
     Joueur::Joueur()
     {
         nomJoueur = "Monkey D. Nordin";
         etat = "";
         nbTourEtat = 0;
+        piece = 0;
 
-    }
+        stat.setVitesse(1);
+        stat.setForce(1.1);
 
+        inv.ajouterObjet(0,"potion",10,0,0);
+        inv.ajouterObjet(1,"Superpotion",20,0,0);
+        inv.ajouterObjet(2,"Megapotion",30,0,0);
+        inv.ajouterObjet(3,"Hyperpotion",40,0,0);
 
-// LES ACCESSEURS ET MUTATEURS
+        arm.getTabAttaque(0).setNomAttaque("hagra");
+        arm.getTabAttaque(1).setNomAttaque("hagra");
+        arm.getTabAttaque(2).setNomAttaque("hagra");
+        arm.getTabAttaque(3).setNomAttaque("hagra");
+    } 
 
-    // ACCESSEUR NOM
+// LES ACCESSEURS
+
+    // accesseur nom
     const string &Joueur::getNom() const { return nomJoueur; }
 
-    // MUTATEUR NOM
+    // accesseur etat
+    string Joueur::getEtat() { return etat; }
+
+    // accesseur NbTourEtat
+    int Joueur::getNbTourEtat() { return nbTourEtat; }
+
+    // accesseur stats
+    Statistiques Joueur::getStats() { return stat; }
+
+    // accesseur inventaire
+    Inventaire Joueur::getInv() { return inv; }
+
+    // accesseur arme
+    Arme Joueur::getArme() { return arm; }
+
+    // accesseur pieces
+    int Joueur::getPiece() { return piece; }
+
+// LES MUTATEURS
+
+    // mutateur nom
     void Joueur::setNom(const string& n) { nomJoueur = n; }
 
-    void Joueur::setStat(const string &s, float valeur)
-    {   int v;
-        if(s =="vie") v = 1;
-        if(s == "force") v = 2;
-        if(s == "vitesse") v = 3;
+    // mutateur etat
+    void Joueur::setEtat(string e) { etat = e; }
 
-        switch(v){
-            case 1:
-            stat.setVie(stat.getVie() + valeur);
-            break;
+    // mutateur NbTourEtat
+    void Joueur::setNbTourEtat(int nb) { nbTourEtat = nb; }
 
-            case 2:
-            stat.setForce(stat.getForce() + valeur);
-            break;
+    // mutateur piece
+    void Joueur::setPiece(int p) { piece = p; }
 
-            case 3:
-            stat.setVitesse(stat.getVitesse() + valeur);
-            break;
-
-            default:
-            break;
-
-        }
-    }
 
 // GESTION DU JOUEUR
 
-    // CHOIX DE L'ACTION
+    // choix de l'action
     int Joueur::choixAction()
     {
         int i;
@@ -67,7 +85,7 @@ using namespace std;
         return i;
     }
 
-    // OPERATEUR << POUR AFFICHER TOUTES LES STATS
+    // afficher joueur
     void Joueur::afficherJoueur()
     {
         cout<<"\n ******* NOM ******* \n"<<endl;
@@ -79,11 +97,60 @@ using namespace std;
         cout<<" \n ******* INVENTAIRE ******* \n"<<endl;
         inv.afficherInventaire();
 
-        cout<<" \n \n******* ARME ******* \n"<<endl;
-        arm.afficher();
+        cout<<" \n ******* ARME ******* \n"<<endl;
+        arm.afficherStat();
     }
 
-    Joueur &Joueur::operator=(const Joueur &j){
+    // attaquer
+    Attaque Joueur::Attaquer(int i) 
+    { 
+        arm
+        .getTabAttaque(i)
+        .setNombreUtilisationReste(arm.getTabAttaque(i).getNombreUtilisationReste()-1);
+
+        return arm.getTabAttaque(i);
+    }
+
+    // afficher l'inventaire
+    void Joueur::afficherInventaire() const { inv.afficherInventaire(); }
+
+    // utiliser un objet
+    void Joueur::utiliserObjet(Objet o)
+    {
+        int choix;
+        if(o.getVieObjet() + stat.getVie() > 100)
+        {
+            stat.setVie(100); 
+        }
+            stat.setVie(o.getVieObjet() + stat.getVie());
+            stat.setForce(o.getForceObjet() * stat.getForce());
+            stat.setVitesse(o.getVitesseObjet() + stat.getVitesse());
+
+        if(o.getAttaqueUtilisation() > 0)
+        {
+            // ###################################################################################################### VERSION TEXT 
+            cout<<"sur quelle attaque voulez vous l'utiliser ?"<<endl;
+            arm.afficherStat();
+            cin>>choix;
+            if(o.getAttaqueUtilisation() + arm.getTabAttaque(choix-1).getNombreUtilisationReste() >= arm.getTabAttaque(choix-1).getNombreMaxUtilisation())
+            {
+                arm.getTabAttaque(choix-1).setNombreUtilisationReste(arm.getTabAttaque(choix-1).getNombreMaxUtilisation());
+            }
+            else
+            {
+                arm.getTabAttaque(choix-1).setNombreUtilisationReste(o.getAttaqueUtilisation() + arm.getTabAttaque(choix-1).getNombreUtilisationReste());
+            }
+        }
+        inv.retirerObjetInventaire(o);
+    }
+
+    // operateur =
+    Joueur &Joueur::operator=(const Joueur &j)
+    {
+        nomJoueur = j.nomJoueur;
+        etat = j.etat;
+        nbTourEtat = j.nbTourEtat;
+        
         stat = j.stat;
         inv = j.inv;
         arm = j.arm;
@@ -91,170 +158,131 @@ using namespace std;
         return *this;
     }
 
-    int  Joueur::getVie()
-    {
-        return stat.getVie();
-    }
-
-    void Joueur::SetVie(int valeur)
-    {
-        stat.setVie(valeur);
-    }
-
-    Inventaire Joueur::getInv(){
-        return inv;
-    }
-
-    Arme Joueur::getArme()
-    {
-        return arm;
-    }
-
-    Statistiques Joueur::getStats()
-    {
-        return stat;
-    }
-
-    void Joueur::setEtat(string etat_)
-    {
-        etat = etat_;
-    }
-
-    string Joueur::getEtat()
-    {
-        return etat;
-    }
-
-    Attaque Joueur::Attaquer(int i)
-    {
-        return arm.utiliserAttaque(i);
-    }
-
-    void Joueur::afficherInventaire() const
-    {
-        inv.afficherInventaire();
-    }
-
-    int Joueur::getNbTourEtat()
-    {
-        return nbTourEtat;
-    }
-
-    void Joueur::setNbTourEtat(int nbTour)
-    {
-        nbTourEtat = nbTour;
-    }
-
-    // UTILISER L'OBJET
-    void Joueur::utiliserObjet(Objet o)
-    {
-        setStat("vie", o.getVieObjet());
-        setStat("force", o.getForceObjet());
-        setStat("vitesse", o.getVitesseObjet());
-        if(o.getNomObjet().compare("Soda")==0)
-        {
-            getArme().affAttaques();
-            cout<<"De quelle attaque voulez vous augmentez son nombre d'utilisation ?"<<endl;
-            int choix;
-            cin>>choix;
-            while(getArme().getAtk(choix-1).getNombreMaxUtilisation() !=0 )
-            {
-                cout<<"\n Cette attaque poss�de deja au moins 1 utilisation \n"<<endl;
-                cout<<"De quelle attaque voulez vous augmentez son nombre d'utilisation ?"<<endl;
-                cin >> choix;
-            }
-            getArme().getAtk(choix-1).setNombreMaxUtilisation(1);
-            cout<<"ICI 2 / "<<getArme().getAtk(choix-1).getNombreMaxUtilisation();
-            cout<<"L'attaque "<<getArme().getAtk(choix-1).getNomAttaque()<<" possede desormais : "<<getArme().getAtk(choix-1).getNombreMaxUtilisation()<<" utilisation"<<endl;
-        }
-        inv.retirerObjetInventaire(o);
-    }
-
+    // ajouter un joueur
     void Joueur::ajouterJoueur(unsigned int n)
     {
-        // sens de lecture du fichier Joueur_stat_inventaire
-        // nom etat nbTourEtat statVie statVitesse statForce objet1 objet2 objet3 objet4 nomArme attaque1 attaque2 attaque3 attaque4
+        // recuperer les stats du personnage 
+        ifstream Perso("data/Joueur_stats_inventaire.json");
+        Json::Value PersoJson;
+        Json::Reader readerPerso;
+
+        readerPerso.parse(Perso, PersoJson); 
+
+        // le nom
+        setNom(PersoJson[n-1]["Nom"].asString());
+
+        // les stats
+        setEtat(PersoJson[n-1]["Stats"]["etat"].asString());
+        setNbTourEtat(PersoJson[n-1]["Stats"]["nbTourEtat"].asInt());
+        stat.setVie(PersoJson[n-1]["Stats"]["statVie"].asInt());
+        stat.setVitesse(PersoJson[n-1]["Stats"]["statVitesse"].asInt());
+        stat.setForce(PersoJson[n-1]["Stats"]["statForce"].asFloat()); 
         
-        string nom, etat;
-        int nbTour, statVie, statVitesse;
-        float statForce;
-
-        string objets[4];
-        string nomArme;
-        string attaques[4];
-
-        string ElementRecherche; // variable de passage
-
-        ifstream readJoueur("data/Joueur_stat_inventaire.txt"); // recuperer les stats du joueur, son inventaire, son arme et le nom des attaques
-        if(readJoueur.is_open())
-        {
-            int i = 1;
-            do
-            {
-            readJoueur.ignore(1000, '\n');
-            i++;
-            } while (i != n); // on parcours le fichier qu'une fois
-
-            readJoueur >> nom >> etat >> nbTour >> statVie >> statVitesse >> statForce;
-            readJoueur >> objets[0] >> objets[1] >> objets[2] >> objets[3];
-            readJoueur >> nomArme;
-            readJoueur >> attaques[0] >> attaques[1] >> attaques[2] >> attaques[3];
-
-            setNom(nom);
-            setEtat(etat);
-
-            stat.setVie(statVie);
-            stat.setVitesse(statVitesse);
-            stat.setForce(statForce); 
-
-            arm.setNomArme(nomArme);       
+        // le nom des objets de l'inventaire
+        for(int i = 0; i < inv.getTailleInventaire(); i++)
+        {   
+            inv.getInventaire(i).setNomObjet(PersoJson[n-1]["Inventaire"][i].asString());
         }
-        readJoueur.close();
-
-        ifstream readInventaire("data/Objet.txt"); // recuperer  le contenu de l'inventaire
-        if(readInventaire.is_open())
+        
+        // le nom des attaques
+        for(int i = 0; i < arm.getNbAttaque(); i++)
         {
-            for(int i = 0; i <= 3; i++) // parcourir le fichier en fonction du nombre d'objets
-            {
-                ifstream readInventaire("data/Objet.txt");
-                do
-                {
-                    readInventaire >> ElementRecherche >> statVie >> statVitesse >> statForce;
-                    readInventaire.ignore(1000, '\n'); // saut de ligne
-                } while(objets[i] != ElementRecherche);
+            arm.getTabAttaque(i).setNomAttaque(PersoJson[n-1]["Attaques"][i].asString());
+        } 
+    
+        // recuperer les stats des objets
+        ifstream Objets("data/Objet.json");
+        Json::Value ObjetJson;
+        Json::Reader readerObjet;
 
-                inv.ajouterObjet(i, ElementRecherche, statVie, statVitesse, statForce);
+        readerObjet.parse(Objets, ObjetJson);
+        int j;
+
+        for(int i = 0; i < inv.getTailleInventaire(); i++)
+        {
+            j = 0;
+            while(PersoJson[n-1]["Inventaire"][i].asString() != ObjetJson[j]["NomObjet"].asString()) j++;    
+
+            inv.ajouterObjet(i, ObjetJson[j]["NomObjet"].asString(),
+                                ObjetJson[j]["BonusVie"].asInt(),  
+                                ObjetJson[j]["BonusVitesse"].asInt(), 
+                                ObjetJson[j]["BonusForce"].asFloat());
+        }
+
+        Objets.close();
+
+        // recuperer les stats des attaques
+        ifstream Attaques("data/Attaque.json");
+        Json::Value AttaqueJson;
+        Json::Reader readerAttaque;
+
+        readerAttaque.parse(Attaques, AttaqueJson);
+
+        for(int i = 0; i < arm.getNbAttaque(); i++)
+        {
+            j = 0;
+            while(PersoJson[n-1]["Attaques"][i].asString() != AttaqueJson[j]["nom"].asString()) j++; 
+
+            arm.ajouterAttaque(i, AttaqueJson[j]["nom"].asString(),
+                                  AttaqueJson[j]["degats"].asInt(),
+                                  AttaqueJson[j]["degatsSpeciaux"].asInt(),
+                                  AttaqueJson[j]["typeDegats"].asString(),
+                                  AttaqueJson[j]["typeAttaque"].asString(),
+                                  AttaqueJson[j]["descAttaque"].asString(),
+                                  AttaqueJson[j]["nombreMaxUtilisation"].asInt(),
+                                  AttaqueJson[j]["etatNombreTour"].asInt());
+            arm.getTabAttaque(i).setNombreUtilisationReste(arm.getTabAttaque(i).getNombreMaxUtilisation());
+            
+        }
+
+
+            
+
+        Attaques.close();
+        Perso.close();
+    }
+
+    // actualise la vie
+    void Joueur::MajVieJoueur(int degatsRecu)
+    {
+        if(stat.getVie() - degatsRecu == 0)
+        {
+            stat.setVie(0);
+        }
+        else
+        {
+            stat.setVie(stat.getVie() - degatsRecu);
+        }
+    }
+
+    // acheter un objet
+    void Joueur::acheterObjet(string nom_Objet, int prix)
+    {
+        int emplacement = 0;
+        int in;
+
+        for(int i = 0; i < inv.getTailleInventaire(); i++)
+        {
+            if(inv.getInventaire(i).getNomObjet() != "emplacement vide")
+            {
+                emplacement++;
             }
         }
-        readInventaire.close();
 
-        // lecture des stats des attaques 
-        // sens de lecture
-        // nom degats degatsSpeciaux typeDegats descAttaque nombreMaxUtilisation etatNombreTour
-        int degats, degatsSpeciaux, nombreMaxUtilisation, etatNombreTour;
-        string typeDegats, typeAttaque;
-        string descAttaque = "";
-        string concatenationChaine;
-        string description = "";
-        string sautDeMot;
-
-        ifstream readAttaque("data/Attaque.txt"); // recuperer le contenu des attaques
-        if(readAttaque.is_open())
+        if(emplacement == 0)
         {
-            for(int i = 0; i <= 3; i++)
-            {
-                ifstream readAttaque("data/Attaque.txt");
-                do
-                {
-                    readAttaque >> ElementRecherche >> degats >> degatsSpeciaux >> typeDegats >> typeAttaque;
-                    readAttaque >> descAttaque >> nombreMaxUtilisation >> etatNombreTour; 
-                    readAttaque.ignore(1000, '\n'); // saut de ligne
-                } while (attaques[i] != ElementRecherche);
-
-                cout<<i<<" "<<ElementRecherche<<" "<<degats<<" "<<degatsSpeciaux<<" "<<typeDegats<<" "<<typeAttaque<<" "<<descAttaque<<" "<<nombreMaxUtilisation<<" "<<etatNombreTour<<" "<<endl;
-                arm.ajouterAttaque(i, ElementRecherche, degats, degatsSpeciaux, typeDegats, typeAttaque, descAttaque, nombreMaxUtilisation, etatNombreTour);
-                arm.ajouterAttaque(2,"test nom attaque",5,5,"test type de degats", "test type attaque", "test description attaque",5,5);
-            }
+            cout<<"echanger avec quel objet ?"<<endl;
+            afficherInventaire();
+            cin>>in;
         }
-        readAttaque.close();
+
+        // ###################################################################################################### TEXT
+        if(piece >= prix)
+        {
+            inv.getInventaire(emplacement-1).ajouterObjetJSON(nom_Objet);
+        }
+        else
+        {
+            cout<<"OBJET TROP CHER"<<endl;
+        }
     }

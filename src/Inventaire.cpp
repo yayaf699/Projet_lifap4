@@ -6,7 +6,7 @@ using namespace std;
 
 // CONSTRUCTEURS
 
-    // CONSTRUCTEUR
+    // constructeur
     Inventaire::Inventaire()
     {
         taille_inventaire = 4;
@@ -20,7 +20,7 @@ using namespace std;
         inventaire[3].setNomObjet("Soda");
     }
 
-    // DESTRUCTEUR
+    // destructeur
     Inventaire::~Inventaire()
     {
         taille_inventaire = 0;
@@ -28,19 +28,15 @@ using namespace std;
         delete inventaire;
     }
 
+// ACCESSEURS
 
-
-// GESTION DE L'INVENTAIRE
-
+    // accesseur TailleInventaire
     const unsigned int Inventaire::getTailleInventaire(){ return taille_inventaire; }
 
-    const string &Inventaire::getObjet(const unsigned int &n){ return inventaire[n].getNomObjet(); }
+    // accesseur i-eme objet dans l'inventaire
+    Objet Inventaire::getInventaire(const unsigned int &i){ return inventaire[i]; }
 
-    // RETOURNE I-EME OBJET
-    const Objet &Inventaire::retourneObjetInventaire(const unsigned int &i) const
-    {
-        return inventaire[i];
-    }
+// GESTION DE L'INVENTAIRE
 
     // AFFICHER INVENTAIRE
     void Inventaire::afficherInventaire() const
@@ -56,12 +52,12 @@ using namespace std;
     // RECHERCHER OBJET
     int Inventaire::rechercherObjetInventaire(string nomObjet)
     {
-        for(  int i = 0; i < taille_inventaire; i++){
+        for(int i = 0; i < taille_inventaire; i++)
+        {
             if(inventaire[i].getNomObjet() == nomObjet)
             {
                 return i;
             }
-
         }
         return -1;
     }
@@ -70,11 +66,18 @@ using namespace std;
     // JETER UN OBJET
     void Inventaire::retirerObjetInventaire(Objet &o)
     {
-        inventaire[rechercherObjetInventaire(o.getNomObjet())].setVieObjet(0);
-        inventaire[rechercherObjetInventaire(o.getNomObjet())].setVitesseObjet(0);
-        inventaire[rechercherObjetInventaire(o.getNomObjet())].setForceObjet(0.0);
-        inventaire[rechercherObjetInventaire(o.getNomObjet())].setNomObjet("emplacement vide");
+        if(rechercherObjetInventaire(o.getNomObjet()) < taille_inventaire-1) // si objet enlevé au milieu ou au debut du tableau
+        {
+            for(int i = rechercherObjetInventaire(o.getNomObjet()); i < taille_inventaire; i++)
+            {
+                inventaire[i-1]  = inventaire[i];
+            }
+        }
 
+        inventaire[taille_inventaire-1].setVieObjet(-1);
+        inventaire[taille_inventaire-1].setVitesseObjet(-1);
+        inventaire[taille_inventaire-1].setForceObjet(-1);
+        inventaire[taille_inventaire-1].setNomObjet("emplacement vide");
     }
 
   void Inventaire::ajouterObjet(const unsigned int indice, string nom, int bonusvie, int bonusvitesse, float bonusforce)
@@ -83,5 +86,5 @@ using namespace std;
        inventaire[indice].setForceObjet(bonusforce);
        inventaire[indice].setVieObjet(bonusvie);
        inventaire[indice].setVitesseObjet(bonusvitesse);
-}
+  }
 

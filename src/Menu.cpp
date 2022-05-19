@@ -1,7 +1,10 @@
 #include "Menu.h"
+
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+
+
 
 using namespace std;
 
@@ -10,7 +13,7 @@ using namespace std;
         TonPersonnage.ajouterJoueur(2);
         Adversaire.ajouterJoueur(4);
 
-        taille_tabMenu = 9;
+        taille_tabMenu = 10; // nombre de personnages dans le jeu
         tabMenuPersonnage = new string [taille_tabMenu];
     }
 
@@ -20,8 +23,9 @@ using namespace std;
         delete [] tabMenuPersonnage;
     }
 
-    void Menu::MenuPrincipale() // afficher le menu principale
+    void Menu::MenuPrincipal(Sdljeu &sdl) // afficher le menu principale
     {
+        sdl.choixAffichage();
         // version txt
         int choix;
 
@@ -33,26 +37,17 @@ using namespace std;
         cout<<endl;
         cout<<"3. QUITTER"<<endl;
 
-        cin >> choix;
-
-        if(choix == 1) MenuPersonnage();
+        if(!sdl.withsdl) cin >> choix;
+        else choix = sdl.afficherMenu();
+        if(choix == 1) MenuPersonnage(sdl);
+        else if(choix == 3) Quitter(sdl);
         else if(choix == 2) Aide();
-        else if(choix == 3) Quitter();
-        
-        /*   VERSION SDL
-            *
-            *
-            * 
-            * 
-            * 
-            * 
-        */
     }
     
-    void Menu::Jouer() // lancer le jeu
+    void Menu::Jouer(Sdljeu &sdl) // lancer le jeu
     {
-        Combat c(TonPersonnage, Adversaire);
-        c.combatDeroulement();  
+        Combat c;
+        c.combatDeroulement(TonPersonnage, Adversaire, sdl);  
     }
     
     void Menu::Aide() // voir les aides du jeu
@@ -60,41 +55,36 @@ using namespace std;
 
     }
     
-    void Menu::Quitter() // quitter le menu et le jeu
+    void Menu::Quitter(Sdljeu &sdl) // quitter le menu et le jeu
     {
-        // version txt
         char reponse;
         cout << "etes vous sur de vouloir quitter le jeu ? [o/n]" << endl;
-        cin >> reponse;
+        if(!sdl.withsdl) cin >> reponse;
+        else reponse = 'o';
 
         if(reponse == 'o') exit(0);
-        else MenuPrincipale();
-
-        /*   VERSION SDL
-            *
-            *
-            * 
-            * 
-            * 
-            * 
-        */
+        else MenuPrincipal(sdl);
        
     }
     
-    void Menu::MenuPersonnage() 
+    void Menu::MenuPersonnage(Sdljeu &sdl) 
     {
-        // on remplit un tableau avec le nom des personnages
-        ifstream MenuPersonnage("data/Joueur_stat_inventaire.txt"); // ouvrir le fichier txt à partir de la premiere ligne
-        if(MenuPersonnage.is_open())
+    // on remplit un tableau avec le nom des personnages
+        ifstream Perso("data/Joueur_stats_inventaire.json");
+        Json::Value PersoJson;
+        Json::Reader readerPerso;
+
+        readerPerso.parse(Perso, PersoJson); 
+
+        for(int i = 0; i < taille_tabMenu; i++)
         {
-            for(int i = 0; i < taille_tabMenu; i++)
-            {
-                MenuPersonnage >> tabMenuPersonnage[i];
-                MenuPersonnage.ignore(1000, '\n'); // saut de ligne
-            }
+            tabMenuPersonnage[i] = PersoJson[i]["Nom"].asString();
         }
 
-        // version txt
+        Perso.close();
+        
+
+    
         for(int i = 0; i < taille_tabMenu; i++)
         {
             cout << i+1 << ". " << tabMenuPersonnage[i] << endl;
@@ -103,7 +93,8 @@ using namespace std;
         int choixPersonnage, choixAdversaire;
 
         cout <<"Quel personnage voulez vous choisir ?"<<endl;
-        cin>>choixPersonnage;
+        if (!sdl.withsdl) cin>>choixPersonnage;
+        else choixPersonnage = sdl.afficherChoixPerso(tabMenuPersonnage);
         TonPersonnage.afficherJoueur();
         TonPersonnage.ajouterJoueur(choixPersonnage);
 
@@ -113,21 +104,13 @@ using namespace std;
         }
 
         cout <<"Quel adversaire voulez vous choisir ?"<<endl;
-        cin>>choixAdversaire;
+        if(!sdl.withsdl) cin>>choixAdversaire;
+        else do{
+            choixAdversaire = sdl.afficherChoixPerso(tabMenuPersonnage);
+        }while(choixAdversaire == choixPersonnage);
         Adversaire.afficherJoueur();
         Adversaire.ajouterJoueur(choixAdversaire);
-
-
-        /*   VERSION SDL
-            *
-            *
-            * 
-            * 
-            * 
-            * 
-        */
-
-       Jouer();
+        Jouer(sdl);
     }
 
     
