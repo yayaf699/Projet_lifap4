@@ -1,0 +1,32 @@
+[
+    {
+        "NomObjet": "Potion",
+        "BonusVie": 10,
+        "BonusVitesse": 0,
+        "BonusForce": 0 
+    },
+    {
+        "NomObjet": "SuperPotion",
+        "BonusVie": 20,
+        "BonusVitesse": 0,
+        "BonusForce": 0 
+    },
+    {
+        "NomObjet": "MegaPotion",
+        "BonusVie": 30,
+        "BonusVitesse": 0,
+        "BonusForce": 0 
+    },
+    {
+        "NomObjet": "VitessePlus",
+        "BonusVie": 0,
+        "BonusVitesse": 10,
+        "BonusForce": 0 
+    },
+    {
+        "NomObjet": "ForcePlus",
+        "BonusVie": 0,
+        "BonusVitesse": 0,
+        "BonusForce": 1.1 
+    }
+]
